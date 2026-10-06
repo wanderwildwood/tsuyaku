@@ -1,132 +1,121 @@
+import java.util.Properties
+
 plugins {
-  alias(libs.plugins.android.application)
-  alias(libs.plugins.kotlin.android)
-  alias(libs.plugins.kotlin.compose)
-  alias(libs.plugins.ktlint)
-  alias(libs.plugins.detekt)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
+// The phone is arm64. x86_64 rides along so the same APK runs on the emulator the screenshots
+// and tests are made on; `-Pabis=arm64-v8a` builds the phone's alone.
+val abis = (findProperty("abis") as String? ?: "arm64-v8a,x86_64").split(',')
+
 android {
-  namespace = "dev.davidv.translator"
-  compileSdk = 34
-  ndkVersion = "27.0.12077973"
-  buildToolsVersion = "34.0.0"
+    namespace = "com.wanderwildwood.tsuyaku"
+    compileSdk = 36
+    ndkVersion = "28.0.12674087"
 
-  sourceSets {
-    getByName("androidTest") {
-      assets {
-        srcDirs("src/androidTest/assets")
-      }
-    }
-  }
-  defaultConfig {
-    applicationId = "dev.davidv.translator"
-    minSdk = 28 // iconv functions need 28?
-    targetSdk = 34
-    versionCode = 4
-    versionName = "0.1.2"
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes {
-    release {
-      isMinifyEnabled = true
-      isShrinkResources = true
-
-      proguardFiles(
-        getDefaultProguardFile("proguard-android-optimize.txt"),
-        "proguard-rules.pro",
-      )
+    defaultConfig {
+        applicationId = "com.wanderwildwood.tsuyaku"
+        // The Kompakt runs Android 12 (API 31); nothing here needs anything newer.
+        minSdk = 31
+        targetSdk = 31
+        versionCode = 1
+        versionName = "0.1.0"
+        ndk { abiFilters += abis }
     }
 
-    flavorDimensions += listOf("architecture")
-    productFlavors {
-      create("x86_64") {
-        ndk {
-          abiFilters += listOf("x86_64") // armeabi-v7a arm64-v8a
+    // A real keystore in signing/ signs every build type when it is present, so the
+    // very first install is already release-signed and a later update can never hit
+    // INSTALL_FAILED_UPDATE_INCOMPATIBLE. It is gitignored, and there is no fallback:
+    // a fresh clone builds an unsigned release APK, which will not install anywhere.
+    val signingPropertiesFile = rootProject.file("signing/signing.properties")
+    val realSigningConfig = if (signingPropertiesFile.isFile) {
+        val signingProperties = Properties().apply {
+            signingPropertiesFile.inputStream().use(::load)
         }
-        dimension = "architecture"
-      }
-      create("x86") {
-        ndk {
-          abiFilters += listOf("x86")
+        signingConfigs.create("real") {
+            storeFile = rootProject.file("signing/signing.keystore")
+            storePassword = signingProperties.getProperty("STORE_PASSWORD")
+            keyAlias = signingProperties.getProperty("KEY_ALIAS")
+            keyPassword = signingProperties.getProperty("KEY_PASSWORD")
         }
-        dimension = "architecture"
-      }
-      create("aarch64") {
-        ndk {
-          abiFilters += listOf("arm64-v8a")
-        }
-        dimension = "architecture"
-      }
+    } else {
+        null
     }
-  }
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-  }
-  kotlinOptions {
-    jvmTarget = "11"
-  }
-  buildFeatures {
-    compose = true
-  }
+
+    buildTypes {
+        getByName("debug") {
+            isMinifyEnabled = false
+            realSigningConfig?.let { signingConfig = it }
+        }
+        getByName("release") {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            realSigningConfig?.let { signingConfig = it }
+
+            // AGP stamps the git revision into META-INF. The build box works from an rsync
+            // with no .git and writes NO_SUPPORTED_VCS_FOUND there, while a CI runner writes
+            // the real commit -- so with this on, the same version built in the two places
+            // has different contents. Off, so neither happens.
+            vcsInfo {
+                include = false
+            }
+        }
+    }
+
+    lint {
+        // Sideloaded onto a Kompakt, not going to Google Play, whose API-33 floor this
+        // otherwise trips. Targeting the OS the device actually runs is deliberate.
+        disable += "ExpiredTargetSdkVersion"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
+    }
+
+    buildFeatures {
+        compose = true
+        // The About dialog shows the version it is actually running.
+        buildConfig = true
+    }
+
+    sourceSets {
+        named("main") { kotlin.srcDir("src/main/kotlin") }
+        named("test") { kotlin.srcDir("src/test/kotlin") }
+    }
 }
 
 dependencies {
+    implementation(project(":app:bergamot"))
+    implementation(libs.tesseract4android)
+    implementation(libs.androidx.exifinterface)
+    implementation(libs.coroutines.android)
 
-  implementation(libs.androidx.core.ktx)
-  implementation(libs.androidx.lifecycle.runtime.ktx)
-  implementation(libs.androidx.activity.compose)
-  implementation(platform(libs.androidx.compose.bom))
-  implementation(libs.androidx.ui)
-  implementation(libs.androidx.ui.graphics)
-  implementation(libs.androidx.ui.tooling.preview)
-  implementation(libs.androidx.material3)
-  implementation(libs.androidx.navigation.compose)
-  implementation(libs.androidx.exifinterface)
-  testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso.core)
-  androidTestImplementation(platform(libs.androidx.compose.bom))
-  androidTestImplementation(libs.androidx.ui.test.junit4)
-  debugImplementation(libs.androidx.ui.tooling)
-  debugImplementation(libs.androidx.ui.test.manifest)
-  implementation(libs.kotlinx.coroutines.android)
-  implementation(libs.kotlinx.coroutines.core)
-  implementation(project(":app:bergamot"))
-  // OpenMP - Multi-threaded. Provides better performance on multi-core processors when using only single instance of Tesseract.
-  implementation(("cz.adaptech.tesseract4android:tesseract4android-openmp:4.9.0"))
-}
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
-ktlint {
-  android.set(true)
-  ignoreFailures.set(false)
-  reporters {
-    reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
-    reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
-  }
-  filter {
-    exclude { element -> element.file.path.contains("generated/") }
-  }
-}
+    implementation(libs.compose.ui)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
 
-detekt {
-  toolVersion = "1.23.4"
-  config.setFrom(file("$projectDir/detekt-config.yml"))
-  buildUponDefaultConfig = true
-  allRules = false
-}
+    implementation(libs.mmd)
 
-tasks.register("lintAll") {
-  dependsOn("ktlintCheck", "detekt")
-  description = "Run all lint checks (ktlint and detekt)"
-  group = "verification"
-}
-
-tasks.register("formatAll") {
-  dependsOn("ktlintFormat")
-  description = "Format all code using ktlint"
-  group = "formatting"
+    testImplementation(libs.junit)
+    // The JSON parser Android ships, so the catalog can be read in a plain JVM test.
+    testImplementation(libs.orgjson)
 }

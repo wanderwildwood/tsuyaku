@@ -27,8 +27,6 @@ project("bergamot-sys")
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
         bergamot.cpp)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "/tmp/build/")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "/tmp/libbuild/")
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
 
 set(USE_WASM_COMPATIBLE_SOURCES OFF CACHE BOOL "" FORCE)
