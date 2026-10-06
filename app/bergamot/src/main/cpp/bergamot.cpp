@@ -13,6 +13,78 @@ using namespace marian::bergamot;
 
 #include <unordered_map>
 #include <mutex>
+
+// Java strings cross JNI as real UTF-8 and back. GetStringUTFChars hands over *modified*
+// UTF-8, which writes a character outside the Basic Multilingual Plane -- an emoji, most
+// often, in a text message -- as two three-byte halves that no tokenizer reads as one letter,
+// and NewStringUTF expects the same modified form back. Going through UTF-16 both ways keeps
+// such characters whole, and a stray half becomes U+FFFD rather than undefined bytes.
+static std::string toUtf8(JNIEnv *env, jstring s) {
+    const jsize len = env->GetStringLength(s);
+    const jchar *u = env->GetStringChars(s, nullptr);
+    std::string out;
+    out.reserve(len * 3);
+    for (jsize i = 0; i < len; i++) {
+        uint32_t c = u[i];
+        if (c >= 0xD800 && c <= 0xDBFF && i + 1 < len && u[i + 1] >= 0xDC00 && u[i + 1] <= 0xDFFF) {
+            c = 0x10000 + ((c - 0xD800) << 10) + (u[i + 1] - 0xDC00);
+            i++;
+        } else if (c >= 0xD800 && c <= 0xDFFF) {
+            c = 0xFFFD;
+        }
+        if (c < 0x80) {
+            out += (char) c;
+        } else if (c < 0x800) {
+            out += (char) (0xC0 | (c >> 6));
+            out += (char) (0x80 | (c & 0x3F));
+        } else if (c < 0x10000) {
+            out += (char) (0xE0 | (c >> 12));
+            out += (char) (0x80 | ((c >> 6) & 0x3F));
+            out += (char) (0x80 | (c & 0x3F));
+        } else {
+            out += (char) (0xF0 | (c >> 18));
+            out += (char) (0x80 | ((c >> 12) & 0x3F));
+            out += (char) (0x80 | ((c >> 6) & 0x3F));
+            out += (char) (0x80 | (c & 0x3F));
+        }
+    }
+    env->ReleaseStringChars(s, u);
+    return out;
+}
+
+static jstring fromUtf8(JNIEnv *env, const std::string &s) {
+    std::u16string out;
+    out.reserve(s.size());
+    const auto *b = reinterpret_cast<const unsigned char *>(s.data());
+    const size_t n = s.size();
+    size_t i = 0;
+    while (i < n) {
+        uint32_t c = b[i];
+        size_t extra = c < 0x80 ? 0 : (c >> 5) == 0x6 ? 1 : (c >> 4) == 0xE ? 2 : (c >> 3) == 0x1E ? 3 : 9;
+        bool ok = extra <= 3 && i + extra < n;
+        if (ok && extra > 0) {
+            c &= (0x3Fu >> extra);
+            for (size_t k = 1; k <= extra; k++) {
+                if ((b[i + k] & 0xC0) != 0x80) { ok = false; break; }
+                c = (c << 6) | (b[i + k] & 0x3F);
+            }
+        }
+        if (!ok) {
+            out += (char16_t) 0xFFFD;
+            i++;
+            continue;
+        }
+        i += extra + 1;
+        if (c >= 0x10000) {
+            c -= 0x10000;
+            out += (char16_t) (0xD800 + (c >> 10));
+            out += (char16_t) (0xDC00 + (c & 0x3FF));
+        } else {
+            out += (char16_t) c;
+        }
+    }
+    return env->NewString(reinterpret_cast<const jchar *>(out.data()), (jsize) out.size());
+}
 static std::unordered_map<std::string, std::shared_ptr<TranslationModel>> model_cache;
 static std::unique_ptr<BlockingService> global_service = nullptr;
 static std::mutex service_mutex;
@@ -156,9 +228,7 @@ Java_dev_davidv_bergamot_NativeLib_translateMultiple(
 
     for (jsize i = 0; i < inputCount; i++) {
         auto jstr = (jstring) env->GetObjectArrayElement(inputs, i);
-        const char *c_str = env->GetStringUTFChars(jstr, nullptr);
-        cpp_inputs.emplace_back(c_str);
-        env->ReleaseStringUTFChars(jstr, c_str);
+        cpp_inputs.emplace_back(toUtf8(env, jstr));
         env->DeleteLocalRef(jstr);
     }
 
@@ -170,7 +240,7 @@ Java_dev_davidv_bergamot_NativeLib_translateMultiple(
         result = env->NewObjectArray((jsize) translations.size(), stringClass, nullptr);
 
         for (size_t i = 0; i < translations.size(); ++i) {
-            jstring jstr = env->NewStringUTF(translations[i].c_str());
+            jstring jstr = fromUtf8(env, translations[i]);
             env->SetObjectArrayElement(result, (jsize) i, jstr);
             env->DeleteLocalRef(jstr);
         }
@@ -201,9 +271,7 @@ Java_dev_davidv_bergamot_NativeLib_pivotMultiple(
 
     for (jsize i = 0; i < inputCount; i++) {
         auto jstr = (jstring) env->GetObjectArrayElement(inputs, i);
-        const char *c_str = env->GetStringUTFChars(jstr, nullptr);
-        cpp_inputs.emplace_back(c_str);
-        env->ReleaseStringUTFChars(jstr, c_str);
+        cpp_inputs.emplace_back(toUtf8(env, jstr));
         env->DeleteLocalRef(jstr);
     }
 
@@ -215,7 +283,7 @@ Java_dev_davidv_bergamot_NativeLib_pivotMultiple(
         result = env->NewObjectArray((jsize) translations.size(), stringClass, nullptr);
 
         for (size_t i = 0; i < translations.size(); ++i) {
-            jstring jstr = env->NewStringUTF(translations[i].c_str());
+            jstring jstr = fromUtf8(env, translations[i]);
             env->SetObjectArrayElement(result, (jsize) i, jstr);
             env->DeleteLocalRef(jstr);
         }
@@ -300,7 +368,8 @@ Java_dev_davidv_bergamot_LangDetect_detectLanguage(
         jstring text,
         jstring hint) {
 
-    const char *c_text = env->GetStringUTFChars(text, nullptr);
+    const std::string text_utf8 = toUtf8(env, text);
+    const char *c_text = text_utf8.c_str();
     const char *c_hint = nullptr;
     if (hint != nullptr) {
         c_hint = env->GetStringUTFChars(hint, nullptr);
@@ -323,14 +392,12 @@ Java_dev_davidv_bergamot_LangDetect_detectLanguage(
                                           result.isReliable,
                                           result.confidence);
 
-        env->ReleaseStringUTFChars(text, c_text);
         if (c_hint != nullptr) {
             env->ReleaseStringUTFChars(hint, c_hint);
         }
         return j_result;
 
     } catch(const std::exception &e) {
-        env->ReleaseStringUTFChars(text, c_text);
         if (c_hint != nullptr) {
             env->ReleaseStringUTFChars(hint, c_hint);
         }
