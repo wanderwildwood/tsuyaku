@@ -79,23 +79,19 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--sort-section=n
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--sort-common")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,relro")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,now")
-# Marian stamps its git revision into a header with `git log`, remade whenever its submodule's
-# .git/logs/HEAD changes. The build box receives the sources without .git and has no git at
-# all, so the rule can never run there. Give it the file it watches and a header newer than it,
-# naming the revision by the submodule pin instead.
-set(MARIAN_SRC ${CMAKE_CURRENT_SOURCE_DIR}/bergamot-translator/3rd_party/marian-dev)
-set(MARIAN_GIT ${MARIAN_SRC}/.git)
-if(EXISTS ${MARIAN_GIT} AND NOT IS_DIRECTORY ${MARIAN_GIT})
-    file(READ ${MARIAN_GIT} MARIAN_GIT)
-    string(REGEX REPLACE "gitdir: (.*)\n" "\\1" MARIAN_GIT ${MARIAN_GIT})
-    if(NOT IS_ABSOLUTE ${MARIAN_GIT})
-        get_filename_component(MARIAN_GIT "${MARIAN_SRC}/${MARIAN_GIT}" ABSOLUTE)
+# Marian stamps its git revision into a header by running `git log` at build time. The build
+# box receives the sources without .git and has no git at all, so that rule is left out and the
+# header written once here, naming the revision by the submodule pin. It also keeps the built
+# library the same wherever it is built.
+set(MARIAN_REVISION ${CMAKE_CURRENT_SOURCE_DIR}/bergamot-translator/3rd_party/marian-dev/src/common/git_revision.h)
+if(NOT EXISTS ${MARIAN_REVISION})
+    file(WRITE ${MARIAN_REVISION} "#define GIT_REVISION \"submodule pin\"\n")
+endif()
+function(add_custom_command)
+    if(NOT "${ARGV}" MATCHES "git_revision.h")
+        _add_custom_command(${ARGV})
     endif()
-endif()
-if(NOT EXISTS ${MARIAN_GIT}/logs/HEAD)
-    file(WRITE ${MARIAN_GIT}/logs/HEAD "")
-    file(WRITE ${MARIAN_SRC}/src/common/git_revision.h "#define GIT_REVISION \"submodule pin\"\n")
-endif()
+endfunction()
 
 add_subdirectory("bergamot-translator/")
 
