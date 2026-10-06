@@ -15,7 +15,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package dev.davidv.translator
+package com.wanderwildwood.tsuyaku.engine
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -30,24 +30,20 @@ import kotlin.math.max
 
 class ImageProcessor(
   private val context: Context,
-  private val ocrService: OCRService,
 ) {
-  suspend fun processImage(
-    bitmap: Bitmap,
-    minConfidence: Int = 75,
-  ): ProcessedImage =
-    withContext(Dispatchers.IO) {
-      val textBlocks = ocrService.extractText(bitmap, minConfidence)
-
-      ProcessedImage(
-        bitmap = bitmap,
-        textBlocks = textBlocks,
-      )
-    }
-
-  fun loadBitmapFromUri(uri: Uri): Bitmap {
+  fun loadBitmapFromUri(
+    uri: Uri,
+    maxSize: Int,
+  ): Bitmap {
+    // Decoded at a fraction of a camera's full size where that is still above maxSize: a
+    // 12-megapixel photo read whole is 48 MB of memory before it is shrunk anyway.
+    val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+    context.contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, bounds) }
+    var sample = 1
+    while (max(bounds.outWidth, bounds.outHeight) / (sample * 2) >= maxSize) sample *= 2
+    val options = BitmapFactory.Options().apply { inSampleSize = sample }
     return context.contentResolver.openInputStream(uri)?.use { inputStream ->
-      BitmapFactory.decodeStream(inputStream)
+      BitmapFactory.decodeStream(inputStream, null, options)
     } ?: throw IllegalArgumentException("Cannot load bitmap from URI: $uri")
   }
 
@@ -109,8 +105,3 @@ class ImageProcessor(
     }
   }
 }
-
-data class ProcessedImage(
-  val bitmap: Bitmap,
-  val textBlocks: Array<TextBlock>,
-)

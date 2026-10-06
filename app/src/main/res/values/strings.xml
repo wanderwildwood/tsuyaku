@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Translate</string>
+    <!-- In other apps' selected-text menus, beside Copy and Define -->
+    <string name="translate_label">Translate</string>
+    <!-- In the share sheet, for text and pictures -->
+    <string name="share_label">Translate</string>
+
+    <!-- Read aloud by a screen reader -->
+    <string name="cd_back">Back</string>
+    <string name="cd_about">About</string>
+    <string name="cd_languages">Languages</string>
+    <string name="cd_swap">Swap the languages</string>
+    <string name="cd_camera">Take a photo to translate</string>
+    <string name="cd_picture">Translate a picture</string>
+    <string name="cd_from">Translate from %1$s</string>
+    <string name="cd_to">Translate into %1$s</string>
+
+    <!-- ============================================================ -->
+    <!-- The main screen -->
+
+    <string name="input_hint">Type or paste text</string>
+    <!-- A row that asks before it acts; see the house rule "<action> — tap again" -->
+    <string name="clear">Clear</string>
+    <string name="clear_armed">Clear — tap again</string>
+    <string name="translating">Translating…</string>
+    <string name="reading_picture">Reading the picture…</string>
+    <!-- Over text that came from a picture -->
+    <string name="from_picture">Read from a picture. Fix anything it misread.</string>
+    <string name="no_words">No words found in the picture.</string>
+    <string name="picture_unreadable">That picture could not be opened.</string>
+    <string name="no_camera">There is no camera app on this phone to take the photo.</string>
+    <string name="copy">Copy</string>
+    <string name="copied">Copied</string>
+    <string name="share">Share</string>
+    <!-- Sends the translation to the Notes app, when it is installed -->
+    <string name="to_notes">To Notes</string>
+    <string name="nothing_to_share">There is nothing to share with on this phone.</string>
+
+    <!-- When no language has been downloaded yet -->
+    <string name="none_yet">Translating needs a language. Each one is downloaded once, 15 to 80 MB, and after that nothing leaves the phone.</string>
+    <string name="choose_language">Choose a language</string>
+
+    <!-- %1$s is a language's name -->
+    <string name="missing">%1$s is not on the phone yet.</string>
+    <!-- %1$s is a language's name -->
+    <string name="get">Get %1$s</string>
+    <!-- %1$s is a language's name. Mozilla has a model one way only. -->
+    <string name="no_model_from_english">There is no model from English into %1$s yet.</string>
+    <string name="no_model_to_english">There is no model from %1$s into English yet.</string>
+    <!-- %1$s is the engine's own message -->
+    <string name="failed">This could not be translated: %1$s</string>
+
+    <!-- The language picker -->
+    <string name="pick_from">Translate from</string>
+    <string name="pick_to">Translate into</string>
+    <string name="more_languages">More languages</string>
+
+    <!-- ============================================================ -->
+    <!-- From another app's selected text -->
+
+    <string name="replace">Replace with translation</string>
+    <string name="open">Open</string>
+
+    <!-- ============================================================ -->
+    <!-- Languages -->
+
+    <string name="languages">Languages</string>
+    <string name="languages_note">Each language is downloaded once. After that, translating never uses the network.</string>
+    <string name="section_here">On the phone</string>
+    <string name="section_get">To download</string>
+    <!-- %1$s is a size such as "54 MB" -->
+    <string name="pack_absent">%1$s</string>
+    <!-- %1$s and %2$s are sizes -->
+    <string name="pack_getting">Downloading, %1$s of %2$s. Tap to stop.</string>
+    <!-- %1$s is a size -->
+    <string name="pack_here">On the phone, %1$s</string>
+    <string name="pack_here_card">On the SD card, %1$s</string>
+    <string name="pack_stopped_offline">Stopped: no connection. Tap to try again.</string>
+    <string name="pack_stopped_server">Stopped: the server did not send the file. Tap to try again.</string>
+    <!-- %1$s is a size -->
+    <string name="pack_stopped_space">Stopped: not enough room. It needs %1$s.</string>
+    <string name="pack_stopped_damaged">Stopped: a file arrived damaged and was thrown away. Tap to try again.</string>
+    <!-- %1$s is a language's name -->
+    <string name="pack_delete_armed">Delete %1$s — tap again</string>
+    <string name="pack_one_way_to_english">Into English only</string>
+    <string name="pack_one_way_from_english">From English only</string>
+    <!-- Mozilla serves some models it has not yet released -->
+    <string name="pack_trial">Mozilla\'s trial model</string>
+    <string name="pack_no_pictures">Cannot read it in pictures</string>
+    <!-- Joins the parts of a pack's second line -->
+    <string name="joiner">" · "</string>
+    <!-- %1$s is a number of megabytes, already formatted -->
+    <string name="megabytes">%1$s MB</string>
+
+    <!-- ============================================================ -->
+    <!-- About -->
+
+    <string name="about_title">Translate %1$s</string>
+    <string name="about_what">Select text in any app and choose Translate, or share text or a picture to it.</string>
+    <string name="about_privacy">Translation happens on the phone. The network is used only to download a language when you ask for one: the models from Mozilla, the files for reading pictures from Tesseract on GitHub.</string>
+    <string name="about_licence">GNU General Public License v3</string>
+    <string name="about_upstream">Built on Offline Translator by David Ventura, GPL 3.0 or later</string>
+    <string name="about_bergamot">Translation by Bergamot and Mozilla\'s models, MPL 2.0</string>
+    <string name="about_tesseract">Pictures read by Tesseract and Tesseract4Android, Apache 2.0</string>
+    <string name="about_cld">Languages recognised by CLD2, Apache 2.0</string>
+    <string name="about_icons">Icons from Material Symbols, Apache 2.0</string>
+    <string name="about_feed_the_llamas">feed the llamas</string>
+    <string name="about_no_browser">There is no browser on this phone to open that with.</string>
+    <string name="about_close">Close</string>
+</resources>

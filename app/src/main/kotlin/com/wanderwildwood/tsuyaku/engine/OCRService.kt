@@ -15,7 +15,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package dev.davidv.translator
+package com.wanderwildwood.tsuyaku.engine
 
 import android.graphics.Bitmap
 import android.graphics.Rect
@@ -26,10 +26,6 @@ import com.googlecode.tesseract.android.TessBaseAPI.PageIteratorLevel.RIL_TEXTLI
 import com.googlecode.tesseract.android.TessBaseAPI.PageIteratorLevel.RIL_WORD
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kotlin.io.path.Path
-import kotlin.io.path.absolutePathString
-import kotlin.io.path.createDirectories
-import kotlin.io.path.pathString
 import kotlin.math.min
 import kotlin.system.measureTimeMillis
 
@@ -190,83 +186,40 @@ fun getSentences(
   return blocks.toTypedArray()
 }
 
+/**
+ * Tesseract, reading the words in a picture.
+ *
+ * It is started for each picture with the languages that picture is likely to be in and let go
+ * straight after: a picture is read now and then, and Tesseract's data is memory the
+ * translation models want more.
+ */
 class OCRService(
-  private val filePathManager: FilePathManager,
+  private val tessRoot: java.io.File,
 ) {
-  private var tess: TessBaseAPI? = null
-  private var isInitialized = false
-
-  private suspend fun initialize(): Boolean =
-    withContext(Dispatchers.IO) {
-      if (isInitialized) return@withContext true
-
-      try {
-        val p = filePathManager.getTesseractDir().toPath()
-        val tessdata = Path(p.pathString, "tessdata")
-        val dataPath: String = p.absolutePathString()
-        tessdata.createDirectories()
-
-        // Get available language data
-        val availableLanguages = getAvailableTessLanguages(tessdata.toFile()).map { it.tessName }
-        if (availableLanguages.isEmpty()) {
-          Log.w("OCRService", "No tessdata language files found")
-          return@withContext false
-        }
-
-        tess = TessBaseAPI()
-
-        val langs = availableLanguages.joinToString("+")
-        Log.i("OCRService", "Initializing tesseract to path $dataPath, languages $langs")
-        val initialized = tess?.init(dataPath, langs) ?: false
-        if (!initialized) {
-          tess?.recycle()
-          tess = null
-          // TODO popup
-          Log.e(
-            "OCRService",
-            "Failed to initialize Tesseract with languages: $availableLanguages",
-          )
-          return@withContext false
-        }
-
-        isInitialized = true
-        Log.i(
-          "OCRService",
-          "Tesseract initialized successfully with languages: $availableLanguages",
-        )
-        true
-      } catch (e: Exception) {
-        Log.e("OCRService", "Error initializing Tesseract", e)
-        false
-      }
-    }
-
   suspend fun extractText(
     bitmap: Bitmap,
+    languages: List<String>,
     minConfidence: Int = 75,
   ): Array<TextBlock> =
     withContext(Dispatchers.IO) {
-      if (!isInitialized) {
-        val initSuccess = initialize()
-        if (!initSuccess) return@withContext emptyArray()
-      }
-
-      val tessInstance = tess ?: return@withContext emptyArray()
-
-      val blocks: Array<TextBlock>
-      val elapsed =
-        measureTimeMillis {
-          blocks = getSentences(bitmap, tessInstance, minConfidence)
+      if (languages.isEmpty()) return@withContext emptyArray()
+      val tess = TessBaseAPI()
+      try {
+        val langs = languages.joinToString("+")
+        Log.i("OCRService", "Initializing tesseract to path $tessRoot, languages $langs")
+        if (!tess.init(tessRoot.absolutePath, langs)) {
+          Log.e("OCRService", "Failed to initialize Tesseract with languages: $langs")
+          return@withContext emptyArray()
         }
-      // Release image data & results; but keeps the instance active
-      Log.i("OCRService", "OCR took ${elapsed}ms")
-      blocks
+        val blocks: Array<TextBlock>
+        val elapsed =
+          measureTimeMillis {
+            blocks = getSentences(bitmap, tess, minConfidence)
+          }
+        Log.i("OCRService", "OCR took ${elapsed}ms")
+        blocks
+      } finally {
+        tess.recycle()
+      }
     }
-
-  fun cleanup() {
-    tess?.recycle()
-    tess = null
-    isInitialized = false
-    Log.i("OCRService", "OCR service cleaned up")
-  }
 }

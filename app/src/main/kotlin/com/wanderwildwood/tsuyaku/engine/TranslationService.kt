@@ -15,153 +15,127 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package dev.davidv.translator
+
+package com.wanderwildwood.tsuyaku.engine
 
 import android.util.Log
 import dev.davidv.bergamot.NativeLib
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.withContext
+import java.io.File
 import kotlin.system.measureTimeMillis
 
-class TranslationService(
-  private val settingsManager: SettingsManager,
-  private val filePathManager: FilePathManager,
-) {
-  companion object {
-    @Volatile
-    private var nativeLibInstance: NativeLib? = null
+/** What came of asking for a translation. */
+sealed interface Outcome {
+    data class Done(val text: String, val romanised: String?) : Outcome
 
-    private fun getNativeLib(): NativeLib =
-      nativeLibInstance ?: synchronized(this) {
-        nativeLibInstance ?: NativeLib().also {
-          Log.d("TranslationService", "Initialized bergamot")
-          nativeLibInstance = it
+    /** A pack the pair needs is not on the phone ([code] is the language that is missing). */
+    data class Missing(val code: String) : Outcome
+
+    /** No model goes that way yet: Mozilla has a model into English for the language, but not out of it, or the reverse. */
+    data class NoModel(val code: String) : Outcome
+
+    data class Failed(val message: String) : Outcome
+}
+
+/**
+ * Bergamot, the engine Firefox translates pages with, run on the phone.
+ *
+ * Every model goes to or from English, so a pair with English on neither side is two models
+ * in a row, the English between them never shown. Bergamot keeps each model it loads in
+ * memory; on this phone that is the difference between a translation in a second and one in
+ * five, and also most of the app's memory. So at most the two models one pair needs are kept,
+ * and [release] lets them go when Android asks for memory back.
+ */
+@OptIn(ExperimentalCoroutinesApi::class)
+class TranslationService(private val packs: Packs) {
+    // One translation at a time, always on the same thread.
+    private val engine = Dispatchers.IO.limitedParallelism(1)
+
+    private var native: NativeLib? = null
+    private val loaded = LinkedHashSet<String>()
+
+    suspend fun translate(from: String, to: String, text: String): Outcome =
+        withContext(engine) {
+            if (text.isBlank()) return@withContext Outcome.Done("", null)
+            if (from == to) return@withContext Outcome.Done(text, null)
+            // Numbers don't translate.
+            if (text.trim().toFloatOrNull() != null) return@withContext Outcome.Done(text, null)
+
+            val steps = steps(from, to)
+            val configs = mutableListOf<Pair<String, String>>()
+            for ((a, b) in steps) {
+                val code = if (a == ENGLISH) b else a
+                val lang = packs.catalog.lang(code) ?: return@withContext Outcome.NoModel(code)
+                val direction = (if (a == ENGLISH) lang.fromEnglish else lang.toEnglish)
+                    ?: return@withContext Outcome.NoModel(code)
+                val dir = packs.modelDir(code) ?: return@withContext Outcome.Missing(code)
+                configs += "$a$b" to generateConfig(dir, direction)
+            }
+
+            try {
+                val lib = load(configs)
+                val result: String
+                val elapsed = measureTimeMillis {
+                    result = if (configs.size == 1) {
+                        lib.translateMultiple(arrayOf(text), configs[0].first)[0]
+                    } else {
+                        lib.pivotMultiple(configs[0].first, configs[1].first, arrayOf(text))[0]
+                    }
+                }
+                Log.d(TAG, "${text.length} characters $from to $to in ${elapsed}ms")
+                Outcome.Done(result, TransliterationService.transliterate(result, to))
+            } catch (e: Exception) {
+                Log.e(TAG, "Translation failed", e)
+                // A model that failed half way in is not one to trust with the next request.
+                release()
+                Outcome.Failed(e.message ?: e.toString())
+            }
         }
-      }
 
-    fun cleanup() {
-      synchronized(this) {
-        nativeLibInstance?.cleanup()
-        nativeLibInstance = null
-      }
-    }
-  }
-
-  private val nativeLib = getNativeLib()
-
-  // / Requires the translation pairs to be available
-  suspend fun preloadModel(
-    from: Language,
-    to: Language,
-  ) = withContext(Dispatchers.IO) {
-    val translationPairs = getTranslationPairs(from, to)
-    for (pair in translationPairs) {
-      val config = generateConfig(pair.first, pair.second)
-      val languageCode = "${pair.first.code}${pair.second.code}"
-      Log.d("TranslationService", "Preloading model with key: $languageCode")
-      nativeLib.stringFromJNI(config, ".", languageCode) // translate empty string to load the model
-      Log.d("TranslationService", "Preloaded model for ${pair.first} -> ${pair.second} with key: $languageCode")
-    }
-  }
-
-  suspend fun translate(
-    from: Language,
-    to: Language,
-    text: String,
-  ): TranslationResult =
-    withContext(Dispatchers.IO) {
-      if (from == to) {
-        return@withContext TranslationResult.Success(TranslatedText(text, null))
-      }
-      // numbers don't translate :^)
-      if (text.trim().toFloatOrNull() != null) {
-        return@withContext TranslationResult.Success(TranslatedText(text, null))
-      }
-
-      if (text.isBlank()) {
-        return@withContext TranslationResult.Success(TranslatedText("", null))
-      }
-
-      val translationPairs = getTranslationPairs(from, to)
-
-      // Validate all required language pairs are available
-      for (pair in translationPairs) {
-        val lang =
-          if (pair.first == Language.ENGLISH) {
-            pair.second
-          } else {
-            pair.first
-          }
-        val dataPath = filePathManager.getDataDir()
-        if (missingFilesFrom(dataPath, lang).second.isNotEmpty()) {
-          return@withContext TranslationResult.Error("Language pair ${pair.first} -> ${pair.second} not installed")
+    /** Let go of every loaded model. The next translation loads what it needs again. */
+    suspend fun release() =
+        withContext(engine) {
+            native?.cleanup()
+            native = null
+            loaded.clear()
         }
-      }
 
-      try {
-        val result: String
-        val elapsed =
-          measureTimeMillis {
-            result = performTranslation(translationPairs, text)
-          }
-        Log.d("TranslationService", "Translation took ${elapsed}ms")
-        val transliterated =
-          if (!settingsManager.settings.value.disableTransliteration) {
-            TransliterationService.transliterate(result, to)
-          } else {
-            null
-          }
-        TranslationResult.Success(TranslatedText(result, transliterated))
-      } catch (e: Exception) {
-        Log.e("TranslationService", "Translation failed", e)
-        TranslationResult.Error("Translation failed: ${e.message}")
-      }
+    private fun load(configs: List<Pair<String, String>>): NativeLib {
+        val keys = configs.map { it.first }
+        if (!loaded.containsAll(keys)) {
+            // Only what this pair needs stays: a third model would be memory the phone does not have.
+            native?.cleanup()
+            native = null
+            loaded.clear()
+        }
+        val lib = native ?: NativeLib().also { native = it }
+        for ((key, config) in configs) {
+            if (key in loaded) continue
+            val ms = measureTimeMillis { lib.loadModelIntoCache(config, key) }
+            Log.d(TAG, "Loaded model $key in ${ms}ms")
+            loaded += key
+        }
+        return lib
     }
 
-  private fun getTranslationPairs(
-    from: Language,
-    to: Language,
-  ): List<Pair<Language, Language>> =
-    when {
-      from == Language.ENGLISH && to == Language.ENGLISH -> emptyList()
-      from == Language.ENGLISH -> listOf(from to to)
-      to == Language.ENGLISH -> listOf(from to to)
-      else -> listOf(from to Language.ENGLISH, Language.ENGLISH to to) // Pivot through English
-    }
+    private fun steps(from: String, to: String): List<Pair<String, String>> =
+        when {
+            from == ENGLISH -> listOf(from to to)
+            to == ENGLISH -> listOf(from to to)
+            else -> listOf(from to ENGLISH, ENGLISH to to) // Pivot through English
+        }
 
-  private fun performTranslation(
-    pairs: List<Pair<Language, Language>>,
-    initialText: String,
-  ): String {
-    var currentText = initialText
-    pairs.forEach { pair ->
-      val config = generateConfig(pair.first, pair.second)
-      val languageCode = "${pair.first.code}${pair.second.code}"
-      currentText = nativeLib.stringFromJNI(config, currentText, languageCode)
-    }
-    return currentText
-  }
-
-  private fun generateConfig(
-    fromLang: Language,
-    toLang: Language,
-  ): String {
-    val dataPath = filePathManager.getDataDir()
-    val languageFiles =
-      if (fromLang == Language.ENGLISH) {
-        fromEnglishFiles[toLang]
-      } else {
-        toEnglishFiles[fromLang]
-      } ?: throw IllegalArgumentException("No language files found for $fromLang -> $toLang")
-
-    return """
+    private fun generateConfig(dir: File, d: Direction): String =
+        """
 models:
-  - $dataPath/${languageFiles.model.first}
+  - ${File(dir, d.model.name)}
 vocabs:
-  - $dataPath/${languageFiles.srcVocab.first}
-  - $dataPath/${languageFiles.tgtVocab.first}
+  - ${File(dir, d.srcVocab.name)}
+  - ${File(dir, d.trgVocab.name)}
 shortlist:
-    - $dataPath/${languageFiles.lex.first}
+    - ${File(dir, d.lex.name)}
     - false
 beam-size: 1
 normalize: 1.0
@@ -176,16 +150,9 @@ quiet: false
 quiet-translation: false
 gemm-precision: int8shiftAlphaAll
 alignment: soft
-)"""
-  }
-}
+"""
 
-sealed class TranslationResult {
-  data class Success(
-    val result: TranslatedText,
-  ) : TranslationResult()
-
-  data class Error(
-    val message: String,
-  ) : TranslationResult()
+    private companion object {
+        const val TAG = "TranslationService"
+    }
 }
