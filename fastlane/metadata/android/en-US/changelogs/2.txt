@@ -1,4 +1,0 @@
-- Added transliteration for non-Latin scripts
-- Improved downloads handling
-- Updated model versions & URL
-  - if you had a custom URL for translation models, you will need to re-set it.

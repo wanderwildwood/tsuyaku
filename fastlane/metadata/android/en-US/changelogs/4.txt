@@ -1,5 +1,0 @@
-- Open as a popup when using the 'translate' context menu entry
-- Move download service startup to be non-blocking, should help with 'stuck' startup for some users
-- Fix bottom padding on initial screen for devices with on-screen navigation buttons
-- Improve automatic language detection by passing current lang as hint
-- Add setting to choose font size

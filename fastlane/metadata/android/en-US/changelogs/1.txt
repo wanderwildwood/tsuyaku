@@ -1,7 +1,0 @@
-Initial release of Firefox Translator:
-• On-device text and image translation
-• Support for multiple language pairs
-• OCR for reading text from images
-• Automatic language detection
-• Privacy-focused offline translation
-• Image translation overlay feature

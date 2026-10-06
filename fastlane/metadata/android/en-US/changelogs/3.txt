@@ -1,4 +1,0 @@
-- Add preference to use external storage
-- Add button to download all languages
-- Show language size on downloads page
-- Improve native libraries build & startup code
