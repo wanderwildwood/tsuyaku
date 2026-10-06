@@ -1,0 +1,3259 @@
+{
+ "generated": "2026-10-06T00:49:19Z",
+ "modelBase": "https://storage.googleapis.com/moz-fx-translations-data--303e-prod-translations-data",
+ "tessBase": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd",
+ "english": {
+  "tess": "eng",
+  "tessSize": 4113088
+ },
+ "languages": [
+  {
+   "code": "af",
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/af-en/next26_HIyjLJaNReijN0eJouAJBw/exported/model.afen.intgemm.alphas.bin.gz",
+      "gz": 23479680,
+      "size": 31561787,
+      "sha256": "d43baa7ab565a6cdc2bc230a4ab6fcaf7b4a871e53e42cc7128e55871ef36086"
+     },
+     {
+      "role": "vocab",
+      "path": "models/af-en/next26_HIyjLJaNReijN0eJouAJBw/exported/vocab.afen.spm.gz",
+      "gz": 408581,
+      "size": 809319
+     },
+     {
+      "role": "lex",
+      "path": "models/af-en/next26_HIyjLJaNReijN0eJouAJBw/exported/lex.50.50.afen.s2t.bin.gz",
+      "gz": 2133684,
+      "size": 4082680
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-af/next26_CqoXSiBvSUq9Co3ePAYA1w/exported/model.enaf.intgemm.alphas.bin.gz",
+      "gz": 23561122,
+      "size": 31561787,
+      "sha256": "afc1dcb25774e61f513fe722e037744a18c23063ba799bb01f5cdec5cc79b502"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-af/next26_CqoXSiBvSUq9Co3ePAYA1w/exported/vocab.enaf.spm.gz",
+      "gz": 409344,
+      "size": 809195
+     },
+     {
+      "role": "lex",
+      "path": "models/en-af/next26_CqoXSiBvSUq9Co3ePAYA1w/exported/lex.50.50.enaf.s2t.bin.gz",
+      "gz": 1667268,
+      "size": 3193340
+     }
+    ]
+   },
+   "tess": "afr",
+   "tessSize": 2652786
+  },
+  {
+   "code": "ar",
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ar-en/retrain_base-memory_X9fDxFreTOCslPKzb1CXTg/exported/model.aren.intgemm.alphas.bin.gz",
+      "gz": 23224456,
+      "size": 31561787,
+      "sha256": "7b7af0282dc5f4d8805b9a298c2fa828967e3f09ca10f1942ebeea0b2cfc12fa"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ar-en/retrain_base-memory_X9fDxFreTOCslPKzb1CXTg/exported/vocab.aren.spm.gz",
+      "gz": 416700,
+      "size": 860035
+     },
+     {
+      "role": "lex",
+      "path": "models/ar-en/retrain_base-memory_X9fDxFreTOCslPKzb1CXTg/exported/lex.50.50.aren.s2t.bin.gz",
+      "gz": 2259861,
+      "size": 4627200
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ar/retrain_base-memory_G3CmhwG_TZext3cys-udHg/exported/model.enar.intgemm.alphas.bin.gz",
+      "gz": 22857819,
+      "size": 31561787,
+      "sha256": "ae659d7045fc2e5d6ba50583586a5d94ee4358d92c019847e37b57a0e627faa8"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ar/retrain_base-memory_G3CmhwG_TZext3cys-udHg/exported/vocab.enar.spm.gz",
+      "gz": 418930,
+      "size": 863591
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ar/retrain_base-memory_G3CmhwG_TZext3cys-udHg/exported/lex.50.50.enar.s2t.bin.gz",
+      "gz": 1639219,
+      "size": 3139692
+     }
+    ]
+   },
+   "tess": "ara",
+   "tessSize": 1432056
+  },
+  {
+   "code": "az",
+   "toEnglish": {
+    "arch": "tiny",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/az-en/h1-2025_Tm4nvtoLQnakAWSGhBZ-eA/exported/model.azen.intgemm.alphas.bin.gz",
+      "gz": 12740106,
+      "size": 17141051,
+      "sha256": "fff0b00229e42e3df56be33ec903013aea80dbdd8fc0c3673f6249ab6102490f"
+     },
+     {
+      "role": "vocab",
+      "path": "models/az-en/h1-2025_Tm4nvtoLQnakAWSGhBZ-eA/exported/vocab.azen.spm.gz",
+      "gz": 418965,
+      "size": 835773
+     },
+     {
+      "role": "lex",
+      "path": "models/az-en/h1-2025_Tm4nvtoLQnakAWSGhBZ-eA/exported/lex.50.50.azen.s2t.bin.gz",
+      "gz": 2267101,
+      "size": 4820648
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-az/h1-2025_fu1HFuR0QY-zVBcKYQkJIA/exported/model.enaz.intgemm.alphas.bin.gz",
+      "gz": 13233108,
+      "size": 17141051,
+      "sha256": "9c87aa09ff4f81c320993fe412624ca3584fe9ccf5371247d64f1117dffcf168"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-az/h1-2025_fu1HFuR0QY-zVBcKYQkJIA/exported/vocab.enaz.spm.gz",
+      "gz": 418956,
+      "size": 835729
+     },
+     {
+      "role": "lex",
+      "path": "models/en-az/h1-2025_fu1HFuR0QY-zVBcKYQkJIA/exported/lex.50.50.enaz.s2t.bin.gz",
+      "gz": 1711544,
+      "size": 3332384
+     }
+    ]
+   },
+   "tess": "aze",
+   "tessSize": 3524799
+  },
+  {
+   "code": "be",
+   "toEnglish": {
+    "arch": "tiny",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/be-en/h1-2025_ARgOSPOSRVmOWTwFvRVOjA/exported/model.been.intgemm.alphas.bin.gz",
+      "gz": 12413897,
+      "size": 17141051,
+      "sha256": "3fcff7ef3102b082aeb165a6fc3e332ead2affcf7a6c91c43bb36da5add2dbb7"
+     },
+     {
+      "role": "vocab",
+      "path": "models/be-en/h1-2025_ARgOSPOSRVmOWTwFvRVOjA/exported/vocab.been.spm.gz",
+      "gz": 435364,
+      "size": 931896
+     },
+     {
+      "role": "lex",
+      "path": "models/be-en/h1-2025_ARgOSPOSRVmOWTwFvRVOjA/exported/lex.50.50.been.s2t.bin.gz",
+      "gz": 2197076,
+      "size": 4565784
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-be/next26-beam4_EsLoydFIQ42maj5NJ8d6Qg/exported/model.enbe.intgemm.alphas.bin.gz",
+      "gz": 22851751,
+      "size": 31561787,
+      "sha256": "88fb3a6e2cc4b936313596eef445a548e63e1ca3ef0dfa54b88229c3ce877116"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-be/next26-beam4_EsLoydFIQ42maj5NJ8d6Qg/exported/vocab.enbe.spm.gz",
+      "gz": 437794,
+      "size": 941727
+     },
+     {
+      "role": "lex",
+      "path": "models/en-be/next26-beam4_EsLoydFIQ42maj5NJ8d6Qg/exported/lex.50.50.enbe.s2t.bin.gz",
+      "gz": 1342392,
+      "size": 2623776
+     }
+    ]
+   },
+   "tess": "bel",
+   "tessSize": 3692098
+  },
+  {
+   "code": "bg",
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/bg-en/retrain_hr_WvwHu4k6TgmJ2YTvL4Mu2g/exported/model.bgen.intgemm.alphas.bin.gz",
+      "gz": 22399269,
+      "size": 31561787,
+      "sha256": "78f7e6e1435cc2d4a29cf597f493187fe29ddb9ce9d3766c287e2e6d37052d01"
+     },
+     {
+      "role": "vocab",
+      "path": "models/bg-en/retrain_hr_WvwHu4k6TgmJ2YTvL4Mu2g/exported/vocab.bgen.spm.gz",
+      "gz": 434940,
+      "size": 922482
+     },
+     {
+      "role": "lex",
+      "path": "models/bg-en/retrain_hr_WvwHu4k6TgmJ2YTvL4Mu2g/exported/lex.50.50.bgen.s2t.bin.gz",
+      "gz": 2187053,
+      "size": 4355920
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-bg/retrain_hr_eAF9fkYRScmBmvvfdT4XWw/exported/model.enbg.intgemm.alphas.bin.gz",
+      "gz": 23432015,
+      "size": 31561787,
+      "sha256": "e2b30db98ac6706efc893067a74e51f36f015a8f820fe8a4f0f5052fa6a22f30"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-bg/retrain_hr_eAF9fkYRScmBmvvfdT4XWw/exported/vocab.enbg.spm.gz",
+      "gz": 434940,
+      "size": 922482
+     },
+     {
+      "role": "lex",
+      "path": "models/en-bg/retrain_hr_eAF9fkYRScmBmvvfdT4XWw/exported/lex.50.50.enbg.s2t.bin.gz",
+      "gz": 1548577,
+      "size": 3075948
+     }
+    ]
+   },
+   "tess": "bul",
+   "tessSize": 1675212
+  },
+  {
+   "code": "bn",
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/bn-en/h1-2025_XcpBlhA1SyOJCH2UzoIMyQ/exported/model.bnen.intgemm.alphas.bin.gz",
+      "gz": 12665857,
+      "size": 17141051,
+      "sha256": "14c1d9e92918e8d04cb0ed351ae386c3b5d5c62a6dc601d9515f4c7e6c2a3a56"
+     },
+     {
+      "role": "vocab",
+      "path": "models/bn-en/h1-2025_XcpBlhA1SyOJCH2UzoIMyQ/exported/vocab.bnen.spm.gz",
+      "gz": 437571,
+      "size": 981300
+     },
+     {
+      "role": "lex",
+      "path": "models/bn-en/h1-2025_XcpBlhA1SyOJCH2UzoIMyQ/exported/lex.50.50.bnen.s2t.bin.gz",
+      "gz": 2264284,
+      "size": 4793596
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-bn/h1-2025_TYlSskC_Sk6lBlfWRetXmg/exported/model.enbn.intgemm.alphas.bin.gz",
+      "gz": 12821521,
+      "size": 17141051,
+      "sha256": "b63c8d5f8fdc1fcb8bbb2d20c751faab94af67ee1822427665119c93a11f6596"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-bn/h1-2025_TYlSskC_Sk6lBlfWRetXmg/exported/vocab.enbn.spm.gz",
+      "gz": 437373,
+      "size": 981226
+     },
+     {
+      "role": "lex",
+      "path": "models/en-bn/h1-2025_TYlSskC_Sk6lBlfWRetXmg/exported/lex.50.50.enbn.s2t.bin.gz",
+      "gz": 1607697,
+      "size": 3207488
+     }
+    ]
+   },
+   "tess": "ben",
+   "tessSize": 855841
+  },
+  {
+   "code": "bs",
+   "toEnglish": {
+    "arch": "tiny",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/bs-en/spring-2024_ArlZLOUDTlqbe5WcnWGt_A/exported/model.bsen.intgemm.alphas.bin.gz",
+      "gz": 13415215,
+      "size": 17141051,
+      "sha256": "47cf33ca3ebadf7e541e19b7cb5ff82d5be8c793fbdcd6133f68cb53333ac0cb"
+     },
+     {
+      "role": "vocab",
+      "path": "models/bs-en/spring-2024_ArlZLOUDTlqbe5WcnWGt_A/exported/vocab.bsen.spm.gz",
+      "gz": 396913,
+      "size": 796425
+     },
+     {
+      "role": "lex",
+      "path": "models/bs-en/spring-2024_ArlZLOUDTlqbe5WcnWGt_A/exported/lex.50.50.bsen.s2t.bin.gz",
+      "gz": 1426937,
+      "size": 2830904
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-bs/hbs-topk10_HBBkp2ozSYaY9f7WVGRtpA/exported/model.enbs.intgemm.alphas.bin.gz",
+      "gz": 22932779,
+      "size": 31561787,
+      "sha256": "27575113fffad6c45a0bad36bd1823c4f319ed30f65ec134815b67bdae0d9f8d"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-bs/hbs-topk10_HBBkp2ozSYaY9f7WVGRtpA/exported/vocab.enbs.spm.gz",
+      "gz": 412204,
+      "size": 823444
+     },
+     {
+      "role": "lex",
+      "path": "models/en-bs/hbs-topk10_HBBkp2ozSYaY9f7WVGRtpA/exported/lex.50.50.enbs.s2t.bin.gz",
+      "gz": 1682912,
+      "size": 3214628
+     }
+    ]
+   },
+   "tess": "bos",
+   "tessSize": 2498242
+  },
+  {
+   "code": "ca",
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ca-en/target-side-dedup_xxxxxxxxRxSxxxxxxxxxxA/exported/model.caen.intgemm.alphas.bin.gz",
+      "gz": 22787743,
+      "size": 31561787,
+      "sha256": "b7f9c70823052f60c257eb1c4eff893abea3648aa9d1c23c8774e1e5ef061434"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ca-en/target-side-dedup_xxxxxxxxRxSxxxxxxxxxxA/exported/vocab.caen.spm.gz",
+      "gz": 409662,
+      "size": 810273
+     },
+     {
+      "role": "lex",
+      "path": "models/ca-en/target-side-dedup_xxxxxxxxRxSxxxxxxxxxxA/exported/lex.50.50.caen.s2t.bin.gz",
+      "gz": 2257590,
+      "size": 4359552
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ca/short-sentences_dqpjVFEaT2WLVB2nV0_H2g/exported/model.enca.intgemm.alphas.bin.gz",
+      "gz": 23174479,
+      "size": 31561787,
+      "sha256": "735881c99ff303e55eb2e92a3b86762523d5dd1a4797b2574b851062051426ee"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ca/short-sentences_dqpjVFEaT2WLVB2nV0_H2g/exported/vocab.enca.spm.gz",
+      "gz": 409866,
+      "size": 810653
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ca/short-sentences_dqpjVFEaT2WLVB2nV0_H2g/exported/lex.50.50.enca.s2t.bin.gz",
+      "gz": 2085904,
+      "size": 4344092
+     }
+    ]
+   },
+   "tess": "cat",
+   "tessSize": 1146012
+  },
+  {
+   "code": "cs",
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/cs-en/retrain_hr_EwWhUov8TP6D_oolATvbUA/exported/model.csen.intgemm.alphas.bin.gz",
+      "gz": 22830296,
+      "size": 31561787,
+      "sha256": "c815273b31074492eaab0ccd78d33d7ac16f94088707ab2492abaedcb9ee0b75"
+     },
+     {
+      "role": "vocab",
+      "path": "models/cs-en/retrain_hr_EwWhUov8TP6D_oolATvbUA/exported/vocab.csen.spm.gz",
+      "gz": 412691,
+      "size": 815154
+     },
+     {
+      "role": "lex",
+      "path": "models/cs-en/retrain_hr_EwWhUov8TP6D_oolATvbUA/exported/lex.50.50.csen.s2t.bin.gz",
+      "gz": 2493702,
+      "size": 4990588
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-cs/retrain_hr_F_JF0vqvSjSwn3caQQcicA/exported/model.encs.intgemm.alphas.bin.gz",
+      "gz": 23192301,
+      "size": 31561787,
+      "sha256": "1d7855f91c3e2b8ef79fbea62707d46ceb8a1ad01834ef6dd500f32a7006cc2c"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-cs/retrain_hr_F_JF0vqvSjSwn3caQQcicA/exported/vocab.encs.spm.gz",
+      "gz": 412691,
+      "size": 815154
+     },
+     {
+      "role": "lex",
+      "path": "models/en-cs/retrain_hr_F_JF0vqvSjSwn3caQQcicA/exported/lex.50.50.encs.s2t.bin.gz",
+      "gz": 1896925,
+      "size": 3572436
+     }
+    ]
+   },
+   "tess": "ces",
+   "tessSize": 3795684
+  },
+  {
+   "code": "da",
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/da-en/spring-2024_U1vVpsWWT-K4L9pRfP1K1g/exported/model.daen.intgemm.alphas.bin.gz",
+      "gz": 12525769,
+      "size": 17141051,
+      "sha256": "2c1ace24220c905404bbb1de14bfeda8a391ef8d6c56f3b193a9d3e340d99b12"
+     },
+     {
+      "role": "vocab",
+      "path": "models/da-en/spring-2024_U1vVpsWWT-K4L9pRfP1K1g/exported/vocab.daen.spm.gz",
+      "gz": 399344,
+      "size": 796018
+     },
+     {
+      "role": "lex",
+      "path": "models/da-en/spring-2024_U1vVpsWWT-K4L9pRfP1K1g/exported/lex.50.50.daen.s2t.bin.gz",
+      "gz": 2170970,
+      "size": 4489412
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-da/spring-2024_XUm0Ij8WSfabkKeKA_Xv_g/exported/model.enda.intgemm.alphas.bin.gz",
+      "gz": 12723889,
+      "size": 17141051,
+      "sha256": "0157ed1162dd5a7a0fc6a3cc86014ec21cb47a8febf77164df24d8921270bb29"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-da/spring-2024_XUm0Ij8WSfabkKeKA_Xv_g/exported/vocab.enda.spm.gz",
+      "gz": 398818,
+      "size": 795349
+     },
+     {
+      "role": "lex",
+      "path": "models/en-da/spring-2024_XUm0Ij8WSfabkKeKA_Xv_g/exported/lex.50.50.enda.s2t.bin.gz",
+      "gz": 1582768,
+      "size": 3864788
+     }
+    ]
+   },
+   "tess": "dan",
+   "tessSize": 2580059
+  },
+  {
+   "code": "de",
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/de-en/retrain_hr2_WZOW24i4QJmIib61LeHfwg/exported/model.deen.intgemm.alphas.bin.gz",
+      "gz": 22403755,
+      "size": 31561787,
+      "sha256": "3e6f7c2c2425d10824797270b382bee718ff34af2cab9308841c82ca46dc6f20"
+     },
+     {
+      "role": "vocab",
+      "path": "models/de-en/retrain_hr2_WZOW24i4QJmIib61LeHfwg/exported/vocab.deen.spm.gz",
+      "gz": 413879,
+      "size": 810073
+     },
+     {
+      "role": "lex",
+      "path": "models/de-en/retrain_hr2_WZOW24i4QJmIib61LeHfwg/exported/lex.50.50.deen.s2t.bin.gz",
+      "gz": 2626658,
+      "size": 4945796
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-de/retrain_hr_fix_names_SCgGhxUPQ2WAECHLRtzrMg/exported/model.ende.intgemm.alphas.bin.gz",
+      "gz": 22992073,
+      "size": 31561787,
+      "sha256": "8df29d9494d19f47fd5d97c6a73474c6f657e9f81c1a607c431d02befdf3810f"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-de/retrain_hr_fix_names_SCgGhxUPQ2WAECHLRtzrMg/exported/vocab.ende.spm.gz",
+      "gz": 413879,
+      "size": 810073
+     },
+     {
+      "role": "lex",
+      "path": "models/en-de/retrain_hr_fix_names_SCgGhxUPQ2WAECHLRtzrMg/exported/lex.50.50.ende.s2t.bin.gz",
+      "gz": 2314750,
+      "size": 4347672
+     }
+    ]
+   },
+   "tess": "deu",
+   "tessSize": 1525436
+  },
+  {
+   "code": "el",
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/el-en/spring-2024_RJucgx7LRMKB9E4oSSzdtA/exported/model.elen.intgemm.alphas.bin.gz",
+      "gz": 12696541,
+      "size": 17141051,
+      "sha256": "0a43c3716156061494d995d0c88113e789f8d919e0c88a15bc1ad360e0482a8c"
+     },
+     {
+      "role": "vocab",
+      "path": "models/el-en/spring-2024_RJucgx7LRMKB9E4oSSzdtA/exported/vocab.elen.spm.gz",
+      "gz": 419174,
+      "size": 894960
+     },
+     {
+      "role": "lex",
+      "path": "models/el-en/spring-2024_RJucgx7LRMKB9E4oSSzdtA/exported/lex.50.50.elen.s2t.bin.gz",
+      "gz": 1851246,
+      "size": 4295860
+     }
+    ]
+   },
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-el/spring-2024_Y3ThG3XkTxG4ROUQK2LpVg/exported/model.enel.intgemm.alphas.bin.gz",
+      "gz": 12808027,
+      "size": 17141051,
+      "sha256": "724b358d399c6b23444de36d76e9e2630c7024c29d9e617323b820a11631535a"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-el/spring-2024_Y3ThG3XkTxG4ROUQK2LpVg/exported/vocab.enel.spm.gz",
+      "gz": 419275,
+      "size": 896168
+     },
+     {
+      "role": "lex",
+      "path": "models/en-el/spring-2024_Y3ThG3XkTxG4ROUQK2LpVg/exported/lex.50.50.enel.s2t.bin.gz",
+      "gz": 1352643,
+      "size": 2856724
+     }
+    ]
+   },
+   "tess": "ell",
+   "tessSize": 1419514
+  },
+  {
+   "code": "es",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-es/retrain_hr_fix_names_CUAEXUHoQum_cFqh-ZAryw/exported/model.enes.intgemm.alphas.bin.gz",
+      "gz": 22698792,
+      "size": 31561787,
+      "sha256": "3b1c399511c01c84c36fae5c0524df44096288efdc8236e182b5c97d7ad2244c"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-es/retrain_hr_fix_names_CUAEXUHoQum_cFqh-ZAryw/exported/vocab.enes.spm.gz",
+      "gz": 409312,
+      "size": 816054
+     },
+     {
+      "role": "lex",
+      "path": "models/en-es/retrain_hr_fix_names_CUAEXUHoQum_cFqh-ZAryw/exported/lex.50.50.enes.s2t.bin.gz",
+      "gz": 2265250,
+      "size": 4198436
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/es-en/retrain_hr_HbNjJ60BTwmVTbhfFxuduA/exported/model.esen.intgemm.alphas.bin.gz",
+      "gz": 23288494,
+      "size": 31561787,
+      "sha256": "4aed7734152ae0045d1a69ae49c86cfda18f53c61f90e95e1d1de1c7c7c3b033"
+     },
+     {
+      "role": "vocab",
+      "path": "models/es-en/retrain_hr_HbNjJ60BTwmVTbhfFxuduA/exported/vocab.esen.spm.gz",
+      "gz": 409312,
+      "size": 816054
+     },
+     {
+      "role": "lex",
+      "path": "models/es-en/retrain_hr_HbNjJ60BTwmVTbhfFxuduA/exported/lex.50.50.esen.s2t.bin.gz",
+      "gz": 2543246,
+      "size": 4636248
+     }
+    ]
+   },
+   "tess": "spa",
+   "tessSize": 2294433
+  },
+  {
+   "code": "et",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-et/retrain_hr_GubU3EaMRY2VkR8p1dPUNw/exported/model.enet.intgemm.alphas.bin.gz",
+      "gz": 22951751,
+      "size": 31561787,
+      "sha256": "36bdc87f8d500861a5d286ebd3ea58df530da87e31b8a233f5e9c46c300c281d"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-et/retrain_hr_GubU3EaMRY2VkR8p1dPUNw/exported/vocab.enet.spm.gz",
+      "gz": 414262,
+      "size": 817574
+     },
+     {
+      "role": "lex",
+      "path": "models/en-et/retrain_hr_GubU3EaMRY2VkR8p1dPUNw/exported/lex.50.50.enet.s2t.bin.gz",
+      "gz": 1865410,
+      "size": 3488368
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/et-en/retrain_hr_RNXxp-Q9Q4GRExCoMAT77Q/exported/model.eten.intgemm.alphas.bin.gz",
+      "gz": 22785077,
+      "size": 31561787,
+      "sha256": "df844b3a6df906b2e0682fb7765694f35b351854db00f964896d9c8c365fbff3"
+     },
+     {
+      "role": "vocab",
+      "path": "models/et-en/retrain_hr_RNXxp-Q9Q4GRExCoMAT77Q/exported/vocab.eten.spm.gz",
+      "gz": 414262,
+      "size": 817574
+     },
+     {
+      "role": "lex",
+      "path": "models/et-en/retrain_hr_RNXxp-Q9Q4GRExCoMAT77Q/exported/lex.50.50.eten.s2t.bin.gz",
+      "gz": 2321326,
+      "size": 4625968
+     }
+    ]
+   },
+   "tess": "est",
+   "tessSize": 4458101
+  },
+  {
+   "code": "eu",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-eu/eneu-baseline_IXuA7hOrQPCVZJOp6LIYVw/exported/model.eneu.intgemm.alphas.bin.gz",
+      "gz": 23068167,
+      "size": 31561787,
+      "sha256": "f28d03817b718806c9262e3d76960efb8cbd04d0721307c8e23edcae9364150a"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-eu/eneu-baseline_IXuA7hOrQPCVZJOp6LIYVw/exported/vocab.eneu.spm.gz",
+      "gz": 409774,
+      "size": 820820
+     },
+     {
+      "role": "lex",
+      "path": "models/en-eu/eneu-baseline_IXuA7hOrQPCVZJOp6LIYVw/exported/lex.50.50.eneu.s2t.bin.gz",
+      "gz": 1638880,
+      "size": 3149580
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/eu-en/euen-finetranslations_Blfz7PCVT4qOGYPj9q6oMg/exported/model.euen.intgemm.alphas.bin.gz",
+      "gz": 23241057,
+      "size": 31561787,
+      "sha256": "f0a31e26b381d6340b069da4d505e11d18ac91e42f0189d37ed5fe6aa3685ed4"
+     },
+     {
+      "role": "vocab",
+      "path": "models/eu-en/euen-finetranslations_Blfz7PCVT4qOGYPj9q6oMg/exported/vocab.euen.spm.gz",
+      "gz": 412669,
+      "size": 826064
+     },
+     {
+      "role": "lex",
+      "path": "models/eu-en/euen-finetranslations_Blfz7PCVT4qOGYPj9q6oMg/exported/lex.50.50.euen.s2t.bin.gz",
+      "gz": 1896953,
+      "size": 3738856
+     }
+    ]
+   },
+   "tess": "eus",
+   "tessSize": 5175921
+  },
+  {
+   "code": "fa",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-fa/h1-2025_c_TYU1BOTByxOnnkAunO7g/exported/model.enfa.intgemm.alphas.bin.gz",
+      "gz": 13058508,
+      "size": 17141051,
+      "sha256": "456ad3952bcc59d208c76baba4dcef340ee4239416bd760d6fec27f9a16228f8"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-fa/h1-2025_c_TYU1BOTByxOnnkAunO7g/exported/vocab.enfa.spm.gz",
+      "gz": 416223,
+      "size": 843133
+     },
+     {
+      "role": "lex",
+      "path": "models/en-fa/h1-2025_c_TYU1BOTByxOnnkAunO7g/exported/lex.50.50.enfa.s2t.bin.gz",
+      "gz": 1728367,
+      "size": 3631332
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/fa-en/h1-2025_dyvKzoMQToKWHx7bbP-TtQ/exported/model.faen.intgemm.alphas.bin.gz",
+      "gz": 13071390,
+      "size": 17141051,
+      "sha256": "aa326306c177e11129de5bfeba518abc499c0b6005492766748a9c9ea6f4c712"
+     },
+     {
+      "role": "vocab",
+      "path": "models/fa-en/h1-2025_dyvKzoMQToKWHx7bbP-TtQ/exported/vocab.faen.spm.gz",
+      "gz": 416123,
+      "size": 843153
+     },
+     {
+      "role": "lex",
+      "path": "models/fa-en/h1-2025_dyvKzoMQToKWHx7bbP-TtQ/exported/lex.50.50.faen.s2t.bin.gz",
+      "gz": 1939291,
+      "size": 3896420
+     }
+    ]
+   },
+   "tess": "fas",
+   "tessSize": 431500
+  },
+  {
+   "code": "fi",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-fi/retrain_hr_b45LsGaNQFyDRhHAvBbKrA/exported/model.enfi.intgemm.alphas.bin.gz",
+      "gz": 22580027,
+      "size": 31561787,
+      "sha256": "88b0caa4cc6980d632801cb2b1950748f1dc43ad2ac83678917ad86c720b5cdd"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-fi/retrain_hr_b45LsGaNQFyDRhHAvBbKrA/exported/vocab.enfi.spm.gz",
+      "gz": 414280,
+      "size": 818770
+     },
+     {
+      "role": "lex",
+      "path": "models/en-fi/retrain_hr_b45LsGaNQFyDRhHAvBbKrA/exported/lex.50.50.enfi.s2t.bin.gz",
+      "gz": 1875557,
+      "size": 3490092
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/fi-en/retrain_hr_C7-zSzS7Tm6zkOfVP7k0Gw/exported/model.fien.intgemm.alphas.bin.gz",
+      "gz": 22935246,
+      "size": 31561787,
+      "sha256": "e3887341f18bcc7787d9b59eb1229b56eefce18d49b7ebf1e62c55d65a377321"
+     },
+     {
+      "role": "vocab",
+      "path": "models/fi-en/retrain_hr_C7-zSzS7Tm6zkOfVP7k0Gw/exported/vocab.fien.spm.gz",
+      "gz": 414280,
+      "size": 818770
+     },
+     {
+      "role": "lex",
+      "path": "models/fi-en/retrain_hr_C7-zSzS7Tm6zkOfVP7k0Gw/exported/lex.50.50.fien.s2t.bin.gz",
+      "gz": 2580517,
+      "size": 5195132
+     }
+    ]
+   },
+   "tess": "fin",
+   "tessSize": 7865732
+  },
+  {
+   "code": "fr",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-fr/retrain_hr_NLIxDbE1TBGyOTI-zwZagw/exported/model.enfr.intgemm.alphas.bin.gz",
+      "gz": 23045432,
+      "size": 31561787,
+      "sha256": "6322e296d4fecfe395a8d5723da4ec37ecbe6d7613bb1dfcf4b28e2a47498b68"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-fr/retrain_hr_NLIxDbE1TBGyOTI-zwZagw/exported/vocab.enfr.spm.gz",
+      "gz": 409706,
+      "size": 814404
+     },
+     {
+      "role": "lex",
+      "path": "models/en-fr/retrain_hr_NLIxDbE1TBGyOTI-zwZagw/exported/lex.50.50.enfr.s2t.bin.gz",
+      "gz": 2297334,
+      "size": 4372936
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/fr-en/retrain_hr_EFgIftH_RrCyzl5gjemVNg/exported/model.fren.intgemm.alphas.bin.gz",
+      "gz": 23175075,
+      "size": 31561787,
+      "sha256": "15f997bc0d13808b0b0fbd0786e684a3c8a52adcd8071844b76123fdacbf2b90"
+     },
+     {
+      "role": "vocab",
+      "path": "models/fr-en/retrain_hr_EFgIftH_RrCyzl5gjemVNg/exported/vocab.fren.spm.gz",
+      "gz": 409706,
+      "size": 814404
+     },
+     {
+      "role": "lex",
+      "path": "models/fr-en/retrain_hr_EFgIftH_RrCyzl5gjemVNg/exported/lex.50.50.fren.s2t.bin.gz",
+      "gz": 2649934,
+      "size": 4824120
+     }
+    ]
+   },
+   "tess": "fra",
+   "tessSize": 1130365
+  },
+  {
+   "code": "gl",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-gl/engl-finetranslations_d_vpGU94Qz-VGUAvC-QW1w/exported/model.engl.intgemm.alphas.bin.gz",
+      "gz": 23427851,
+      "size": 31561787,
+      "sha256": "bec08e5408932c3813ccfb565ab7003d334dd6ca148c9d2bd074e17b8c0be1b1"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-gl/engl-finetranslations_d_vpGU94Qz-VGUAvC-QW1w/exported/vocab.engl.spm.gz",
+      "gz": 410563,
+      "size": 827026
+     },
+     {
+      "role": "lex",
+      "path": "models/en-gl/engl-finetranslations_d_vpGU94Qz-VGUAvC-QW1w/exported/lex.50.50.engl.s2t.bin.gz",
+      "gz": 1598079,
+      "size": 3007680
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/gl-en/gl-finetranslations_M9yGl6Y4Q5ysCI8bqEZfTQ/exported/model.glen.intgemm.alphas.bin.gz",
+      "gz": 23054964,
+      "size": 31561787,
+      "sha256": "7e8ea0279166c72b0b430327533c643a88f26e80e4a9f9f294244a84213f3e6d"
+     },
+     {
+      "role": "vocab",
+      "path": "models/gl-en/gl-finetranslations_M9yGl6Y4Q5ysCI8bqEZfTQ/exported/vocab.glen.spm.gz",
+      "gz": 410400,
+      "size": 827023
+     },
+     {
+      "role": "lex",
+      "path": "models/gl-en/gl-finetranslations_M9yGl6Y4Q5ysCI8bqEZfTQ/exported/lex.50.50.glen.s2t.bin.gz",
+      "gz": 2191952,
+      "size": 4367596
+     }
+    ]
+   },
+   "tess": "glg",
+   "tessSize": 2554555
+  },
+  {
+   "code": "gu",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-gu/h1-2025_Na2-WpCIR1Sdy17l-XDeLA/exported/model.engu.intgemm.alphas.bin.gz",
+      "gz": 12657911,
+      "size": 17141051,
+      "sha256": "0f2c8bc7f13ecb9b89459e8fd9af6d8736e0f6b1c8f8a80f747fcdc030d0a588"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-gu/h1-2025_Na2-WpCIR1Sdy17l-XDeLA/exported/vocab.engu.spm.gz",
+      "gz": 434881,
+      "size": 965095
+     },
+     {
+      "role": "lex",
+      "path": "models/en-gu/h1-2025_Na2-WpCIR1Sdy17l-XDeLA/exported/lex.50.50.engu.s2t.bin.gz",
+      "gz": 1529098,
+      "size": 3179500
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/gu-en/h1-2025_AbHCTUgSSguJ1-Pq-XLnVA/exported/model.guen.intgemm.alphas.bin.gz",
+      "gz": 12917932,
+      "size": 17141051,
+      "sha256": "7b16e4e64f2776c73d87db01922c091738566b6a6092a42488cbaee1385cb4ab"
+     },
+     {
+      "role": "vocab",
+      "path": "models/gu-en/h1-2025_AbHCTUgSSguJ1-Pq-XLnVA/exported/vocab.guen.spm.gz",
+      "gz": 435011,
+      "size": 965143
+     },
+     {
+      "role": "lex",
+      "path": "models/gu-en/h1-2025_AbHCTUgSSguJ1-Pq-XLnVA/exported/lex.50.50.guen.s2t.bin.gz",
+      "gz": 2028621,
+      "size": 4197836
+     }
+    ]
+   },
+   "tess": "guj",
+   "tessSize": 1418394
+  },
+  {
+   "code": "he",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-he/h1-2025_QtanzRiDRISacRVw4WzWYQ/exported/model.enhe.intgemm.alphas.bin.gz",
+      "gz": 12979964,
+      "size": 17141051,
+      "sha256": "e37ac6e6f131704c85deb94a657aa20afbb44db2879f44aec9c33a34f4467587"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-he/h1-2025_QtanzRiDRISacRVw4WzWYQ/exported/vocab.enhe.spm.gz",
+      "gz": 411686,
+      "size": 845017
+     },
+     {
+      "role": "lex",
+      "path": "models/en-he/h1-2025_QtanzRiDRISacRVw4WzWYQ/exported/lex.50.50.enhe.s2t.bin.gz",
+      "gz": 1567190,
+      "size": 3066048
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/he-en/h1-2025_IZKPrf3xQaKu56F3zmH0cw/exported/model.heen.intgemm.alphas.bin.gz",
+      "gz": 12999905,
+      "size": 17141051,
+      "sha256": "7291cab3ec483b8cf524da96201fe947dca8c550132be21a06badeb946b5c079"
+     },
+     {
+      "role": "vocab",
+      "path": "models/he-en/h1-2025_IZKPrf3xQaKu56F3zmH0cw/exported/vocab.heen.spm.gz",
+      "gz": 411769,
+      "size": 845177
+     },
+     {
+      "role": "lex",
+      "path": "models/he-en/h1-2025_IZKPrf3xQaKu56F3zmH0cw/exported/lex.50.50.heen.s2t.bin.gz",
+      "gz": 2232949,
+      "size": 4636028
+     }
+    ]
+   },
+   "tess": "heb",
+   "tessSize": 961404
+  },
+  {
+   "code": "hi",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-hi/h1-2025_KoJuCNf_Q42R2Bz6j2jlOQ/exported/model.enhi.intgemm.alphas.bin.gz",
+      "gz": 12736263,
+      "size": 17141051,
+      "sha256": "18682fa6aa1c1b2f78a6fcbcb354755094d623e65436ef7821720c5213e11a49"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-hi/h1-2025_KoJuCNf_Q42R2Bz6j2jlOQ/exported/vocab.enhi.spm.gz",
+      "gz": 430026,
+      "size": 925360
+     },
+     {
+      "role": "lex",
+      "path": "models/en-hi/h1-2025_KoJuCNf_Q42R2Bz6j2jlOQ/exported/lex.50.50.enhi.s2t.bin.gz",
+      "gz": 1690062,
+      "size": 3504820
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/hi-en/h1-2025_IcUQD-GbSJWB6WV08oDoEw/exported/model.hien.intgemm.alphas.bin.gz",
+      "gz": 12752013,
+      "size": 17141051,
+      "sha256": "c82fd6ed3794b79fb9dde0718a22324502a408a9eca73497b5d0a4b8024ec6de"
+     },
+     {
+      "role": "vocab",
+      "path": "models/hi-en/h1-2025_IcUQD-GbSJWB6WV08oDoEw/exported/vocab.hien.spm.gz",
+      "gz": 430096,
+      "size": 925436
+     },
+     {
+      "role": "lex",
+      "path": "models/hi-en/h1-2025_IcUQD-GbSJWB6WV08oDoEw/exported/lex.50.50.hien.s2t.bin.gz",
+      "gz": 2319675,
+      "size": 4605984
+     }
+    ]
+   },
+   "tess": "hin",
+   "tessSize": 1122751
+  },
+  {
+   "code": "hr",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-hr/hbs-topk10_PLHJ-5OxSNyWlwZM12Kghw/exported/model.enhr.intgemm.alphas.bin.gz",
+      "gz": 22758240,
+      "size": 31561787,
+      "sha256": "2f34590dff70aec009d3c6e9bee7a4a18aa6a0a1978c7dc49c686eb454b77704"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-hr/hbs-topk10_PLHJ-5OxSNyWlwZM12Kghw/exported/vocab.enhr.spm.gz",
+      "gz": 410897,
+      "size": 820766
+     },
+     {
+      "role": "lex",
+      "path": "models/en-hr/hbs-topk10_PLHJ-5OxSNyWlwZM12Kghw/exported/lex.50.50.enhr.s2t.bin.gz",
+      "gz": 1713561,
+      "size": 3232644
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/hr-en/spring-2024_eIcYjCedS26HE07kVyt5Qw/exported/model.hren.intgemm.alphas.bin.gz",
+      "gz": 13050395,
+      "size": 17141051,
+      "sha256": "fa6c8220d3f1c41eb75b720859971dbe3acb6bf63691656c58faa4cdc28d918d"
+     },
+     {
+      "role": "vocab",
+      "path": "models/hr-en/spring-2024_eIcYjCedS26HE07kVyt5Qw/exported/vocab.hren.spm.gz",
+      "gz": 394548,
+      "size": 796159
+     },
+     {
+      "role": "lex",
+      "path": "models/hr-en/spring-2024_eIcYjCedS26HE07kVyt5Qw/exported/lex.50.50.hren.s2t.bin.gz",
+      "gz": 1888089,
+      "size": 3860080
+     }
+    ]
+   },
+   "tess": "hrv",
+   "tessSize": 4103348
+  },
+  {
+   "code": "hu",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-hu/next26_Tzv045N-SASkA8X287pEqg/exported/model.enhu.intgemm.alphas.bin.gz",
+      "gz": 22889950,
+      "size": 31561787,
+      "sha256": "0c42f56edca74b3f732a74c64553c47d0005b50cf095f43024601985fab5d461"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-hu/next26_Tzv045N-SASkA8X287pEqg/exported/vocab.enhu.spm.gz",
+      "gz": 421527,
+      "size": 832855
+     },
+     {
+      "role": "lex",
+      "path": "models/en-hu/next26_Tzv045N-SASkA8X287pEqg/exported/lex.50.50.enhu.s2t.bin.gz",
+      "gz": 1794658,
+      "size": 3419024
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/hu-en/next26_ehk9UNnTTNCsQ0eZhWcNXg/exported/model.huen.intgemm.alphas.bin.gz",
+      "gz": 22582446,
+      "size": 31561787,
+      "sha256": "477d9ff69eaaf692e9c87b5bad681748f56da2f81b0dd393665c90f5d6f7d55e"
+     },
+     {
+      "role": "vocab",
+      "path": "models/hu-en/next26_ehk9UNnTTNCsQ0eZhWcNXg/exported/vocab.huen.spm.gz",
+      "gz": 421716,
+      "size": 832895
+     },
+     {
+      "role": "lex",
+      "path": "models/hu-en/next26_ehk9UNnTTNCsQ0eZhWcNXg/exported/lex.50.50.huen.s2t.bin.gz",
+      "gz": 2433968,
+      "size": 4847184
+     }
+    ]
+   },
+   "tess": "hun",
+   "tessSize": 5296273
+  },
+  {
+   "code": "id",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-id/spring-2024_bbjDBFoDTNGSUo2if3ET_A/exported/model.enid.intgemm.alphas.bin.gz",
+      "gz": 12503257,
+      "size": 17141051,
+      "sha256": "f81f13eef703a4e0650ffc3138a0f4bab7b6c8bfd173ef1b7bda68d16b8bc7e8"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-id/spring-2024_bbjDBFoDTNGSUo2if3ET_A/exported/vocab.enid.spm.gz",
+      "gz": 379806,
+      "size": 773211
+     },
+     {
+      "role": "lex",
+      "path": "models/en-id/spring-2024_bbjDBFoDTNGSUo2if3ET_A/exported/lex.50.50.enid.s2t.bin.gz",
+      "gz": 1734565,
+      "size": 3515428
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/id-en/spring-2024_Yl0wXq-iQE6G9PpA3AQfcg/exported/model.iden.intgemm.alphas.bin.gz",
+      "gz": 13010657,
+      "size": 17141051,
+      "sha256": "eeed3d8c2c78ec7011b31b2419e1d2dfdf2a7cc0ee0dbb1fcd164c934cb5d328"
+     },
+     {
+      "role": "vocab",
+      "path": "models/id-en/spring-2024_Yl0wXq-iQE6G9PpA3AQfcg/exported/vocab.iden.spm.gz",
+      "gz": 379859,
+      "size": 772941
+     },
+     {
+      "role": "lex",
+      "path": "models/id-en/spring-2024_Yl0wXq-iQE6G9PpA3AQfcg/exported/lex.50.50.iden.s2t.bin.gz",
+      "gz": 1818222,
+      "size": 4050348
+     }
+    ]
+   },
+   "tess": "ind",
+   "tessSize": 1122661
+  },
+  {
+   "code": "is",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-is/docmt-vocab_EkZBaZqDS5Cce_lC2BpxlA/exported/model.enis.intgemm.alphas.bin.gz",
+      "gz": 22588003,
+      "size": 31561787,
+      "sha256": "459626236a49158aa555facd23e5f594e2f8416f4ebad32e0548af94c5b1ae0c"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-is/docmt-vocab_EkZBaZqDS5Cce_lC2BpxlA/exported/vocab.enis.spm.gz",
+      "gz": 413543,
+      "size": 809991
+     },
+     {
+      "role": "lex",
+      "path": "models/en-is/docmt-vocab_EkZBaZqDS5Cce_lC2BpxlA/exported/lex.50.50.enis.s2t.bin.gz",
+      "gz": 1977789,
+      "size": 3837564
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/is-en/docmt-vocab_I4Fy2MnOQHSOT4SYlCjPWw/exported/model.isen.intgemm.alphas.bin.gz",
+      "gz": 23229378,
+      "size": 31561787,
+      "sha256": "d2c285755d37f710458f1a49db5391a123e4e41ca7bd9829dd87cc61e4907ee6"
+     },
+     {
+      "role": "vocab",
+      "path": "models/is-en/docmt-vocab_I4Fy2MnOQHSOT4SYlCjPWw/exported/vocab.isen.spm.gz",
+      "gz": 412304,
+      "size": 808315
+     },
+     {
+      "role": "lex",
+      "path": "models/is-en/docmt-vocab_I4Fy2MnOQHSOT4SYlCjPWw/exported/lex.50.50.isen.s2t.bin.gz",
+      "gz": 2012853,
+      "size": 3951884
+     }
+    ]
+   },
+   "tess": "isl",
+   "tessSize": 2278973
+  },
+  {
+   "code": "it",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-it/retrain_hr_fix_names_GPSr_u8PSmC9fOx1ZDCHoA/exported/model.enit.intgemm.alphas.bin.gz",
+      "gz": 23892889,
+      "size": 31561787,
+      "sha256": "248f47568788ecc351da7e5e07064d4153b4f71e011364ae2c931ffeec4d1cc2"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-it/retrain_hr_fix_names_GPSr_u8PSmC9fOx1ZDCHoA/exported/vocab.enit.spm.gz",
+      "gz": 407598,
+      "size": 812724
+     },
+     {
+      "role": "lex",
+      "path": "models/en-it/retrain_hr_fix_names_GPSr_u8PSmC9fOx1ZDCHoA/exported/lex.50.50.enit.s2t.bin.gz",
+      "gz": 2209348,
+      "size": 4133192
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/it-en/retrain_hr_d1nPDwVeSD6t-HdtWA4xNg/exported/model.iten.intgemm.alphas.bin.gz",
+      "gz": 23301774,
+      "size": 31561787,
+      "sha256": "21b70978ce2f3b4da7a06b5de86a09abe3acd30b9eee1b2ebb3582b9bad790bf"
+     },
+     {
+      "role": "vocab",
+      "path": "models/it-en/retrain_hr_d1nPDwVeSD6t-HdtWA4xNg/exported/vocab.iten.spm.gz",
+      "gz": 407598,
+      "size": 812724
+     },
+     {
+      "role": "lex",
+      "path": "models/it-en/retrain_hr_d1nPDwVeSD6t-HdtWA4xNg/exported/lex.50.50.iten.s2t.bin.gz",
+      "gz": 2532929,
+      "size": 4713616
+     }
+    ]
+   },
+   "tess": "ita",
+   "tessSize": 2701314
+  },
+  {
+   "code": "ja",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ja/llmaat_finetune10M_qe8_f2_ApiGGQIwTKuF9i_k3n9Q2Q/exported/model.enja.intgemm.alphas.bin.gz",
+      "gz": 33052218,
+      "size": 43849787,
+      "sha256": "59ae659f9bb63e4f81f474fe3c03d3f4499434b5f9e779fab7c12a45f31fd562"
+     },
+     {
+      "role": "srcVocab",
+      "path": "models/en-ja/llmaat_finetune10M_qe8_f2_ApiGGQIwTKuF9i_k3n9Q2Q/exported/srcvocab.enja.spm.gz",
+      "gz": 404352,
+      "size": 796275
+     },
+     {
+      "role": "trgVocab",
+      "path": "models/en-ja/llmaat_finetune10M_qe8_f2_ApiGGQIwTKuF9i_k3n9Q2Q/exported/trgvocab.enja.spm.gz",
+      "gz": 431278,
+      "size": 827144
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ja/llmaat_finetune10M_qe8_f2_ApiGGQIwTKuF9i_k3n9Q2Q/exported/lex.50.50.enja.s2t.bin.gz",
+      "gz": 2341409,
+      "size": 4128360
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ja-en/cjk_retrain_base-memory_NLRJLD_pQFyrvgKtbie2nA/exported/model.jaen.intgemm.alphas.bin.gz",
+      "gz": 32577435,
+      "size": 43977787,
+      "sha256": "3a603e20bfe1be86071913f9e23ab5129075bc0a8490151020ac4821e4f17302"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ja-en/cjk_retrain_base-memory_NLRJLD_pQFyrvgKtbie2nA/exported/vocab.jaen.spm.gz",
+      "gz": 746616,
+      "size": 1443222
+     },
+     {
+      "role": "lex",
+      "path": "models/ja-en/cjk_retrain_base-memory_NLRJLD_pQFyrvgKtbie2nA/exported/lex.50.50.jaen.s2t.bin.gz",
+      "gz": 4819610,
+      "size": 9348172
+     }
+    ]
+   },
+   "tess": "jpn",
+   "tessSize": 2471260
+  },
+  {
+   "code": "kn",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-kn/h1-2025_DDVsjRwsQ8GL3-JAiAmmfQ/exported/model.enkn.intgemm.alphas.bin.gz",
+      "gz": 13009213,
+      "size": 17141051,
+      "sha256": "17a5ddc86e24f62c04aa15272930275812b5c1674bec50a877528680d5834d2d"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-kn/h1-2025_DDVsjRwsQ8GL3-JAiAmmfQ/exported/vocab.enkn.spm.gz",
+      "gz": 450046,
+      "size": 1065180
+     },
+     {
+      "role": "lex",
+      "path": "models/en-kn/h1-2025_DDVsjRwsQ8GL3-JAiAmmfQ/exported/lex.50.50.enkn.s2t.bin.gz",
+      "gz": 1416160,
+      "size": 2808304
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/kn-en/h1-2025_Ql24XjW0Sp-zWsmLrV5TGQ/exported/model.knen.intgemm.alphas.bin.gz",
+      "gz": 13077357,
+      "size": 17141051,
+      "sha256": "49e8d3bd794b098047f7b177d9d0e6d3e49ac798c2b75bc132149cb46c5bfbfd"
+     },
+     {
+      "role": "vocab",
+      "path": "models/kn-en/h1-2025_Ql24XjW0Sp-zWsmLrV5TGQ/exported/vocab.knen.spm.gz",
+      "gz": 450324,
+      "size": 1065636
+     },
+     {
+      "role": "lex",
+      "path": "models/kn-en/h1-2025_Ql24XjW0Sp-zWsmLrV5TGQ/exported/lex.50.50.knen.s2t.bin.gz",
+      "gz": 2128860,
+      "size": 4655776
+     }
+    ]
+   },
+   "tess": "kan",
+   "tessSize": 3608331
+  },
+  {
+   "code": "ko",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ko/cjk_retrain_base-memory_GP50C3MpQ9apCWZOW-f3PA/exported/model.enko.intgemm.alphas.bin.gz",
+      "gz": 33738001,
+      "size": 43849787,
+      "sha256": "ffe5ef2ce3f2e944055e35310bab186f6a70d533a0ee4394adf716a0e383afbb"
+     },
+     {
+      "role": "srcVocab",
+      "path": "models/en-ko/cjk_retrain_base-memory_GP50C3MpQ9apCWZOW-f3PA/exported/srcvocab.enko.spm.gz",
+      "gz": 402480,
+      "size": 791280
+     },
+     {
+      "role": "trgVocab",
+      "path": "models/en-ko/cjk_retrain_base-memory_GP50C3MpQ9apCWZOW-f3PA/exported/trgvocab.enko.spm.gz",
+      "gz": 412614,
+      "size": 815353
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ko/cjk_retrain_base-memory_GP50C3MpQ9apCWZOW-f3PA/exported/lex.50.50.enko.s2t.bin.gz",
+      "gz": 3471311,
+      "size": 6449612
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ko-en/cjk_retrain_base-memory_QgYNtG3BTzKBFSV1wl06Pg/exported/model.koen.intgemm.alphas.bin.gz",
+      "gz": 32152814,
+      "size": 43977787,
+      "sha256": "7cb30cbc0a86e242084756445268a2346136771c92b884d9b4ebb077f67d5507"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ko-en/cjk_retrain_base-memory_QgYNtG3BTzKBFSV1wl06Pg/exported/vocab.koen.spm.gz",
+      "gz": 706864,
+      "size": 1410063
+     },
+     {
+      "role": "lex",
+      "path": "models/ko-en/cjk_retrain_base-memory_QgYNtG3BTzKBFSV1wl06Pg/exported/lex.50.50.koen.s2t.bin.gz",
+      "gz": 4381854,
+      "size": 8617516
+     }
+    ]
+   },
+   "tess": "kor",
+   "tessSize": 1677415
+  },
+  {
+   "code": "lt",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-lt/h1-2025_CpawQ31iTrmnax9Xi0DkBw/exported/model.enlt.intgemm.alphas.bin.gz",
+      "gz": 22865642,
+      "size": 31561787,
+      "sha256": "d27c676d9d761c2abfffec83956e32b2923f3f745b56acdbd84c49d888cdc94e"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-lt/h1-2025_CpawQ31iTrmnax9Xi0DkBw/exported/vocab.enlt.spm.gz",
+      "gz": 403356,
+      "size": 806827
+     },
+     {
+      "role": "lex",
+      "path": "models/en-lt/h1-2025_CpawQ31iTrmnax9Xi0DkBw/exported/lex.50.50.enlt.s2t.bin.gz",
+      "gz": 1769752,
+      "size": 3421640
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/lt-en/spring-2024_aAroslw9Ru-c5cam6SvLBg/exported/model.lten.intgemm.alphas.bin.gz",
+      "gz": 12571257,
+      "size": 17141051,
+      "sha256": "0aa4571ede6f68db2f14d2662875b4d2e6323aeccd75e3b4377ab9072a22db70"
+     },
+     {
+      "role": "vocab",
+      "path": "models/lt-en/spring-2024_aAroslw9Ru-c5cam6SvLBg/exported/vocab.lten.spm.gz",
+      "gz": 403960,
+      "size": 807623
+     },
+     {
+      "role": "lex",
+      "path": "models/lt-en/spring-2024_aAroslw9Ru-c5cam6SvLBg/exported/lex.50.50.lten.s2t.bin.gz",
+      "gz": 2308876,
+      "size": 4724124
+     }
+    ]
+   },
+   "tess": "lit",
+   "tessSize": 3154896
+  },
+  {
+   "code": "lv",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-lv/h1-2025_L9sajlF2TCKfEzDro4tK3Q/exported/model.enlv.intgemm.alphas.bin.gz",
+      "gz": 23727668,
+      "size": 31561787,
+      "sha256": "715f9f444dffa0b39e71955c28bffd30afa4cc8300a192ec8fabb766cc5ba11d"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-lv/h1-2025_L9sajlF2TCKfEzDro4tK3Q/exported/vocab.enlv.spm.gz",
+      "gz": 407540,
+      "size": 816287
+     },
+     {
+      "role": "lex",
+      "path": "models/en-lv/h1-2025_L9sajlF2TCKfEzDro4tK3Q/exported/lex.50.50.enlv.s2t.bin.gz",
+      "gz": 1725879,
+      "size": 3359096
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/lv-en/spring-2024_fkUrjGNcQiWrTQ5BcYbkgg/exported/model.lven.intgemm.alphas.bin.gz",
+      "gz": 12689153,
+      "size": 17141051,
+      "sha256": "7a96dd363ae9b4485aa254ddbff042223a565a20bfe5ba0ba29b94d8ded0406a"
+     },
+     {
+      "role": "vocab",
+      "path": "models/lv-en/spring-2024_fkUrjGNcQiWrTQ5BcYbkgg/exported/vocab.lven.spm.gz",
+      "gz": 407237,
+      "size": 815278
+     },
+     {
+      "role": "lex",
+      "path": "models/lv-en/spring-2024_fkUrjGNcQiWrTQ5BcYbkgg/exported/lex.50.50.lven.s2t.bin.gz",
+      "gz": 2131786,
+      "size": 4214476
+     }
+    ]
+   },
+   "tess": "lav",
+   "tessSize": 2717247
+  },
+  {
+   "code": "ml",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ml/h1-2025_UylcthuMRoelqd6lsCbXJw/exported/model.enml.intgemm.alphas.bin.gz",
+      "gz": 12570038,
+      "size": 17141051,
+      "sha256": "c461749c8315f6417104cf4df32e5063e86cb101203f9629512294c1c8ab5337"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ml/h1-2025_UylcthuMRoelqd6lsCbXJw/exported/vocab.enml.spm.gz",
+      "gz": 454768,
+      "size": 1109000
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ml/h1-2025_UylcthuMRoelqd6lsCbXJw/exported/lex.50.50.enml.s2t.bin.gz",
+      "gz": 1275347,
+      "size": 2532960
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ml-en/h1-2025_Ahkzk6jNTAut7rz6laKkGQ/exported/model.mlen.intgemm.alphas.bin.gz",
+      "gz": 12792306,
+      "size": 17141051,
+      "sha256": "5480719a5a8ac43acdf28db1c89a4d60837a475e1120ea0c4e021c4d5b7e6fd6"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ml-en/h1-2025_Ahkzk6jNTAut7rz6laKkGQ/exported/vocab.mlen.spm.gz",
+      "gz": 454911,
+      "size": 1109047
+     },
+     {
+      "role": "lex",
+      "path": "models/ml-en/h1-2025_Ahkzk6jNTAut7rz6laKkGQ/exported/lex.50.50.mlen.s2t.bin.gz",
+      "gz": 2296381,
+      "size": 5017972
+     }
+    ]
+   },
+   "tess": "mal",
+   "tessSize": 5275996
+  },
+  {
+   "code": "mr",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-mr/indictrans2-teacher_YxWwPatgTHy0imIiIafh5A/exported/model.enmr.intgemm.alphas.bin.gz",
+      "gz": 22896929,
+      "size": 31561787,
+      "sha256": "1520f77c2f1c703b6148e4452b376ac28aec1e63c467eedec8a986864827ce8c"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-mr/indictrans2-teacher_YxWwPatgTHy0imIiIafh5A/exported/vocab.enmr.spm.gz",
+      "gz": 443275,
+      "size": 1009700
+     },
+     {
+      "role": "lex",
+      "path": "models/en-mr/indictrans2-teacher_YxWwPatgTHy0imIiIafh5A/exported/lex.50.50.enmr.s2t.bin.gz",
+      "gz": 1401383,
+      "size": 2731352
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/mr-en/indictrans2_TZJkvk4_Qy6353ek8nD7cw/exported/model.mren.intgemm.alphas.bin.gz",
+      "gz": 22289099,
+      "size": 31561787,
+      "sha256": "7e4ce4102d159b1d0154193859ee36e26232ad6b1bc656fd9de23ebf530d67b0"
+     },
+     {
+      "role": "vocab",
+      "path": "models/mr-en/indictrans2_TZJkvk4_Qy6353ek8nD7cw/exported/vocab.mren.spm.gz",
+      "gz": 443184,
+      "size": 1009482
+     },
+     {
+      "role": "lex",
+      "path": "models/mr-en/indictrans2_TZJkvk4_Qy6353ek8nD7cw/exported/lex.50.50.mren.s2t.bin.gz",
+      "gz": 2327949,
+      "size": 4534544
+     }
+    ]
+   },
+   "tess": "mar",
+   "tessSize": 2118233
+  },
+  {
+   "code": "ms",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ms/h1-2025_Ba76abX1Qtums6Vbv95tzg/exported/model.enms.intgemm.alphas.bin.gz",
+      "gz": 13039668,
+      "size": 17141051,
+      "sha256": "3d6961462ffa711413d513624d7e6399b3560c2b0994daa73b0a45699e657af8"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ms/h1-2025_Ba76abX1Qtums6Vbv95tzg/exported/vocab.enms.spm.gz",
+      "gz": 404033,
+      "size": 802440
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ms/h1-2025_Ba76abX1Qtums6Vbv95tzg/exported/lex.50.50.enms.s2t.bin.gz",
+      "gz": 2044118,
+      "size": 3936428
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ms-en/h1-2025_afzwIUAqQRWx5PtvozOHnw/exported/model.msen.intgemm.alphas.bin.gz",
+      "gz": 12538542,
+      "size": 17141051,
+      "sha256": "db5c9415591f8a35c5c72046227b9c9398acade5df8afb5e6ac9f11f7d6650d5"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ms-en/h1-2025_afzwIUAqQRWx5PtvozOHnw/exported/vocab.msen.spm.gz",
+      "gz": 403877,
+      "size": 802191
+     },
+     {
+      "role": "lex",
+      "path": "models/ms-en/h1-2025_afzwIUAqQRWx5PtvozOHnw/exported/lex.50.50.msen.s2t.bin.gz",
+      "gz": 2141259,
+      "size": 4371896
+     }
+    ]
+   },
+   "tess": "msa",
+   "tessSize": 1747801
+  },
+  {
+   "code": "nb",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-nb/h1-2025_A0d8NsivR6Szy2dI4Nz6FQ/exported/model.ennb.intgemm.alphas.bin.gz",
+      "gz": 12713727,
+      "size": 17141051,
+      "sha256": "78429eb7f544361061c9d9ec2f0872adf30b76e4c9ef3dbaab1210a0f2aa19b5"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-nb/h1-2025_A0d8NsivR6Szy2dI4Nz6FQ/exported/vocab.ennb.spm.gz",
+      "gz": 409037,
+      "size": 802190
+     },
+     {
+      "role": "lex",
+      "path": "models/en-nb/h1-2025_A0d8NsivR6Szy2dI4Nz6FQ/exported/lex.50.50.ennb.s2t.bin.gz",
+      "gz": 2193397,
+      "size": 4234572
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/nb-en/h1-2025_YKogHXi6Q4es3P7fEWEaBw/exported/model.nben.intgemm.alphas.bin.gz",
+      "gz": 13193689,
+      "size": 17141051,
+      "sha256": "00ab7b969156f6c948be59dad4755e47a24eeb31aa39f02f1de7bce43081cc2a"
+     },
+     {
+      "role": "vocab",
+      "path": "models/nb-en/h1-2025_YKogHXi6Q4es3P7fEWEaBw/exported/vocab.nben.spm.gz",
+      "gz": 409135,
+      "size": 802367
+     },
+     {
+      "role": "lex",
+      "path": "models/nb-en/h1-2025_YKogHXi6Q4es3P7fEWEaBw/exported/lex.50.50.nben.s2t.bin.gz",
+      "gz": 2308582,
+      "size": 4517876
+     }
+    ]
+   },
+   "tess": "nor",
+   "tessSize": 3610079
+  },
+  {
+   "code": "nl",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-nl/retrain_hr_fix_names_fR8XhBiBQniIbi4I_ebJ2Q/exported/model.ennl.intgemm.alphas.bin.gz",
+      "gz": 23386633,
+      "size": 31561787,
+      "sha256": "7e8402da61972dc2fdcf7147c7f1e12f7916a6d9349514ee7a731288357575a9"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-nl/retrain_hr_fix_names_fR8XhBiBQniIbi4I_ebJ2Q/exported/vocab.ennl.spm.gz",
+      "gz": 410222,
+      "size": 807708
+     },
+     {
+      "role": "lex",
+      "path": "models/en-nl/retrain_hr_fix_names_fR8XhBiBQniIbi4I_ebJ2Q/exported/lex.50.50.ennl.s2t.bin.gz",
+      "gz": 2155034,
+      "size": 4030624
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/nl-en/retrain_hr_JbTCb42HREGvK8d6aOCjFQ/exported/model.nlen.intgemm.alphas.bin.gz",
+      "gz": 22647743,
+      "size": 31561787,
+      "sha256": "ff987741ff15a5d94fff16cbef28f2b0a85a6e9547d982fad60ac09d16d11270"
+     },
+     {
+      "role": "vocab",
+      "path": "models/nl-en/retrain_hr_JbTCb42HREGvK8d6aOCjFQ/exported/vocab.nlen.spm.gz",
+      "gz": 410222,
+      "size": 807708
+     },
+     {
+      "role": "lex",
+      "path": "models/nl-en/retrain_hr_JbTCb42HREGvK8d6aOCjFQ/exported/lex.50.50.nlen.s2t.bin.gz",
+      "gz": 2616098,
+      "size": 4862412
+     }
+    ]
+   },
+   "tess": "nld",
+   "tessSize": 6050296
+  },
+  {
+   "code": "nn",
+   "toEnglish": {
+    "arch": "tiny",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/nn-en/statmt_xxxxxxxxRxSxxxxxxxxxxA/exported/model.nnen.intgemm.alphas.bin.gz",
+      "gz": 10465158,
+      "size": 12980780,
+      "sha256": "17550943381bdfae30b1d8ee29b33b2da2c9ae4d4b9749e2e66b2946e27dce7d"
+     },
+     {
+      "role": "vocab",
+      "path": "models/nn-en/statmt_xxxxxxxxRxSxxxxxxxxxxA/exported/vocab.nnen.spm.gz",
+      "gz": 269397,
+      "size": 510942
+     },
+     {
+      "role": "lex",
+      "path": "models/nn-en/statmt_xxxxxxxxRxSxxxxxxxxxxA/exported/lex.50.50.nnen.s2t.bin.gz",
+      "gz": 731899,
+      "size": 1506236
+     }
+    ]
+   },
+   "tess": "nor",
+   "tessSize": 3610079
+  },
+  {
+   "code": "no",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-no/h1-2025_A0d8NsivR6Szy2dI4Nz6FQ/exported/model.enno.intgemm.alphas.bin.gz",
+      "gz": 12713727,
+      "size": 17141051,
+      "sha256": "78429eb7f544361061c9d9ec2f0872adf30b76e4c9ef3dbaab1210a0f2aa19b5"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-no/h1-2025_A0d8NsivR6Szy2dI4Nz6FQ/exported/vocab.enno.spm.gz",
+      "gz": 409037,
+      "size": 802190
+     },
+     {
+      "role": "lex",
+      "path": "models/en-no/h1-2025_A0d8NsivR6Szy2dI4Nz6FQ/exported/lex.50.50.enno.s2t.bin.gz",
+      "gz": 2193397,
+      "size": 4234572
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/no-en/h1-2025_YKogHXi6Q4es3P7fEWEaBw/exported/model.noen.intgemm.alphas.bin.gz",
+      "gz": 13193689,
+      "size": 17141051,
+      "sha256": "00ab7b969156f6c948be59dad4755e47a24eeb31aa39f02f1de7bce43081cc2a"
+     },
+     {
+      "role": "vocab",
+      "path": "models/no-en/h1-2025_YKogHXi6Q4es3P7fEWEaBw/exported/vocab.noen.spm.gz",
+      "gz": 409135,
+      "size": 802367
+     },
+     {
+      "role": "lex",
+      "path": "models/no-en/h1-2025_YKogHXi6Q4es3P7fEWEaBw/exported/lex.50.50.noen.s2t.bin.gz",
+      "gz": 2308582,
+      "size": 4517876
+     }
+    ]
+   },
+   "tess": "nor",
+   "tessSize": 3610079
+  },
+  {
+   "code": "pl",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-pl/retrain_hr_fix_names_YmTlfuUsSKCbUp75UXaUuw/exported/model.enpl.intgemm.alphas.bin.gz",
+      "gz": 22577447,
+      "size": 31561787,
+      "sha256": "b0b59716bcc8f46b8dc6ab5c32a2732acaad42a5a6d9ae9b472526a1bb0d71d4"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-pl/retrain_hr_fix_names_YmTlfuUsSKCbUp75UXaUuw/exported/vocab.enpl.spm.gz",
+      "gz": 413194,
+      "size": 821612
+     },
+     {
+      "role": "lex",
+      "path": "models/en-pl/retrain_hr_fix_names_YmTlfuUsSKCbUp75UXaUuw/exported/lex.50.50.enpl.s2t.bin.gz",
+      "gz": 1874327,
+      "size": 3540052
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/pl-en/retrain_hr_HLLa6ZwsSomB0kyBr7Iz6w/exported/model.plen.intgemm.alphas.bin.gz",
+      "gz": 22630393,
+      "size": 31561787,
+      "sha256": "06dbab3baa3bbceab746bc6a3bba807878f38536382c03acddf59d3edf3b5d94"
+     },
+     {
+      "role": "vocab",
+      "path": "models/pl-en/retrain_hr_HLLa6ZwsSomB0kyBr7Iz6w/exported/vocab.plen.spm.gz",
+      "gz": 413194,
+      "size": 821612
+     },
+     {
+      "role": "lex",
+      "path": "models/pl-en/retrain_hr_HLLa6ZwsSomB0kyBr7Iz6w/exported/lex.50.50.plen.s2t.bin.gz",
+      "gz": 2489764,
+      "size": 4964208
+     }
+    ]
+   },
+   "tess": "pol",
+   "tessSize": 4765518
+  },
+  {
+   "code": "pt",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-pt/retrain_hr_fix_names_Vnb0RUXTTd67hR-oLHM3eg/exported/model.enpt.intgemm.alphas.bin.gz",
+      "gz": 23340019,
+      "size": 31561787,
+      "sha256": "07892fd2544ee79dcb643615d8f2debb9793fae16842e87c328e27a3dd26a770"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-pt/retrain_hr_fix_names_Vnb0RUXTTd67hR-oLHM3eg/exported/vocab.enpt.spm.gz",
+      "gz": 408686,
+      "size": 816726
+     },
+     {
+      "role": "lex",
+      "path": "models/en-pt/retrain_hr_fix_names_Vnb0RUXTTd67hR-oLHM3eg/exported/lex.50.50.enpt.s2t.bin.gz",
+      "gz": 2117608,
+      "size": 3970340
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/pt-en/retrain_hr_drxrs5bGSsOWvfK9lyZISw/exported/model.pten.intgemm.alphas.bin.gz",
+      "gz": 22700409,
+      "size": 31561787,
+      "sha256": "7b854f1ec5a485dd33efd7c1bc01dd7d5a57f566957c5e47722af333f0ce9157"
+     },
+     {
+      "role": "vocab",
+      "path": "models/pt-en/retrain_hr_drxrs5bGSsOWvfK9lyZISw/exported/vocab.pten.spm.gz",
+      "gz": 408686,
+      "size": 816726
+     },
+     {
+      "role": "lex",
+      "path": "models/pt-en/retrain_hr_drxrs5bGSsOWvfK9lyZISw/exported/lex.50.50.pten.s2t.bin.gz",
+      "gz": 2487847,
+      "size": 4634492
+     }
+    ]
+   },
+   "tess": "por",
+   "tessSize": 1982756
+  },
+  {
+   "code": "ro",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ro/spring-2024_Ov3G4D_DRJa-4qTlILkPhg/exported/model.enro.intgemm.alphas.bin.gz",
+      "gz": 12207487,
+      "size": 17141051,
+      "sha256": "aa98c415e5beb1c5ee2f7d2508a3bbba949be223d7d9e5e1788ad0ae8598dda5"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ro/spring-2024_Ov3G4D_DRJa-4qTlILkPhg/exported/vocab.enro.spm.gz",
+      "gz": 397137,
+      "size": 801522
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ro/spring-2024_Ov3G4D_DRJa-4qTlILkPhg/exported/lex.50.50.enro.s2t.bin.gz",
+      "gz": 1846074,
+      "size": 3739880
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ro-en/spring-2024_RwH0W_MDRK2BmZA6VzAmBg/exported/model.roen.intgemm.alphas.bin.gz",
+      "gz": 12722200,
+      "size": 17141051,
+      "sha256": "e7542557fc6dbafacddae7b48e67fcdb07bd67b3fb55a76139edf366eca5dbdb"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ro-en/spring-2024_RwH0W_MDRK2BmZA6VzAmBg/exported/vocab.roen.spm.gz",
+      "gz": 396717,
+      "size": 800832
+     },
+     {
+      "role": "lex",
+      "path": "models/ro-en/spring-2024_RwH0W_MDRK2BmZA6VzAmBg/exported/lex.50.50.roen.s2t.bin.gz",
+      "gz": 2159556,
+      "size": 4691708
+     }
+    ]
+   },
+   "tess": "ron",
+   "tessSize": 2376323
+  },
+  {
+   "code": "ru",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ru/retrain_base-memory_KJ23-iDVTcymG1ZldWY17w/exported/model.enru.intgemm.alphas.bin.gz",
+      "gz": 21988864,
+      "size": 31561787,
+      "sha256": "184cb5cda528eeefc0f75f5d0035d787b71d74af135e3c5608d01ae02ecfb920"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ru/retrain_base-memory_KJ23-iDVTcymG1ZldWY17w/exported/vocab.enru.spm.gz",
+      "gz": 419005,
+      "size": 904455
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ru/retrain_base-memory_KJ23-iDVTcymG1ZldWY17w/exported/lex.50.50.enru.s2t.bin.gz",
+      "gz": 1378563,
+      "size": 2774540
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ru-en/next26_RSpwfHrcSUC_rKTnhOEXzw/exported/model.ruen.intgemm.alphas.bin.gz",
+      "gz": 22805722,
+      "size": 31561787,
+      "sha256": "aa0efa194b3dbd2da129ba0b8db8ef139126cb0914e57072f62061294746f1e2"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ru-en/next26_RSpwfHrcSUC_rKTnhOEXzw/exported/vocab.ruen.spm.gz",
+      "gz": 441622,
+      "size": 952371
+     },
+     {
+      "role": "lex",
+      "path": "models/ru-en/next26_RSpwfHrcSUC_rKTnhOEXzw/exported/lex.50.50.ruen.s2t.bin.gz",
+      "gz": 2139703,
+      "size": 4397908
+     }
+    ]
+   },
+   "tess": "rus",
+   "tessSize": 3861738
+  },
+  {
+   "code": "sk",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-sk/h1-2025_NbGVkenLTPiss8w800509A/exported/model.ensk.intgemm.alphas.bin.gz",
+      "gz": 22902983,
+      "size": 31561787,
+      "sha256": "e33af359fd58c8958104b1b74b3ea302800ccba2f125c1629e09d7f9dd9a3804"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-sk/h1-2025_NbGVkenLTPiss8w800509A/exported/vocab.ensk.spm.gz",
+      "gz": 405652,
+      "size": 808888
+     },
+     {
+      "role": "lex",
+      "path": "models/en-sk/h1-2025_NbGVkenLTPiss8w800509A/exported/lex.50.50.ensk.s2t.bin.gz",
+      "gz": 1708788,
+      "size": 3356348
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/sk-en/spring-2024_TD01UwWXRKacv3wnYeVKbg/exported/model.sken.intgemm.alphas.bin.gz",
+      "gz": 12821519,
+      "size": 17141051,
+      "sha256": "1686f94838ace314719e945606a09a66dafd40847dd3fd352ad3f7a969aac62f"
+     },
+     {
+      "role": "vocab",
+      "path": "models/sk-en/spring-2024_TD01UwWXRKacv3wnYeVKbg/exported/vocab.sken.spm.gz",
+      "gz": 405122,
+      "size": 808082
+     },
+     {
+      "role": "lex",
+      "path": "models/sk-en/spring-2024_TD01UwWXRKacv3wnYeVKbg/exported/lex.50.50.sken.s2t.bin.gz",
+      "gz": 2348184,
+      "size": 4913324
+     }
+    ]
+   },
+   "tess": "slk",
+   "tessSize": 4427661
+  },
+  {
+   "code": "sl",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-sl/h1-2025_Ph0DK4RhRMe7z4cLk-f7eg/exported/model.ensl.intgemm.alphas.bin.gz",
+      "gz": 22669559,
+      "size": 31561787,
+      "sha256": "a34fc5cc2f52733f64e37f8512cf1ddc4723c08a7a1a59d01fc2b6e641fc2280"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-sl/h1-2025_Ph0DK4RhRMe7z4cLk-f7eg/exported/vocab.ensl.spm.gz",
+      "gz": 398763,
+      "size": 803212
+     },
+     {
+      "role": "lex",
+      "path": "models/en-sl/h1-2025_Ph0DK4RhRMe7z4cLk-f7eg/exported/lex.50.50.ensl.s2t.bin.gz",
+      "gz": 1741316,
+      "size": 3428300
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/sl-en/h1-2025_TCeLyjkQRL2YbTXrUhTlAg/exported/model.slen.intgemm.alphas.bin.gz",
+      "gz": 23730414,
+      "size": 31561787,
+      "sha256": "9d15df58b60048366de4f7b6e727157ffdaea3a0fd1c1759ce232b057e2f991c"
+     },
+     {
+      "role": "vocab",
+      "path": "models/sl-en/h1-2025_TCeLyjkQRL2YbTXrUhTlAg/exported/vocab.slen.spm.gz",
+      "gz": 398535,
+      "size": 803078
+     },
+     {
+      "role": "lex",
+      "path": "models/sl-en/h1-2025_TCeLyjkQRL2YbTXrUhTlAg/exported/lex.50.50.slen.s2t.bin.gz",
+      "gz": 2138548,
+      "size": 4320484
+     }
+    ]
+   },
+   "tess": "slv",
+   "tessSize": 3003829
+  },
+  {
+   "code": "sq",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-sq/h1-2025_HIreYm8_RDymI1qFdn0V5Q/exported/model.ensq.intgemm.alphas.bin.gz",
+      "gz": 13366206,
+      "size": 17141051,
+      "sha256": "8a90d17ab2798509e639e544caa1d577f7cf87c31b9ab7e53890c8d1d59b6eee"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-sq/h1-2025_HIreYm8_RDymI1qFdn0V5Q/exported/vocab.ensq.spm.gz",
+      "gz": 410650,
+      "size": 820048
+     },
+     {
+      "role": "lex",
+      "path": "models/en-sq/h1-2025_HIreYm8_RDymI1qFdn0V5Q/exported/lex.50.50.ensq.s2t.bin.gz",
+      "gz": 1599959,
+      "size": 3303648
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/sq-en/h1-2025_I8xy7KMeQoe3mMEV3umzfQ/exported/model.sqen.intgemm.alphas.bin.gz",
+      "gz": 12593638,
+      "size": 17141051,
+      "sha256": "4b0ce319e7c8f7e1836ce18cb6522c83268e8cff54f2a7f5dcef270250a44475"
+     },
+     {
+      "role": "vocab",
+      "path": "models/sq-en/h1-2025_I8xy7KMeQoe3mMEV3umzfQ/exported/vocab.sqen.spm.gz",
+      "gz": 410423,
+      "size": 820200
+     },
+     {
+      "role": "lex",
+      "path": "models/sq-en/h1-2025_I8xy7KMeQoe3mMEV3umzfQ/exported/lex.50.50.sqen.s2t.bin.gz",
+      "gz": 2165940,
+      "size": 4256516
+     }
+    ]
+   },
+   "tess": "sqi",
+   "tessSize": 1874705
+  },
+  {
+   "code": "sr",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-sr/hbs-topk10_KZK68xhrQWWeK6xcMRtd9A/exported/model.ensr.intgemm.alphas.bin.gz",
+      "gz": 23014587,
+      "size": 31561787,
+      "sha256": "d26e1c5a01f917c38ccda17d1bf116024ac4d988105e1bbf70bc5e8f9191c57a"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-sr/hbs-topk10_KZK68xhrQWWeK6xcMRtd9A/exported/vocab.ensr.spm.gz",
+      "gz": 433623,
+      "size": 922599
+     },
+     {
+      "role": "lex",
+      "path": "models/en-sr/hbs-topk10_KZK68xhrQWWeK6xcMRtd9A/exported/lex.50.50.ensr.s2t.bin.gz",
+      "gz": 1289317,
+      "size": 2542096
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/sr-en/spring-2024_H5GCfsx4SnqOP4YFIQdkdA/exported/model.sren.intgemm.alphas.bin.gz",
+      "gz": 12729754,
+      "size": 17141051,
+      "sha256": "99c44e9690a7ed2c1f13468765c3b1db2b8a8ae739980e4056d45dca613a1966"
+     },
+     {
+      "role": "vocab",
+      "path": "models/sr-en/spring-2024_H5GCfsx4SnqOP4YFIQdkdA/exported/vocab.sren.spm.gz",
+      "gz": 403515,
+      "size": 822509
+     },
+     {
+      "role": "lex",
+      "path": "models/sr-en/spring-2024_H5GCfsx4SnqOP4YFIQdkdA/exported/lex.50.50.sren.s2t.bin.gz",
+      "gz": 2117763,
+      "size": 4628048
+     }
+    ]
+   },
+   "tess": "srp",
+   "tessSize": 2149931
+  },
+  {
+   "code": "sv",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-sv/spring-2024_bQQme71PS4eZRDl3NM-kgA/exported/model.ensv.intgemm.alphas.bin.gz",
+      "gz": 12775086,
+      "size": 17141051,
+      "sha256": "65ea0db8e658435846f297384face62dbf1804cfc92de8388b0e368e6ecc25a7"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-sv/spring-2024_bQQme71PS4eZRDl3NM-kgA/exported/vocab.ensv.spm.gz",
+      "gz": 398384,
+      "size": 793868
+     },
+     {
+      "role": "lex",
+      "path": "models/en-sv/spring-2024_bQQme71PS4eZRDl3NM-kgA/exported/lex.50.50.ensv.s2t.bin.gz",
+      "gz": 1921270,
+      "size": 3948180
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/sv-en/spring-2024_ObaRXwXeSW6HA_-J5_dE-g/exported/model.sven.intgemm.alphas.bin.gz",
+      "gz": 12847259,
+      "size": 17141051,
+      "sha256": "92d79e2725718b84aed486473bdfcbe6bba3e7094922d4bead8a121cfa346372"
+     },
+     {
+      "role": "vocab",
+      "path": "models/sv-en/spring-2024_ObaRXwXeSW6HA_-J5_dE-g/exported/vocab.sven.spm.gz",
+      "gz": 397625,
+      "size": 793049
+     },
+     {
+      "role": "lex",
+      "path": "models/sv-en/spring-2024_ObaRXwXeSW6HA_-J5_dE-g/exported/lex.50.50.sven.s2t.bin.gz",
+      "gz": 2165215,
+      "size": 4645680
+     }
+    ]
+   },
+   "tess": "swe",
+   "tessSize": 4167034
+  },
+  {
+   "code": "ta",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ta/next26-nobcbpcc_RgO3iURPQH2EjhUm533NWA/exported/model.enta.intgemm.alphas.bin.gz",
+      "gz": 23206004,
+      "size": 31561787,
+      "sha256": "83266ea604611756d1c3c358d7bed1fdf79a646c1f701b42c1db501c237c0f3b"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ta/next26-nobcbpcc_RgO3iURPQH2EjhUm533NWA/exported/vocab.enta.spm.gz",
+      "gz": 449763,
+      "size": 1097357
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ta/next26-nobcbpcc_RgO3iURPQH2EjhUm533NWA/exported/lex.50.50.enta.s2t.bin.gz",
+      "gz": 1434399,
+      "size": 2746824
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ta-en/next26_dwRqBIcMSDG7drW2_xDIMA/exported/model.taen.intgemm.alphas.bin.gz",
+      "gz": 23526938,
+      "size": 31561787,
+      "sha256": "5413fca6c35cd9c50157df1ebd425d6ca02713bfedc1ba7e5fb3050a437b13b6"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ta-en/next26_dwRqBIcMSDG7drW2_xDIMA/exported/vocab.taen.spm.gz",
+      "gz": 451486,
+      "size": 1104678
+     },
+     {
+      "role": "lex",
+      "path": "models/ta-en/next26_dwRqBIcMSDG7drW2_xDIMA/exported/lex.50.50.taen.s2t.bin.gz",
+      "gz": 2410364,
+      "size": 4940884
+     }
+    ]
+   },
+   "tess": "tam",
+   "tessSize": 3237963
+  },
+  {
+   "code": "te",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-te/h1-2025_J_7yoPHaRJqsevUR512RsQ/exported/model.ente.intgemm.alphas.bin.gz",
+      "gz": 12590862,
+      "size": 17141051,
+      "sha256": "a3fee2fcd39df975da28666c536adff60147dce59062fca6097bb42fb2a52500"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-te/h1-2025_J_7yoPHaRJqsevUR512RsQ/exported/vocab.ente.spm.gz",
+      "gz": 448838,
+      "size": 1056424
+     },
+     {
+      "role": "lex",
+      "path": "models/en-te/h1-2025_J_7yoPHaRJqsevUR512RsQ/exported/lex.50.50.ente.s2t.bin.gz",
+      "gz": 1434105,
+      "size": 2832156
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/te-en/h1-2025_YEapi_rWRsSUVTqbBTqupw/exported/model.teen.intgemm.alphas.bin.gz",
+      "gz": 13202063,
+      "size": 17141051,
+      "sha256": "e2ec7b13ba6148eba309244ee17dc935f1b71e95bbf57154216f6247877abb7e"
+     },
+     {
+      "role": "vocab",
+      "path": "models/te-en/h1-2025_YEapi_rWRsSUVTqbBTqupw/exported/vocab.teen.spm.gz",
+      "gz": 448555,
+      "size": 1056197
+     },
+     {
+      "role": "lex",
+      "path": "models/te-en/h1-2025_YEapi_rWRsSUVTqbBTqupw/exported/lex.50.50.teen.s2t.bin.gz",
+      "gz": 2209444,
+      "size": 4815756
+     }
+    ]
+   },
+   "tess": "tel",
+   "tessSize": 2769654
+  },
+  {
+   "code": "th",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-th/new-opuscleaner-en-th-onestage-topk10_WIvJuHhrSyiXLtJBJOUrsA/exported/model.enth.intgemm.alphas.bin.gz",
+      "gz": 22976729,
+      "size": 31561787,
+      "sha256": "80e326097655fca75f841130da3338a849aa245374e1616448bcf37b9523a05a"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-th/new-opuscleaner-en-th-onestage-topk10_WIvJuHhrSyiXLtJBJOUrsA/exported/vocab.enth.spm.gz",
+      "gz": 450379,
+      "size": 993517
+     },
+     {
+      "role": "lex",
+      "path": "models/en-th/new-opuscleaner-en-th-onestage-topk10_WIvJuHhrSyiXLtJBJOUrsA/exported/lex.50.50.enth.s2t.bin.gz",
+      "gz": 1601933,
+      "size": 3016612
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/th-en/new-opuscleaner-en-th_aIiNAAZbRny4ODcYGOMlEA/exported/model.then.intgemm.alphas.bin.gz",
+      "gz": 22974117,
+      "size": 31561787,
+      "sha256": "f70a501324743668b031bee19cd001a66839e8e5dfc0b4a1c44d5ea99d4e8d66"
+     },
+     {
+      "role": "vocab",
+      "path": "models/th-en/new-opuscleaner-en-th_aIiNAAZbRny4ODcYGOMlEA/exported/vocab.then.spm.gz",
+      "gz": 451231,
+      "size": 995429
+     },
+     {
+      "role": "lex",
+      "path": "models/th-en/new-opuscleaner-en-th_aIiNAAZbRny4ODcYGOMlEA/exported/lex.50.50.then.s2t.bin.gz",
+      "gz": 2239323,
+      "size": 4487056
+     }
+    ]
+   },
+   "tess": "tha",
+   "tessSize": 1072600
+  },
+  {
+   "code": "tl",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-tl/next26-nllb-bc09_DGa0cH2-QKOhfrPkVbnJFQ/exported/model.entl.intgemm.alphas.bin.gz",
+      "gz": 23500661,
+      "size": 31561787,
+      "sha256": "33b71965ab9c9c533c63444551c9483e811dd540e75e4cfe21d062a83a60b72f"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-tl/next26-nllb-bc09_DGa0cH2-QKOhfrPkVbnJFQ/exported/vocab.entl.spm.gz",
+      "gz": 408817,
+      "size": 812108
+     },
+     {
+      "role": "lex",
+      "path": "models/en-tl/next26-nllb-bc09_DGa0cH2-QKOhfrPkVbnJFQ/exported/lex.50.50.entl.s2t.bin.gz",
+      "gz": 1412886,
+      "size": 2782328
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/tl-en/next26-nllb-bc09_d-OV7HWbQLiAMXe-r1_EoA/exported/model.tlen.intgemm.alphas.bin.gz",
+      "gz": 23110247,
+      "size": 31561787,
+      "sha256": "be2e4b60b2be35d8f32e3f68f0a3a567e6a4a27c521d5a9fd6017d1e47599e37"
+     },
+     {
+      "role": "vocab",
+      "path": "models/tl-en/next26-nllb-bc09_d-OV7HWbQLiAMXe-r1_EoA/exported/vocab.tlen.spm.gz",
+      "gz": 408906,
+      "size": 814564
+     },
+     {
+      "role": "lex",
+      "path": "models/tl-en/next26-nllb-bc09_d-OV7HWbQLiAMXe-r1_EoA/exported/lex.50.50.tlen.s2t.bin.gz",
+      "gz": 2546344,
+      "size": 4952652
+     }
+    ]
+   }
+  },
+  {
+   "code": "tr",
+   "fromEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-tr/spring-2024_LiFGeNrEQpKdNlziG2qP_A/exported/model.entr.intgemm.alphas.bin.gz",
+      "gz": 13159314,
+      "size": 17141051,
+      "sha256": "ea3cd4ee09de190df265c78d84260e277a9a8a3ddff05eb55d72afe7fc0fdbf4"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-tr/spring-2024_LiFGeNrEQpKdNlziG2qP_A/exported/vocab.entr.spm.gz",
+      "gz": 395473,
+      "size": 798793
+     },
+     {
+      "role": "lex",
+      "path": "models/en-tr/spring-2024_LiFGeNrEQpKdNlziG2qP_A/exported/lex.50.50.entr.s2t.bin.gz",
+      "gz": 1546258,
+      "size": 3261300
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/tr-en/statmt_xxxxxxxxRxSxxxxxxxxxxA/exported/model.tren.intgemm.alphas.bin.gz",
+      "gz": 12362908,
+      "size": 17140836,
+      "sha256": "bd18594ac5a7f1d9997e7ea5bd80272082219cf8b1ce604766e4f207eb86abbf"
+     },
+     {
+      "role": "vocab",
+      "path": "models/tr-en/statmt_xxxxxxxxRxSxxxxxxxxxxA/exported/vocab.tren.spm.gz",
+      "gz": 409060,
+      "size": 811353
+     },
+     {
+      "role": "lex",
+      "path": "models/tr-en/statmt_xxxxxxxxRxSxxxxxxxxxxA/exported/lex.50.50.tren.s2t.bin.gz",
+      "gz": 2470683,
+      "size": 4662492
+     }
+    ]
+   },
+   "tess": "tur",
+   "tessSize": 4550554
+  },
+  {
+   "code": "ug",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ug/davidv-hymt2_xxxxxxxxRxSxxxxxxxxxxA/exported/model.enug.intgemm.alphas.bin.gz",
+      "gz": 24223157,
+      "size": 31561635,
+      "sha256": "0fe41f8efab57c8f763d82af523f0219f5e4b90d559abccb4bf0c51d6af16660"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ug/davidv-hymt2_xxxxxxxxRxSxxxxxxxxxxA/exported/vocab.enug.spm.gz",
+      "gz": 406290,
+      "size": 869060
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ug/davidv-hymt2_xxxxxxxxRxSxxxxxxxxxxA/exported/lex.50.50.enug.s2t.bin.gz",
+      "gz": 990376,
+      "size": 2044456
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": false,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ug-en/davidv-hymt2_xxxxxxxxRxSxxxxxxxxxxA/exported/model.ugen.intgemm.alphas.bin.gz",
+      "gz": 23536190,
+      "size": 31561635,
+      "sha256": "ffc0db5c5de708fb4dd6440b1d6b1e4645ad48a8963d98d9240aec8bb044d0f9"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ug-en/davidv-hymt2_xxxxxxxxRxSxxxxxxxxxxA/exported/vocab.ugen.spm.gz",
+      "gz": 406295,
+      "size": 869060
+     },
+     {
+      "role": "lex",
+      "path": "models/ug-en/davidv-hymt2_xxxxxxxxRxSxxxxxxxxxxA/exported/lex.50.50.ugen.s2t.bin.gz",
+      "gz": 1702175,
+      "size": 3452416
+     }
+    ]
+   },
+   "tess": "uig",
+   "tessSize": 2794272
+  },
+  {
+   "code": "uk",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-uk/docmt-vocab_a2OVwdI-Sg-SBZ_0Joqb0w/exported/model.enuk.intgemm.alphas.bin.gz",
+      "gz": 22864374,
+      "size": 31561787,
+      "sha256": "ed8bb4a811e1c45a259e91052080d25e5c8b4e2df0e59cb1521c04a57855ef97"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-uk/docmt-vocab_a2OVwdI-Sg-SBZ_0Joqb0w/exported/vocab.enuk.spm.gz",
+      "gz": 436850,
+      "size": 922077
+     },
+     {
+      "role": "lex",
+      "path": "models/en-uk/docmt-vocab_a2OVwdI-Sg-SBZ_0Joqb0w/exported/lex.50.50.enuk.s2t.bin.gz",
+      "gz": 1564122,
+      "size": 3054364
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/uk-en/spring-2024_WEPBsc-zQWSDn34b5KFscw/exported/model.uken.intgemm.alphas.bin.gz",
+      "gz": 12677432,
+      "size": 17141051,
+      "sha256": "2e7b8bc9d2569d8b4ae244e964cdc343a0aa3735cc83ecb664be84a37cb45f48"
+     },
+     {
+      "role": "vocab",
+      "path": "models/uk-en/spring-2024_WEPBsc-zQWSDn34b5KFscw/exported/vocab.uken.spm.gz",
+      "gz": 415266,
+      "size": 886410
+     },
+     {
+      "role": "lex",
+      "path": "models/uk-en/spring-2024_WEPBsc-zQWSDn34b5KFscw/exported/lex.50.50.uken.s2t.bin.gz",
+      "gz": 1790588,
+      "size": 3914120
+     }
+    ]
+   },
+   "tess": "ukr",
+   "tessSize": 3825102
+  },
+  {
+   "code": "ur",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-ur/indictrans2_SUOSu0mESlOMc6IkS5_3sQ/exported/model.enur.intgemm.alphas.bin.gz",
+      "gz": 22684591,
+      "size": 31561787,
+      "sha256": "0c29a5776a42ccb68f7969f41e64c0cd7a16ff00a5bfed0ed2809039febc202e"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-ur/indictrans2_SUOSu0mESlOMc6IkS5_3sQ/exported/vocab.enur.spm.gz",
+      "gz": 417745,
+      "size": 842549
+     },
+     {
+      "role": "lex",
+      "path": "models/en-ur/indictrans2_SUOSu0mESlOMc6IkS5_3sQ/exported/lex.50.50.enur.s2t.bin.gz",
+      "gz": 1498625,
+      "size": 3067772
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/ur-en/indictrans2-bt_UkKC_Ph4SVqxtSbkfmVM2g/exported/model.uren.intgemm.alphas.bin.gz",
+      "gz": 22876447,
+      "size": 31561787,
+      "sha256": "4915518d1699fb72c390603605d3ead9fb87a8c2f70092089a27df22a7c540d0"
+     },
+     {
+      "role": "vocab",
+      "path": "models/ur-en/indictrans2-bt_UkKC_Ph4SVqxtSbkfmVM2g/exported/vocab.uren.spm.gz",
+      "gz": 418061,
+      "size": 843115
+     },
+     {
+      "role": "lex",
+      "path": "models/ur-en/indictrans2-bt_UkKC_Ph4SVqxtSbkfmVM2g/exported/lex.50.50.uren.s2t.bin.gz",
+      "gz": 1833159,
+      "size": 3518528
+     }
+    ]
+   },
+   "tess": "urd",
+   "tessSize": 1398718
+  },
+  {
+   "code": "vi",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-vi/test_prompsit_Ep8JhBQ3QRizDT91JVy8KQ/exported/model.envi.intgemm.alphas.bin.gz",
+      "gz": 24244705,
+      "size": 31561787,
+      "sha256": "04fa6044593a404c2aa02b3096f203880852df6f8f41e5eb966ed9f2b4366737"
+     },
+     {
+      "role": "vocab",
+      "path": "models/en-vi/test_prompsit_Ep8JhBQ3QRizDT91JVy8KQ/exported/vocab.envi.spm.gz",
+      "gz": 400183,
+      "size": 785200
+     },
+     {
+      "role": "lex",
+      "path": "models/en-vi/test_prompsit_Ep8JhBQ3QRizDT91JVy8KQ/exported/lex.50.50.envi.s2t.bin.gz",
+      "gz": 2246027,
+      "size": 4597684
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "tiny",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/vi-en/spring-2024_Nc0SHbrgQaiFt4_FmKBXOA/exported/model.vien.intgemm.alphas.bin.gz",
+      "gz": 12914609,
+      "size": 17141051,
+      "sha256": "de4bf2b9ffb4d910e32720ec3a43655fb6f4062ce5219332f824fc1bdca7a5f4"
+     },
+     {
+      "role": "vocab",
+      "path": "models/vi-en/spring-2024_Nc0SHbrgQaiFt4_FmKBXOA/exported/vocab.vien.spm.gz",
+      "gz": 375643,
+      "size": 757250
+     },
+     {
+      "role": "lex",
+      "path": "models/vi-en/spring-2024_Nc0SHbrgQaiFt4_FmKBXOA/exported/lex.50.50.vien.s2t.bin.gz",
+      "gz": 1887658,
+      "size": 3910184
+     }
+    ]
+   },
+   "tess": "vie",
+   "tessSize": 531275
+  },
+  {
+   "code": "zh",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-zh/llmaat_finetune10M_qe8_f2_ByQcSxGXQRqGi-UTxYE43g/exported/model.enzh.intgemm.alphas.bin.gz",
+      "gz": 33375922,
+      "size": 43849787,
+      "sha256": "4e5accc141373565ddc8fa1565bceaa8d0c3482a82cab8131c719ebcc6c2157c"
+     },
+     {
+      "role": "srcVocab",
+      "path": "models/en-zh/llmaat_finetune10M_qe8_f2_ByQcSxGXQRqGi-UTxYE43g/exported/srcvocab.enzh.spm.gz",
+      "gz": 407784,
+      "size": 806952
+     },
+     {
+      "role": "trgVocab",
+      "path": "models/en-zh/llmaat_finetune10M_qe8_f2_ByQcSxGXQRqGi-UTxYE43g/exported/trgvocab.enzh.spm.gz",
+      "gz": 425748,
+      "size": 772004
+     },
+     {
+      "role": "lex",
+      "path": "models/en-zh/llmaat_finetune10M_qe8_f2_ByQcSxGXQRqGi-UTxYE43g/exported/lex.50.50.enzh.s2t.bin.gz",
+      "gz": 2536039,
+      "size": 4485184
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/zh-en/cjk_retrain_base-memory_cNY_yaJCStGwnTeXgW8A5w/exported/model.zhen.intgemm.alphas.bin.gz",
+      "gz": 32726806,
+      "size": 43977787,
+      "sha256": "5cd149601802fc8a18124a1c1306144dbbedc058630c4ddb2d53aa76fa9c7c06"
+     },
+     {
+      "role": "vocab",
+      "path": "models/zh-en/cjk_retrain_base-memory_cNY_yaJCStGwnTeXgW8A5w/exported/vocab.zhen.spm.gz",
+      "gz": 738862,
+      "size": 1359697
+     },
+     {
+      "role": "lex",
+      "path": "models/zh-en/cjk_retrain_base-memory_cNY_yaJCStGwnTeXgW8A5w/exported/lex.50.50.zhen.s2t.bin.gz",
+      "gz": 4822158,
+      "size": 9219192
+     }
+    ]
+   },
+   "tess": "chi_sim",
+   "tessSize": 2469156
+  },
+  {
+   "code": "zh_hant",
+   "fromEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/en-zh_hant/zh_hant_llmaat_finetune10M_qe8_f2_aQ8azdOMQOSBVjBDOVDIZQ/exported/model.enzh_hant.intgemm.alphas.bin.gz",
+      "gz": 33291007,
+      "size": 43849787,
+      "sha256": "559ab90d723a58c1f1e2ab7cc12137bc667af5ba3e325e3eb30b5cdc930db520"
+     },
+     {
+      "role": "srcVocab",
+      "path": "models/en-zh_hant/zh_hant_llmaat_finetune10M_qe8_f2_aQ8azdOMQOSBVjBDOVDIZQ/exported/srcvocab.enzh_hant.spm.gz",
+      "gz": 404976,
+      "size": 803694
+     },
+     {
+      "role": "trgVocab",
+      "path": "models/en-zh_hant/zh_hant_llmaat_finetune10M_qe8_f2_aQ8azdOMQOSBVjBDOVDIZQ/exported/trgvocab.enzh_hant.spm.gz",
+      "gz": 416659,
+      "size": 751671
+     },
+     {
+      "role": "lex",
+      "path": "models/en-zh_hant/zh_hant_llmaat_finetune10M_qe8_f2_aQ8azdOMQOSBVjBDOVDIZQ/exported/lex.50.50.enzh_hant.s2t.bin.gz",
+      "gz": 2290215,
+      "size": 4057188
+     }
+    ]
+   },
+   "toEnglish": {
+    "arch": "base-memory",
+    "released": true,
+    "files": [
+     {
+      "role": "model",
+      "path": "models/zh_hant-en/zh_hant_openlid_zh_tw_lr0002_WJi5Ozi7SZWC6hgfD5GhTA/exported/model.zh_hanten.intgemm.alphas.bin.gz",
+      "gz": 33653648,
+      "size": 43849787,
+      "sha256": "0aee91790894458f5d367551f6edcd4c9cb97852c34f221bcbf9f4701ebcf0cd"
+     },
+     {
+      "role": "srcVocab",
+      "path": "models/zh_hant-en/zh_hant_openlid_zh_tw_lr0002_WJi5Ozi7SZWC6hgfD5GhTA/exported/srcvocab.zh_hanten.spm.gz",
+      "gz": 423691,
+      "size": 769669
+     },
+     {
+      "role": "trgVocab",
+      "path": "models/zh_hant-en/zh_hant_openlid_zh_tw_lr0002_WJi5Ozi7SZWC6hgfD5GhTA/exported/trgvocab.zh_hanten.spm.gz",
+      "gz": 408143,
+      "size": 812572
+     },
+     {
+      "role": "lex",
+      "path": "models/zh_hant-en/zh_hant_openlid_zh_tw_lr0002_WJi5Ozi7SZWC6hgfD5GhTA/exported/lex.50.50.zh_hanten.s2t.bin.gz",
+      "gz": 3268812,
+      "size": 6385944
+     }
+    ]
+   },
+   "tess": "chi_tra",
+   "tessSize": 2366642
+  }
+ ]
+}
