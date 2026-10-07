@@ -2,11 +2,12 @@ package com.wanderwildwood.tsuyaku.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.MaterialTheme
@@ -18,7 +19,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -29,6 +34,7 @@ import com.wanderwildwood.tsuyaku.R
 import com.wanderwildwood.tsuyaku.engine.Catalog
 import com.wanderwildwood.tsuyaku.engine.ENGLISH
 import com.wanderwildwood.tsuyaku.engine.Outcome
+import com.wanderwildwood.tsuyaku.engine.Pieces
 import com.wanderwildwood.tsuyaku.engine.Way
 import com.wanderwildwood.tsuyaku.engine.languageName
 import kotlinx.coroutines.delay
@@ -70,22 +76,7 @@ fun Overlay(
         when {
             working || way == null -> Line(stringResource(R.string.translating))
             done != null -> SelectionContainer(Modifier.textActions()) {
-                LazyColumnMMD(modifier = Modifier.heightIn(max = 300.dp), scrollStep = 1) {
-                    done.text.split('\n').forEachIndexed { i, p ->
-                        item(key = "p$i") {
-                            TextMMD(text = p, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.fillMaxWidth())
-                        }
-                    }
-                    if (done.romanised != null) {
-                        item(key = "romanised") {
-                            TextMMD(
-                                text = done.romanised,
-                                style = MaterialTheme.typography.labelSmall,
-                                modifier = Modifier.fillMaxWidth().padding(top = 10.dp),
-                            )
-                        }
-                    }
-                }
+                Paged(done.text.split('\n'), done.romanised)
             }
             outcome is Outcome.Missing -> {
                 val name = languageName(outcome.code)
@@ -165,5 +156,51 @@ private fun Line(text: String) {
 private fun Wide(label: String, onClick: () -> Unit) {
     OutlinedButtonMMD(onClick = onClick, modifier = Modifier.fillMaxWidth().height(48.dp)) {
         TextMMD(text = label, style = MaterialTheme.typography.bodySmall)
+    }
+}
+
+/**
+ * The translation, as tall as it is and no taller, up to a share of the panel; past that it pages
+ * in a list. A list of MMD's fills all the height it is given, so a short translation in one would
+ * float in an empty box and, held sideways, push the buttons below off the screen.
+ */
+@Composable
+private fun Paged(paragraphs: List<String>, romanised: String?) {
+    val measurer = rememberTextMeasurer()
+    val body = MaterialTheme.typography.bodyLarge
+    val small = MaterialTheme.typography.labelSmall
+    val density = LocalDensity.current
+    val screen = LocalConfiguration.current.screenHeightDp.dp
+    val most = minOf(300.dp, screen * 0.4f)
+    BoxWithConstraints {
+        val width = constraints.maxWidth
+        val needed = remember(paragraphs, romanised, width) {
+            val text = paragraphs.sumOf { measurer.measure(it, body, constraints = Constraints(maxWidth = width)).size.height }
+            val extra = romanised?.let { measurer.measure(it, small, constraints = Constraints(maxWidth = width)).size.height + with(density) { 10.dp.roundToPx() } } ?: 0
+            with(density) { (text + extra).toDp() }
+        }
+        if (needed <= most) {
+            Column {
+                for (p in paragraphs) TextMMD(text = p, style = body, modifier = Modifier.fillMaxWidth())
+                if (romanised != null) TextMMD(text = romanised, style = small, modifier = Modifier.fillMaxWidth().padding(top = 10.dp))
+            }
+        } else {
+            LazyColumnMMD(modifier = Modifier.height(most), scrollStep = 1) {
+                Pieces.of(paragraphs.joinToString("\n")).forEachIndexed { i, piece ->
+                    item(key = "p$i") {
+                        TextMMD(
+                            text = piece.text,
+                            style = body,
+                            modifier = Modifier.fillMaxWidth().padding(top = if (piece.opensParagraph && i > 0) 12.dp else 0.dp),
+                        )
+                    }
+                }
+                if (romanised != null) {
+                    item(key = "romanised") {
+                        TextMMD(text = romanised, style = small, modifier = Modifier.fillMaxWidth().padding(top = 10.dp))
+                    }
+                }
+            }
+        }
     }
 }

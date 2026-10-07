@@ -41,13 +41,14 @@ class TsuyakuApp : Application() {
     }
 
     /**
-     * The loaded models are most of the app's memory. When Android says it is running short
-     * while the app is out of sight, they go; the next translation loads them again, a second
-     * or two on this phone.
+     * The loaded models are most of the app's memory: about 200 MB for one, twice that for a
+     * pair through English. They go as soon as nothing of the app is on screen, the panel over
+     * another app closing included, rather than sitting in a phone with little to spare until
+     * Android has to ask. The next translation loads them again, well under a second.
      */
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
-        if (level >= ComponentCallbacks2.TRIM_MEMORY_BACKGROUND) {
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
             scope.launch { translator.release() }
         }
     }

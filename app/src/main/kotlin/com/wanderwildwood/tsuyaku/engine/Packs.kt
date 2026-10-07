@@ -139,6 +139,8 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
                     before += size
                 }
                 set(code, scan(lang))
+                // English's picture file came with the first pack, and the others' sizes drop by it.
+                refresh()
             } catch (e: CancellationException) {
                 set(code, scan(lang))
                 throw e

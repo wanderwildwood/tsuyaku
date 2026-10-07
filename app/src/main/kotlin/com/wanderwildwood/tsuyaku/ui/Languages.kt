@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -52,22 +52,27 @@ fun LanguagePicker(
     EInkDialog(onDismiss = onDismiss) {
         TextMMD(text = title, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
         Spacer(Modifier.height(8.dp))
-        LazyColumnMMD(modifier = Modifier.heightIn(max = 360.dp)) {
-            for (code in sorted) {
-                item(key = code) {
-                    val chosen = code == current
-                    TextMMD(
-                        text = languageName(code),
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = if (chosen) FontWeight.Bold else FontWeight.Normal,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 2.dp)
-                            .then(if (chosen) Modifier.border(BorderStroke(2.dp, MaterialTheme.colorScheme.onSurface), RoundedCornerShape(8.dp)) else Modifier)
-                            .clickable { onPick(code) }
-                            .padding(horizontal = 12.dp, vertical = 10.dp),
-                    )
-                }
+        val row: @Composable (String) -> Unit = { code ->
+            val chosen = code == current
+            TextMMD(
+                text = languageName(code),
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = if (chosen) FontWeight.Bold else FontWeight.Normal,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 2.dp)
+                    .then(if (chosen) Modifier.border(BorderStroke(2.dp, MaterialTheme.colorScheme.onSurface), RoundedCornerShape(8.dp)) else Modifier)
+                    .clickable { onPick(code) }
+                    .padding(horizontal = 12.dp, vertical = 10.dp),
+            )
+        }
+        // A few fit as they are; MMD's list takes all the height it is given, so it is kept for many.
+        if (sorted.size <= FEW) {
+            Column { for (code in sorted) row(code) }
+        } else {
+            val most = minOf(360.dp, LocalConfiguration.current.screenHeightDp.dp * 0.5f)
+            LazyColumnMMD(modifier = Modifier.height(most)) {
+                for (code in sorted) item(key = code) { row(code) }
             }
         }
         Spacer(Modifier.height(12.dp))
@@ -198,3 +203,5 @@ private fun megabytes(bytes: Long, unit: Boolean = true): String {
     val number = if (mb < 10) String.format(Locale.getDefault(), "%.1f", mb) else String.format(Locale.getDefault(), "%.0f", mb)
     return if (unit) stringResource(R.string.megabytes, number) else number
 }
+
+private const val FEW = 5

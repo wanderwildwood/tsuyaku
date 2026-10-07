@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,6 +40,7 @@ import com.mudita.mmd.components.top_app_bar.TopAppBarMMD
 import com.wanderwildwood.tsuyaku.R
 import com.wanderwildwood.tsuyaku.engine.ENGLISH
 import com.wanderwildwood.tsuyaku.engine.Outcome
+import com.wanderwildwood.tsuyaku.engine.Pieces
 import com.wanderwildwood.tsuyaku.engine.languageName
 import kotlinx.coroutines.delay
 
@@ -203,14 +205,15 @@ private fun Output(desk: Desk, onGet: (String) -> Unit) {
         if (desk.input.text.isBlank()) return@Column
         when (val o = desk.outcome) {
             is Outcome.Done -> SelectionContainer(Modifier.fillMaxSize().textActions()) {
-                LazyColumnMMD(modifier = Modifier.fillMaxSize()) {
-                    val paragraphs = o.text.split('\n')
-                    paragraphs.forEachIndexed { i, p ->
+                LazyColumnMMD(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp)) {
+                    Pieces.of(o.text).forEachIndexed { i, piece ->
                         item(key = "p$i") {
                             TextMMD(
-                                text = p,
+                                text = piece.text,
                                 style = MaterialTheme.typography.bodyLarge,
-                                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(start = 16.dp, end = 16.dp, top = if (piece.opensParagraph && i > 0) 14.dp else 0.dp),
                             )
                         }
                     }
