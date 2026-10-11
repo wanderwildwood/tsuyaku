@@ -185,7 +185,7 @@ private fun Paged(paragraphs: List<String>, romanised: String?) {
                 if (romanised != null) TextMMD(text = romanised, style = small, modifier = Modifier.fillMaxWidth().padding(top = 10.dp))
             }
         } else {
-            LazyColumnMMD(modifier = Modifier.height(most), scrollStep = 1) {
+            LazyColumnMMD(modifier = Modifier.height(most), scrollStep = 1, isScrollbarVisible = false) {
                 Pieces.of(paragraphs.joinToString("\n")).forEachIndexed { i, piece ->
                     item(key = "p$i") {
                         TextMMD(

@@ -41,7 +41,7 @@ import com.wanderwildwood.tsuyaku.R
 @Composable
 fun AboutDialog(onDismiss: () -> Unit) {
     EInkDialog(onDismiss = onDismiss) {
-        LazyColumnMMD(modifier = Modifier.heightIn(max = 420.dp), scrollStep = 1) {
+        LazyColumnMMD(modifier = Modifier.heightIn(max = 420.dp), scrollStep = 1, isScrollbarVisible = false) {
             item {
                 TextMMD(
                     text = stringResource(R.string.about_title, BuildConfig.VERSION_NAME),

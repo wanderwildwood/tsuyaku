@@ -216,7 +216,7 @@ private fun Output(desk: Desk, onGet: (String) -> Unit) {
         if (desk.input.text.isBlank()) return@Column
         when (val o = desk.outcome) {
             is Outcome.Done -> SelectionContainer(Modifier.fillMaxSize().textActions()) {
-                LazyColumnMMD(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp)) {
+                LazyColumnMMD(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp), isScrollbarVisible = false) {
                     Pieces.of(o.text).forEachIndexed { i, piece ->
                         item(key = "p$i") {
                             TextMMD(

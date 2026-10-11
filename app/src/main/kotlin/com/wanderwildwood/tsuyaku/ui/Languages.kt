@@ -71,7 +71,7 @@ fun LanguagePicker(
             Column { for (code in sorted) row(code) }
         } else {
             val most = minOf(360.dp, LocalConfiguration.current.screenHeightDp.dp * 0.5f)
-            LazyColumnMMD(modifier = Modifier.height(most)) {
+            LazyColumnMMD(modifier = Modifier.height(most), isScrollbarVisible = false) {
                 for (code in sorted) item(key = code) { row(code) }
             }
         }
@@ -108,7 +108,7 @@ fun LanguagesScreen(
             }
         },
     ) { padding ->
-        LazyColumnMMD(modifier = Modifier.padding(padding).fillMaxSize()) {
+        LazyColumnMMD(modifier = Modifier.padding(padding).fillMaxSize(), isScrollbarVisible = false) {
             item(key = "note") {
                 TextMMD(
                     text = stringResource(R.string.languages_note),
