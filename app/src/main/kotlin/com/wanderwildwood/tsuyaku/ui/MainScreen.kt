@@ -3,6 +3,7 @@ package com.wanderwildwood.tsuyaku.ui
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -74,59 +75,69 @@ fun MainScreen(
     onNotes: (String) -> Unit,
 ) {
     var picking by remember { mutableStateOf<Picking?>(null) }
-    Scaffold(
-        containerColor = MaterialTheme.colorScheme.surface,
-        topBar = {
-            Bar(stringResource(R.string.app_name), null) {
-                BarButton(Icons.Languages, stringResource(R.string.cd_languages), onLanguages)
-                BarButton(Icons.Info, stringResource(R.string.cd_about), onAbout)
-            }
-        },
-    ) { padding ->
-        Column(Modifier.padding(padding).fillMaxSize()) {
-            if (installed.size <= 1) {
-                NoneYet(onLanguages)
-                return@Column
-            }
-            WayRow(desk, onFrom = { picking = Picking.From }, onTo = { picking = Picking.To })
-            HorizontalDividerMMD()
+    // The window shrinks to what the keyboard leaves, about half the Kompakt's screen. Then the
+    // bar, the picture buttons and Copy/Share step aside, so the text being typed has room and
+    // its translation still shows beneath it.
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val typing = maxHeight < 480.dp
+        Scaffold(
+            containerColor = MaterialTheme.colorScheme.surface,
+            topBar = {
+                if (!typing) {
+                    Bar(stringResource(R.string.app_name), null) {
+                        BarButton(Icons.Languages, stringResource(R.string.cd_languages), onLanguages)
+                        BarButton(Icons.Info, stringResource(R.string.cd_about), onAbout)
+                    }
+                }
+            },
+        ) { padding ->
+            Column(Modifier.padding(padding).fillMaxSize()) {
+                if (installed.size <= 1) {
+                    NoneYet(onLanguages)
+                    return@Column
+                }
+                WayRow(desk, onFrom = { picking = Picking.From }, onTo = { picking = Picking.To })
+                HorizontalDividerMMD()
 
-            if (desk.fromPicture) {
-                TextMMD(
-                    text = stringResource(R.string.from_picture),
-                    style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
+                if (desk.fromPicture && !typing) {
+                    TextMMD(
+                        text = stringResource(R.string.from_picture),
+                        style = MaterialTheme.typography.labelSmall,
+                        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
+                    )
+                }
+                TextField(
+                    value = desk.input,
+                    onValueChange = desk::edit,
+                    modifier = Modifier.fillMaxWidth().weight(1f).textActions(desk.input, desk::edit),
+                    textStyle = MaterialTheme.typography.bodyLarge,
+                    placeholder = { TextMMD(text = stringResource(R.string.input_hint), style = MaterialTheme.typography.bodyLarge) },
+                    keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
+                    // Not TextFieldMMD: its rule beneath belongs under a field, and this is half the page.
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        focusedIndicatorColor = MaterialTheme.colorScheme.surface,
+                        unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
+                    ),
                 )
-            }
-            TextField(
-                value = desk.input,
-                onValueChange = desk::edit,
-                modifier = Modifier.fillMaxWidth().weight(1f).textActions(desk.input, desk::edit),
-                textStyle = MaterialTheme.typography.bodyLarge,
-                placeholder = { TextMMD(text = stringResource(R.string.input_hint), style = MaterialTheme.typography.bodyLarge) },
-                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
-                // Not TextFieldMMD: its rule beneath belongs under a field, and this is half the page.
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = MaterialTheme.colorScheme.surface,
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedIndicatorColor = MaterialTheme.colorScheme.surface,
-                    unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
-                ),
-            )
-            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp)) {
-                BarButton(Icons.Camera, stringResource(R.string.cd_camera), onCamera)
-                BarButton(Icons.Picture, stringResource(R.string.cd_picture), onPicture)
-                Spacer(Modifier.weight(1f))
-                if (desk.input.text.isNotEmpty()) ArmedText(stringResource(R.string.clear), stringResource(R.string.clear_armed), desk::clear)
-            }
-            HorizontalDividerMMD()
+                if (!typing) {
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp)) {
+                        BarButton(Icons.Camera, stringResource(R.string.cd_camera), onCamera)
+                        BarButton(Icons.Picture, stringResource(R.string.cd_picture), onPicture)
+                        Spacer(Modifier.weight(1f))
+                        if (desk.input.text.isNotEmpty()) ArmedText(stringResource(R.string.clear), stringResource(R.string.clear_armed), desk::clear)
+                    }
+                }
+                HorizontalDividerMMD()
 
-            Box(Modifier.fillMaxWidth().weight(1f)) {
-                Output(desk, onGet)
-            }
-            val done = desk.outcome as? Outcome.Done
-            if (done != null && done.text.isNotBlank() && desk.input.text.isNotBlank()) {
-                Actions(done.text, notes, onCopy, onShare, onNotes)
+                Box(Modifier.fillMaxWidth().weight(1f)) {
+                    Output(desk, onGet)
+                }
+                val done = desk.outcome as? Outcome.Done
+                if (!typing && done != null && done.text.isNotBlank() && desk.input.text.isNotBlank()) {
+                    Actions(done.text, notes, onCopy, onShare, onNotes)
+                }
             }
         }
     }
