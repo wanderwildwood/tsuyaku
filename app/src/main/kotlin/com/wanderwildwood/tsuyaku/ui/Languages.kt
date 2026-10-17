@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mudita.mmd.components.buttons.OutlinedButtonMMD
+import androidx.compose.foundation.lazy.rememberLazyListState
 import com.mudita.mmd.components.lazy.LazyColumnMMD
 import com.mudita.mmd.components.text.TextMMD
 import com.wanderwildwood.tsuyaku.R
@@ -71,8 +72,12 @@ fun LanguagePicker(
             Column { for (code in sorted) row(code) }
         } else {
             val most = minOf(360.dp, LocalConfiguration.current.screenHeightDp.dp * 0.5f)
-            LazyColumnMMD(modifier = Modifier.height(most), isScrollbarVisible = false) {
-                for (code in sorted) item(key = code) { row(code) }
+            val state = rememberLazyListState()
+            val jump = remember(sorted) { ListJump.Letters(sorted.map { languageName(it) }) }
+            ListJumpBox(state, jump, Modifier.height(most)) {
+                LazyColumnMMD(modifier = Modifier.fillMaxSize(), state = state, isScrollbarVisible = false) {
+                    for (code in sorted) item(key = code) { row(code) }
+                }
             }
         }
         Spacer(Modifier.height(12.dp))
@@ -108,23 +113,31 @@ fun LanguagesScreen(
             }
         },
     ) { padding ->
-        LazyColumnMMD(modifier = Modifier.padding(padding).fillMaxSize(), isScrollbarVisible = false) {
-            item(key = "note") {
-                TextMMD(
-                    text = stringResource(R.string.languages_note),
-                    style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 4.dp),
-                )
+        // The letters are for the languages still to fetch, the long run of the list, A to Z
+        // after the few already here.
+        val state = rememberLazyListState()
+        val jump = remember(here, rest) {
+            ListJump.Letters(rest.map { languageName(it.code) }, firstIndex = 2 + if (here.isNotEmpty()) here.size + 1 else 0)
+        }
+        ListJumpBox(state, jump, Modifier.padding(padding)) {
+            LazyColumnMMD(modifier = Modifier.fillMaxSize(), state = state, isScrollbarVisible = false) {
+                item(key = "note") {
+                    TextMMD(
+                        text = stringResource(R.string.languages_note),
+                        style = MaterialTheme.typography.labelSmall,
+                        modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 4.dp),
+                    )
+                }
+                if (here.isNotEmpty()) {
+                    item(key = "here") { Heading(stringResource(R.string.section_here)) }
+                    for (lang in here) item(key = "h:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
+                }
+                if (rest.isNotEmpty()) {
+                    item(key = "get") { Heading(stringResource(R.string.section_get)) }
+                    for (lang in rest) item(key = "g:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
+                }
+                item(key = "foot") { Spacer(Modifier.height(24.dp)) }
             }
-            if (here.isNotEmpty()) {
-                item(key = "here") { Heading(stringResource(R.string.section_here)) }
-                for (lang in here) item(key = "h:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
-            }
-            if (rest.isNotEmpty()) {
-                item(key = "get") { Heading(stringResource(R.string.section_get)) }
-                for (lang in rest) item(key = "g:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
-            }
-            item(key = "foot") { Spacer(Modifier.height(24.dp)) }
         }
     }
 }
