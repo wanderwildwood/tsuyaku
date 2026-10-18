@@ -25,7 +25,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mudita.mmd.components.buttons.OutlinedButtonMMD
-import com.mudita.mmd.components.lazy.LazyColumnMMD
 import com.mudita.mmd.components.text.TextMMD
 import com.wanderwildwood.tsuyaku.BuildConfig
 import com.wanderwildwood.tsuyaku.R
@@ -41,7 +40,7 @@ import com.wanderwildwood.tsuyaku.R
 @Composable
 fun AboutDialog(onDismiss: () -> Unit) {
     EInkDialog(onDismiss = onDismiss) {
-        LazyColumnMMD(modifier = Modifier.heightIn(max = 420.dp), scrollStep = 1, isScrollbarVisible = false) {
+        PagedColumn(modifier = Modifier.heightIn(max = 420.dp)) {
             item {
                 TextMMD(
                     text = stringResource(R.string.about_title, BuildConfig.VERSION_NAME),

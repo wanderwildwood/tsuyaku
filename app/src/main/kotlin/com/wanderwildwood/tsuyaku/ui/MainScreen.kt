@@ -35,7 +35,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mudita.mmd.components.buttons.OutlinedButtonMMD
 import com.mudita.mmd.components.divider.HorizontalDividerMMD
-import com.mudita.mmd.components.lazy.LazyColumnMMD
 import com.mudita.mmd.components.text.TextMMD
 import com.mudita.mmd.components.top_app_bar.TopAppBarMMD
 import com.wanderwildwood.tsuyaku.R
@@ -216,7 +215,7 @@ private fun Output(desk: Desk, onGet: (String) -> Unit) {
         if (desk.input.text.isBlank()) return@Column
         when (val o = desk.outcome) {
             is Outcome.Done -> SelectionContainer(Modifier.fillMaxSize().textActions()) {
-                LazyColumnMMD(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp), isScrollbarVisible = false) {
+                PagedColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp)) {
                     Pieces.of(o.text).forEachIndexed { i, piece ->
                         item(key = "p$i") {
                             TextMMD(

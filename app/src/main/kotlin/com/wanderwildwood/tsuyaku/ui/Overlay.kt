@@ -28,7 +28,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mudita.mmd.components.buttons.OutlinedButtonMMD
-import com.mudita.mmd.components.lazy.LazyColumnMMD
 import com.mudita.mmd.components.text.TextMMD
 import com.wanderwildwood.tsuyaku.R
 import com.wanderwildwood.tsuyaku.engine.Catalog
@@ -185,7 +184,7 @@ private fun Paged(paragraphs: List<String>, romanised: String?) {
                 if (romanised != null) TextMMD(text = romanised, style = small, modifier = Modifier.fillMaxWidth().padding(top = 10.dp))
             }
         } else {
-            LazyColumnMMD(modifier = Modifier.height(most), scrollStep = 1, isScrollbarVisible = false) {
+            PagedColumn(modifier = Modifier.height(most)) {
                 Pieces.of(paragraphs.joinToString("\n")).forEachIndexed { i, piece ->
                     item(key = "p$i") {
                         TextMMD(
