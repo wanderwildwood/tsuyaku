@@ -32,7 +32,7 @@ sixteen greys, a slow redraw, and is read outdoors as often as indoors.
 ## With the other apps
 
 - **Translate in the selection menu.** Select text in Email, Messaging, Notes, Clippings or
-  the Typewriter, open the ⋮, and choose Translate, next to Define. A panel opens over the app
+  the Typewriter, open the ⋮, and choose Translate, listed after Define. A panel opens over the app
   with the translation; Back closes it. Text in the language you read is translated into it;
   text already in it is taken for a reply and translated the other way. Where the selection
   is in a field you are writing in, **Replace with translation** puts it there in place of

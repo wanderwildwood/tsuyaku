@@ -71,7 +71,9 @@
             android:screenOrientation="behind"
             android:theme="@style/Theme.App.Panel"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize">
-            <intent-filter>
+            <!-- A lower priority than Define's, so the selection menu lists it after Define and
+                 the other text apps rather than in whatever order Android found them. -->
+            <intent-filter android:priority="-1">
                 <action android:name="android.intent.action.PROCESS_TEXT" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
