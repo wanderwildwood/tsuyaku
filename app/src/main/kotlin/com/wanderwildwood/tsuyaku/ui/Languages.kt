@@ -1,5 +1,9 @@
 package com.wanderwildwood.tsuyaku.ui
 
+import com.mudita.mmd.components.switcher.SwitchMMD
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -116,7 +120,7 @@ fun LanguagesScreen(
         // after the few already here.
         val state = rememberLazyListState()
         val jump = remember(here, rest) {
-            ListJump.Letters(rest.map { languageName(it.code) }, firstIndex = 2 + if (here.isNotEmpty()) here.size + 1 else 0)
+            ListJump.Letters(rest.map { languageName(it.code) }, firstIndex = 3 + if (here.isNotEmpty()) here.size + 1 else 0)
         }
         ListJumpBox(state, jump, Modifier.padding(padding)) {
             PagedColumn(modifier = Modifier.fillMaxSize(), state = state) {
@@ -127,6 +131,8 @@ fun LanguagesScreen(
                         modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 4.dp),
                     )
                 }
+                // This app has no Settings page; the switch sits with the one list it is for.
+                item(key = "jump") { JumpSwitch() }
                 if (here.isNotEmpty()) {
                     item(key = "here") { Heading(stringResource(R.string.section_here)) }
                     for (lang in here) item(key = "h:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
@@ -148,6 +154,23 @@ private fun Heading(text: String) {
         fontWeight = FontWeight.Bold,
         modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 4.dp),
     )
+}
+
+/** "Letters and page dots": whether the letters show down the edge of this list. */
+@Composable
+private fun JumpSwitch() {
+    val context = LocalContext.current
+    val shown by rememberListJumpShown()
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { ListJumpPrefs.setShown(context, !shown) }
+            .padding(horizontal = 20.dp, vertical = 8.dp),
+    ) {
+        TextMMD(text = stringResource(R.string.list_jump_setting), style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
+        SwitchMMD(checked = shown, onCheckedChange = null)
+    }
 }
 
 @Composable
