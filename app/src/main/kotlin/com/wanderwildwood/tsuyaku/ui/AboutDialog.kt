@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -56,11 +57,16 @@ fun AboutDialog(onDismiss: () -> Unit) {
                 )
             }
             item {
-                TextMMD(
-                    text = stringResource(R.string.about_privacy),
-                    style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier.padding(top = 14.dp),
-                )
+                Column(Modifier.padding(top = 14.dp)) {
+                    TextMMD(text = stringResource(R.string.about_privacy_title), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                    TextMMD(text = stringResource(R.string.about_privacy), style = MaterialTheme.typography.labelSmall)
+                }
+            }
+            item {
+                Column(Modifier.padding(top = 14.dp)) {
+                    TextMMD(text = stringResource(R.string.about_terms_title), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                    TextMMD(text = stringResource(R.string.about_terms), style = MaterialTheme.typography.labelSmall)
+                }
             }
             item {
                 Column(Modifier.padding(top = 14.dp)) {
@@ -73,10 +79,23 @@ fun AboutDialog(onDismiss: () -> Unit) {
                 }
             }
             item {
+                val context = LocalContext.current
                 TextMMD(
                     text = "github.com/wanderwildwood/tsuyaku",
                     style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier.padding(top = 14.dp),
+                    modifier = Modifier
+                        .padding(top = 14.dp)
+                        .clickable {
+                            runCatching {
+                                context.startActivity(
+                                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/wanderwildwood/tsuyaku")),
+                                )
+                            }.onFailure {
+                                Toast.makeText(context, context.getString(R.string.about_no_browser), Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        .heightIn(min = 48.dp)
+                        .wrapContentHeight(Alignment.CenterVertically),
                 )
             }
             item { Box(Modifier.padding(top = 14.dp)) { Llama() } }
@@ -120,6 +139,7 @@ private fun Llama() {
                         Toast.makeText(context, context.getString(R.string.about_no_browser), Toast.LENGTH_SHORT).show()
                     }
                 }
+                .heightIn(min = 48.dp)
                 .padding(vertical = 4.dp),
         )
         Spacer(Modifier.width(6.dp))
@@ -135,6 +155,7 @@ private fun Llama() {
                         Toast.makeText(context, context.getString(R.string.about_no_browser), Toast.LENGTH_SHORT).show()
                     }
                 }
+                .heightIn(min = 48.dp)
                 .padding(vertical = 4.dp),
         ) {
             Image(

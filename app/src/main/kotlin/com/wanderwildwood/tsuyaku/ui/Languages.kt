@@ -1,9 +1,7 @@
 package com.wanderwildwood.tsuyaku.ui
 
-import com.mudita.mmd.components.switcher.SwitchMMD
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.Alignment
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -65,6 +63,7 @@ fun LanguagePicker(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 2.dp)
+                    .heightIn(min = 48.dp)
                     .then(if (chosen) Modifier.border(BorderStroke(2.dp, MaterialTheme.colorScheme.onSurface), RoundedCornerShape(8.dp)) else Modifier)
                     .clickable { onPick(code) }
                     .padding(horizontal = 12.dp, vertical = 10.dp),
@@ -76,8 +75,7 @@ fun LanguagePicker(
         } else {
             val most = minOf(360.dp, LocalConfiguration.current.screenHeightDp.dp * 0.5f)
             val state = rememberLazyListState()
-            val jump = remember(sorted) { ListJump.Letters(sorted.map { languageName(it) }) }
-            ListJumpBox(state, jump, Modifier.height(most)) {
+            Box(Modifier.height(most)) {
                 PagedColumn(modifier = Modifier.fillMaxSize(), state = state) {
                     for (code in sorted) item(key = code) { row(code) }
                 }
@@ -116,13 +114,8 @@ fun LanguagesScreen(
             }
         },
     ) { padding ->
-        // The letters are for the languages still to fetch, the long run of the list, A to Z
-        // after the few already here.
         val state = rememberLazyListState()
-        val jump = remember(here, rest) {
-            ListJump.Letters(rest.map { languageName(it.code) }, firstIndex = 3 + if (here.isNotEmpty()) here.size + 1 else 0)
-        }
-        ListJumpBox(state, jump, Modifier.padding(padding)) {
+        Box(Modifier.padding(padding)) {
             PagedColumn(modifier = Modifier.fillMaxSize(), state = state) {
                 item(key = "note") {
                     TextMMD(
@@ -131,8 +124,6 @@ fun LanguagesScreen(
                         modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 4.dp),
                     )
                 }
-                // This app has no Settings page; the switch sits with the one list it is for.
-                item(key = "jump") { JumpSwitch() }
                 if (here.isNotEmpty()) {
                     item(key = "here") { Heading(stringResource(R.string.section_here)) }
                     for (lang in here) item(key = "h:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
@@ -156,23 +147,6 @@ private fun Heading(text: String) {
     )
 }
 
-/** "Letters and page dots": whether the letters show down the edge of this list. */
-@Composable
-private fun JumpSwitch() {
-    val context = LocalContext.current
-    val shown by rememberListJumpShown()
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { ListJumpPrefs.setShown(context, !shown) }
-            .padding(horizontal = 20.dp, vertical = 8.dp),
-    ) {
-        TextMMD(text = stringResource(R.string.list_jump_setting), style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
-        SwitchMMD(checked = shown, onCheckedChange = null)
-    }
-}
-
 @Composable
 private fun PackRow(
     lang: Lang,
@@ -185,7 +159,7 @@ private fun PackRow(
     var armed by remember { mutableStateOf(false) }
     LaunchedEffect(armed) {
         if (armed) {
-            delay(4_000)
+            delay(6_000)
             armed = false
         }
     }

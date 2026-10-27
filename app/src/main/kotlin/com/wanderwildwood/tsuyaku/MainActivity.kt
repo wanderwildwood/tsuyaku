@@ -10,7 +10,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalCursorBlinkEnabled
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -62,6 +64,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ThemeMMD(colorScheme = monochrome) {
+                // A blinking caret redraws the panel twice a second for as long as the field has focus.
+                CompositionLocalProvider(LocalCursorBlinkEnabled provides false) {
                 val states by app.packs.states.collectAsStateWithLifecycle()
                 val installed = app.packs.installed(states)
                 LaunchedEffect(installed) { desk.settle(installed) }
@@ -97,6 +101,7 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 if (about) AboutDialog(onDismiss = { about = false })
+                }
             }
         }
     }

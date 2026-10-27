@@ -290,7 +290,7 @@ private fun Actions(text: String, notes: Boolean, onCopy: (String) -> Unit, onSh
 
 @Composable
 fun Small(label: String, modifier: Modifier, onClick: () -> Unit) {
-    OutlinedButtonMMD(onClick = onClick, modifier = modifier.height(44.dp)) {
+    OutlinedButtonMMD(onClick = onClick, modifier = modifier.height(48.dp)) {
         TextMMD(text = label, style = MaterialTheme.typography.bodySmall, maxLines = 1)
     }
 }
@@ -309,14 +309,14 @@ private fun NoneYet(onLanguages: () -> Unit) {
 
 /**
  * A press that asks first, by changing its own words: "Clear — tap again". It disarms itself
- * after four seconds, so a stray tap leaves nothing live behind.
+ * after six seconds, so a stray tap leaves nothing live behind.
  */
 @Composable
 fun ArmedText(label: String, armedLabel: String, onConfirm: () -> Unit) {
     var armed by remember { mutableStateOf(false) }
     LaunchedEffect(armed) {
         if (armed) {
-            delay(4_000)
+            delay(6_000)
             armed = false
         }
     }

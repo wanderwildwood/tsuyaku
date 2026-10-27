@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.MaterialTheme
@@ -142,7 +143,7 @@ private fun WayName(name: String, modifier: Modifier, onClick: () -> Unit) {
         fontWeight = FontWeight.Bold,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
-        modifier = modifier.clickable(onClick = onClick).padding(vertical = 10.dp),
+        modifier = modifier.clickable(onClick = onClick).heightIn(min = 48.dp).padding(vertical = 10.dp),
     )
 }
 

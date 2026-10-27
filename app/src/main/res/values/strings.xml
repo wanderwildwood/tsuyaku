@@ -98,7 +98,10 @@
 
     <string name="about_title">Translate %1$s</string>
     <string name="about_what">Select text in any app and choose Translate, or share text or a picture to it.</string>
-    <string name="about_privacy">Translation happens on the phone. The network is used only to download a language when you ask for one: the models from Mozilla, the files for reading pictures from Tesseract on GitHub.</string>
+    <string name="about_privacy_title">Privacy</string>
+    <string name="about_privacy">Your text stays on this phone. The app goes online only to download a language when you ask for one: the translation files from Mozilla\'s storage at storage.googleapis.com, and the files for reading pictures from Tesseract on raw.githubusercontent.com. Those requests carry no account and nothing you have written, but those servers see this phone\'s internet address, as any server does. There are no ads, no analytics and no tracking. Nothing is sent when you translate.</string>
+    <string name="about_terms_title">Terms</string>
+    <string name="about_terms">This app is free software under the GNU General Public License, version 3. It comes with no warranty: use it at your own risk. Machine translation can be wrong.</string>
     <string name="about_licence">GNU General Public License v3</string>
     <string name="about_upstream">Built on Offline Translator by David Ventura, GPL 3.0 or later</string>
     <string name="about_bergamot">Translation by Bergamot and Mozilla\'s models, MPL 2.0</string>
@@ -108,7 +111,4 @@
     <string name="about_feed_the_llamas">feed the llamas</string>
     <string name="about_no_browser">There is no browser on this phone to open that with.</string>
     <string name="about_close">Close</string>
-    <string name="list_jump_setting">Letters and page dots</string>
-    <string name="list_jump_shown">Shown</string>
-    <string name="list_jump_hidden">Hidden</string>
 </resources>
