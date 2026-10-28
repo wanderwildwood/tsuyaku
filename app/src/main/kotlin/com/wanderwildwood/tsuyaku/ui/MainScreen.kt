@@ -213,6 +213,14 @@ private fun Output(desk: Desk, onGet: (String) -> Unit) {
             )
         }
         if (desk.input.text.isBlank()) return@Column
+        desk.looksLike?.let {
+            TextMMD(
+                text = stringResource(R.string.wrong_language, names(desk.way.from), names(it)),
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
+            )
+        }
         when (val o = desk.outcome) {
             is Outcome.Done -> SelectionContainer(Modifier.fillMaxSize().textActions()) {
                 PagedColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp)) {

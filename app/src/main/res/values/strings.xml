@@ -27,6 +27,7 @@
     <string name="reading_picture">Reading the picture…</string>
     <!-- Over text that came from a picture -->
     <string name="from_picture">Read from a picture. Fix anything it misread.</string>
+    <string name="wrong_language">This does not look like %1$s. It looks like %2$s.</string>
     <string name="no_words">No words found in the picture.</string>
     <string name="picture_unreadable">That picture could not be opened.</string>
     <string name="no_camera">There is no camera app on this phone to take the photo.</string>

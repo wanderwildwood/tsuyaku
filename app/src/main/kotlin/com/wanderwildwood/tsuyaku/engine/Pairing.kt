@@ -32,4 +32,14 @@ object Pairing {
         val from = installed.filter { it != to }.sortedWith(compareBy({ it == ENGLISH }, { it })).firstOrNull() ?: ENGLISH
         return Way(from, to)
     }
+
+    /**
+     * The language the text seems to be in, when that is not the one being translated from
+     * and the way was left alone; null when there is nothing to say. Both Chinese scripts count
+     * as one language here, since the detector cannot tell them apart reliably.
+     */
+    fun mismatch(detected: String?, way: Way): String? {
+        if (detected == null) return null
+        return if (detected.substringBefore('_') == way.from.substringBefore('_')) null else detected
+    }
 }

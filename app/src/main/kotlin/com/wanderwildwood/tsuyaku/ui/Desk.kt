@@ -42,6 +42,10 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
     var fromPicture by mutableStateOf(memory.draftFromPicture)
         private set
 
+    /** The language the text looks like, when it is not the one translated from. */
+    var looksLike by mutableStateOf<String?>(null)
+        private set
+
     /** A sentence about the last picture, when it gave no text. */
     var notice by mutableStateOf<Int?>(null)
         private set
@@ -98,6 +102,9 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
      * since taken off the phone, gives way to the first sensible one.
      */
     fun settle(installed: Set<String>) {
+        // Until a second language is on the phone (or the scan has finished) there is nothing to
+        // settle, and what was remembered must not be overwritten by the empty start.
+        if (installed.size <= 1) return
         if (way.from != way.to && way.from in installed && way.to in installed) return
         val better = Pairing.first(installed, phoneLanguage())
         if (better == way) return
@@ -171,18 +178,24 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
             val text = input.text
             if (text.isBlank()) {
                 outcome = null
+                looksLike = null
                 return@launch
             }
             val mine = ++generation
             working = true
             try {
-                if (!fromByHand && text.length >= DETECT_FROM) {
+                if (text.length >= DETECT_FROM) {
                     val detected = runCatching { app.detector.detectLanguage(text, way.from) }.getOrNull()
-                    val better = Pairing.choose(detected, way, app.packs.installed())
-                    if (better != way) {
-                        way = better
-                        memory.way = better
+                    if (!fromByHand) {
+                        val better = Pairing.choose(detected, way, app.packs.installed())
+                        if (better != way) {
+                            way = better
+                            memory.way = better
+                        }
                     }
+                    looksLike = Pairing.mismatch(detected, way)
+                } else {
+                    looksLike = null
                 }
                 val result = app.translator.translate(way.from, way.to, text)
                 if (input.text == text) outcome = result

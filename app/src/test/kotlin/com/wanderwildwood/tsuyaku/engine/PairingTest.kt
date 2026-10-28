@@ -33,4 +33,16 @@ class PairingTest {
 
     @Test fun nothingFetchedIsEnglishBothWays() =
         assertEquals(Way("en", "en"), Pairing.first(setOf("en"), "en"))
+
+    @Test fun textInAnotherLanguageIsWarnedAbout() =
+        assertEquals("fr", Pairing.mismatch("fr", last))
+
+    @Test fun textInTheSourceLanguageIsNotWarnedAbout() =
+        assertEquals(null, Pairing.mismatch("es", last))
+
+    @Test fun noGuessIsNotWarnedAbout() =
+        assertEquals(null, Pairing.mismatch(null, last))
+
+    @Test fun theTwoChineseScriptsAreOneLanguageForTheWarning() =
+        assertEquals(null, Pairing.mismatch("zh", Way("zh_hant", "en")))
 }
