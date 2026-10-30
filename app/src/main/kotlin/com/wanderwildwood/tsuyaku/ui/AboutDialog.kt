@@ -1,8 +1,5 @@
 package com.wanderwildwood.tsuyaku.ui
 
-import android.content.Intent
-import android.net.Uri
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -39,7 +36,7 @@ import com.wanderwildwood.tsuyaku.R
  * The list is paged rather than squeezed: it is longer than the panel is tall.
  */
 @Composable
-fun AboutDialog(onDismiss: () -> Unit) {
+fun AboutDialog(onDismiss: () -> Unit, onOpen: (LegalPage) -> Unit) {
     EInkDialog(onDismiss = onDismiss) {
         PagedColumn(modifier = Modifier.heightIn(max = 420.dp)) {
             item {
@@ -56,49 +53,10 @@ fun AboutDialog(onDismiss: () -> Unit) {
                     modifier = Modifier.padding(top = 14.dp),
                 )
             }
-            item {
-                Column(Modifier.padding(top = 14.dp)) {
-                    TextMMD(text = stringResource(R.string.about_privacy_title), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
-                    TextMMD(text = stringResource(R.string.about_privacy), style = MaterialTheme.typography.labelSmall)
-                }
-            }
-            item {
-                Column(Modifier.padding(top = 14.dp)) {
-                    TextMMD(text = stringResource(R.string.about_terms_title), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
-                    TextMMD(text = stringResource(R.string.about_terms), style = MaterialTheme.typography.labelSmall)
-                }
-            }
-            item {
-                Column(Modifier.padding(top = 14.dp)) {
-                    TextMMD(text = stringResource(R.string.about_licence), style = MaterialTheme.typography.labelSmall)
-                    TextMMD(text = stringResource(R.string.about_upstream), style = MaterialTheme.typography.labelSmall)
-                    TextMMD(text = stringResource(R.string.about_bergamot), style = MaterialTheme.typography.labelSmall)
-                    TextMMD(text = stringResource(R.string.about_tesseract), style = MaterialTheme.typography.labelSmall)
-                    TextMMD(text = stringResource(R.string.about_cld), style = MaterialTheme.typography.labelSmall)
-                    TextMMD(text = stringResource(R.string.about_icons), style = MaterialTheme.typography.labelSmall)
-                }
-            }
-            item {
-                val context = LocalContext.current
-                TextMMD(
-                    text = "github.com/wanderwildwood/tsuyaku",
-                    style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier
-                        .padding(top = 14.dp)
-                        .clickable {
-                            runCatching {
-                                context.startActivity(
-                                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/wanderwildwood/tsuyaku")),
-                                )
-                            }.onFailure {
-                                Toast.makeText(context, context.getString(R.string.about_no_browser), Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                        .heightIn(min = 48.dp)
-                        .wrapContentHeight(Alignment.CenterVertically),
-                )
-            }
-            item { Box(Modifier.padding(top = 14.dp)) { Llama() } }
+            item { AboutRow(stringResource(R.string.about_row_privacy)) { onOpen(LegalPage.Privacy) } }
+            item { AboutRow(stringResource(R.string.about_row_terms)) { onOpen(LegalPage.Terms) } }
+            item { AboutRow(stringResource(R.string.about_row_licences)) { onOpen(LegalPage.Licences) } }
+            item { Box(Modifier.padding(top = 6.dp)) { Llama() } }
         }
 
         Spacer(Modifier.height(18.dp))
@@ -107,6 +65,19 @@ fun AboutDialog(onDismiss: () -> Unit) {
             modifier = Modifier.fillMaxWidth().height(48.dp),
         ) { TextMMD(text = stringResource(R.string.about_close), style = MaterialTheme.typography.bodySmall) }
     }
+}
+
+@Composable
+private fun AboutRow(text: String, onClick: () -> Unit) {
+    TextMMD(
+        text = text,
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 48.dp)
+            .clickable(onClick = onClick)
+            .wrapContentHeight(Alignment.CenterVertically),
+    )
 }
 
 /**
@@ -131,13 +102,7 @@ private fun Llama() {
             // The site's address opens the site, the way the llama beside it opens its page.
             modifier = Modifier
                 .clickable {
-                    runCatching {
-                        context.startActivity(
-                            Intent(Intent.ACTION_VIEW, Uri.parse("https://wanderthe.dev")),
-                        )
-                    }.onFailure {
-                        Toast.makeText(context, context.getString(R.string.about_no_browser), Toast.LENGTH_SHORT).show()
-                    }
+                    openLink(context, "https://wanderthe.dev", context.getString(R.string.about_no_browser_address, "wanderthe.dev"))
                 }
                 .heightIn(min = 48.dp)
                 .padding(vertical = 4.dp),
@@ -147,13 +112,7 @@ private fun Llama() {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .clickable {
-                    runCatching {
-                        context.startActivity(
-                            Intent(Intent.ACTION_VIEW, Uri.parse("https://square.link/u/AGu8oT10")),
-                        )
-                    }.onFailure {
-                        Toast.makeText(context, context.getString(R.string.about_no_browser), Toast.LENGTH_SHORT).show()
-                    }
+                    openLink(context, "https://square.link/u/AGu8oT10", context.getString(R.string.about_no_browser_address, "square.link/u/AGu8oT10"))
                 }
                 .heightIn(min = 48.dp)
                 .padding(vertical = 4.dp),

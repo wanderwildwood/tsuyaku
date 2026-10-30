@@ -18,6 +18,12 @@
         </intent>
         <!-- "To Notes" is offered only when Notes is on the phone. -->
         <package android:name="com.wanderwildwood.oboegaki" />
+        <!-- Browsers, so a web address from About opens in a real one. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
         <!-- A camera app to take the photo with. -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
