@@ -67,7 +67,7 @@ fun MainScreen(
     onLanguages: () -> Unit,
     onGet: (String) -> Unit,
     onAbout: () -> Unit,
-    onCamera: () -> Unit,
+    onCamera: (() -> Unit)?,
     onPicture: () -> Unit,
     onCopy: (String) -> Unit,
     onShare: (String) -> Unit,
@@ -122,7 +122,7 @@ fun MainScreen(
                 )
                 if (!typing) {
                     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp)) {
-                        BarButton(Icons.Camera, stringResource(R.string.cd_camera), onCamera)
+                        if (onCamera != null) BarButton(Icons.Camera, stringResource(R.string.cd_camera), onCamera)
                         BarButton(Icons.Picture, stringResource(R.string.cd_picture), onPicture)
                         Spacer(Modifier.weight(1f))
                         if (desk.input.text.isNotEmpty()) ArmedText(stringResource(R.string.clear), stringResource(R.string.clear_armed), desk::clear)

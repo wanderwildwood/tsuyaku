@@ -3,6 +3,8 @@ package com.wanderwildwood.tsuyaku
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.provider.MediaStore
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -101,7 +103,7 @@ class MainActivity : ComponentActivity() {
                             showLanguages = true
                         },
                         onAbout = { about = true },
-                        onCamera = ::openCamera,
+                        onCamera = if (cameraAvailable()) ({ openCamera() }) else null,
                         onPicture = { runCatching { gallery.launch("image/*") }.onFailure { say(R.string.nothing_to_share) } },
                         onCopy = ::copy,
                         onShare = ::share,
@@ -176,6 +178,12 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun cameraFile() = File(cacheDir, "camera/shot.jpg")
+
+    // Android 11+ shows only what <queries> names; the manifest lists IMAGE_CAPTURE. The button
+    // is offered only when a camera app really answers it.
+    private fun cameraAvailable(): Boolean = runCatching {
+        packageManager.resolveActivity(Intent(MediaStore.ACTION_IMAGE_CAPTURE), PackageManager.MATCH_DEFAULT_ONLY) != null
+    }.getOrDefault(false)
 
     private fun openCamera() {
         val file = cameraFile()
