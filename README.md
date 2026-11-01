@@ -25,20 +25,20 @@ sixteen greys, a slow redraw, and is read outdoors as often as indoors.
   into English into German, done in one go; the English in between is never shown.
 - **Scripts you may not read** get their sound in Latin letters under the translation: Greek,
   Cyrillic, Arabic, Hebrew, Japanese, Chinese, Korean, Thai and the scripts of India.
-- **Copy, Share, To Notes** under the translation. "To Notes" is there when Notes is installed.
+- **Copy, Share, To Memo** under the translation. "To Memo" is there when Memo is installed.
 - **What is typed is kept** as it is typed, so a paragraph survives Android closing the app
   while you look something up elsewhere, and a restart of the phone.
 
 ## With the other apps
 
-- **Translate in the selection menu.** Select text in Email, Messaging, Notes, Feeds or
+- **Translate in the selection menu.** Select text in Mailbox, Messaging, Memo, Feeds or
   the Typewriter, open the ⋮, and choose Translate, listed after Define. A panel opens over the app
   with the translation; Back closes it. Text in the language you read is translated into it;
   text already in it is taken for a reply and translated the other way. Where the selection
   is in a field you are writing in, **Replace with translation** puts it there in place of
   what was selected. Copy, Share and Open (in the app, to work on it) are there too.
 - **Share text** to Translate from any app, and it opens with that text.
-- **Share a picture** from Gallery, Camera or Files, or take one from the camera button: the
+- **Share a picture** from Pictures, Lens or Cabinet, or take one from the camera button: the
   words in it are read, put in the text field to be checked, and translated. A picture read in
   the wrong order or misread is easy to fix there before trusting the translation.
 - The app's own text fields carry the same ⋮, so Define works on a word in the translation.

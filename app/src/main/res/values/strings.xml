@@ -35,7 +35,7 @@
     <string name="copied">Copied</string>
     <string name="share">Share</string>
     <!-- Sends the translation to the Notes app, when it is installed -->
-    <string name="to_notes">To Notes</string>
+    <string name="to_notes">To Memo</string>
     <string name="nothing_to_share">There is nothing to share with on this phone.</string>
 
     <!-- When no language has been downloaded yet -->
@@ -105,12 +105,6 @@
     <string name="about_terms">This app is free software under the GNU General Public License, version 3. It comes with no warranty: use it at your own risk.\n\nMachine translation can be wrong. Do not rely on it where a mistake could hurt someone: medicine, law, safety, money.\n\nThis app is not made or endorsed by Mozilla, the Bergamot project, Tesseract or the authors of Offline Translator; their work is credited on the Licences page.</string>
     <string name="about_feed_the_llamas">feed the llamas</string>
     <string name="about_close">Close</string>
-    <!-- The folio at the foot of a paged list, "2 / 6"; a tap on it asks for a page -->
-    <string name="folio_of">%1$d / %2$d</string>
-    <string name="folio_go_title">Go to page</string>
-    <string name="folio_page">Page %1$d of %2$d</string>
-    <string name="folio_go">Go</string>
-    <string name="folio_cancel">Cancel</string>
     <string name="about_no_browser_address">No browser is installed. The address is %1$s.</string>
     <string name="about_row_privacy">Privacy</string>
     <string name="about_row_terms">Terms</string>
