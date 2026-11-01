@@ -110,12 +110,11 @@
     <string name="about_row_terms">Terms</string>
     <string name="about_row_licences">Licences</string>
     <string name="licences_source_head">Source code</string>
+    <string name="licences_no_text">%s needs no licence text here.</string>
     <string name="licences_source">Source: %1$s</string>
-    <string name="licences_licence_head">Licence</string>
-    <string name="licences_licence">Translate is free software: GPL-3.0-only, copyright wander wildwood. It began as a fork of Offline Translator by David Ventura, whose files keep their own notice (version 3 or any later version). What it is built on keeps its own licences, listed below.</string>
+    <string name="licences_licence">Translate is free software: GPL-3.0-only, copyright wander wildwood. It began as a fork of Offline Translator by David Ventura, whose files keep their own notice (version 3 or any later version). What it is built on keeps its own licences, each on its own page.</string>
     <string name="licences_models_head">Language files you download</string>
     <string name="licences_models">The translation files are not in the app. Each is downloaded when you ask for it from Mozilla\'s translation store (the one Firefox translates pages from), and Mozilla publishes them under the Mozilla Public License 2.0. They were trained by the Firefox Translations project on openly available collections of text. The files for reading pictures come from the tessdata_fast set of the Tesseract project, Apache 2.0. Not made or endorsed by Mozilla.</string>
-    <string name="licences_built_head">Built with</string>
     <string name="licences_gpl">GNU General Public License, version 3</string>
     <string name="licences_apache">Apache License, version 2.0</string>
     <string name="licences_mpl">Mozilla Public License, version 2.0</string>
