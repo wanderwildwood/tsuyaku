@@ -24,8 +24,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.mudita.mmd.ThemeMMD
 import com.wanderwildwood.tsuyaku.ui.AboutDialog
-import com.wanderwildwood.tsuyaku.ui.LegalPage
-import com.wanderwildwood.tsuyaku.ui.LegalScreen
 import com.wanderwildwood.tsuyaku.ui.Desk
 import com.wanderwildwood.tsuyaku.ui.LanguagesScreen
 import com.wanderwildwood.tsuyaku.ui.MainScreen
@@ -75,14 +73,8 @@ class MainActivity : ComponentActivity() {
                 LaunchedEffect(installed) { desk.settle(installed) }
                 var about by rememberSaveable { mutableStateOf(false) }
 
-                var legal by rememberSaveable { mutableStateOf<String?>(null) }
-                val legalPage = legal?.let { runCatching { LegalPage.valueOf(it) }.getOrNull() }
-                BackHandler(enabled = legalPage != null || showLanguages) {
-                    if (legalPage != null) legal = null else showLanguages = false
-                }
-                if (legalPage != null) {
-                    LegalScreen(page = legalPage, onBack = { legal = null })
-                } else if (showLanguages) {
+                BackHandler(enabled = showLanguages) { showLanguages = false }
+                if (showLanguages) {
                     LanguagesScreen(
                         catalog = app.packs.catalog,
                         states = states,
@@ -110,7 +102,7 @@ class MainActivity : ComponentActivity() {
                         onNotes = ::toNotes,
                     )
                 }
-                if (about && legalPage == null) AboutDialog(onDismiss = { about = false }, onOpen = { legal = it.name })
+                if (about) AboutDialog(onDismiss = { about = false })
                 }
             }
         }

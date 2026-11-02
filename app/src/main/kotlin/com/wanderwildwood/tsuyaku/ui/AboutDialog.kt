@@ -1,129 +1,34 @@
 package com.wanderwildwood.tsuyaku.ui
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import com.mudita.mmd.components.buttons.OutlinedButtonMMD
-import com.mudita.mmd.components.text.TextMMD
 import com.wanderwildwood.tsuyaku.BuildConfig
 import com.wanderwildwood.tsuyaku.R
 
 /**
- * What this is, how it is meant to be reached, what it sends, and whose work it is built on.
- *
- * The first line says how to use it from other apps, because that is how it is mostly used
- * and nothing on its own screen would tell a stranger so. The second says what crosses the
- * network, since a translator is the kind of app a stranger would guess sends text away.
- * The list is paged rather than squeezed: it is longer than the panel is tall.
+ * This app's About: only the words and the address. The dialog, its one Close button, the
+ * Licences row, the links and the llama are the shared HouseAbout.kt, the same in every app.
  */
 @Composable
-fun AboutDialog(onDismiss: () -> Unit, onOpen: (LegalPage) -> Unit) {
-    EInkDialog(onDismiss = onDismiss) {
-        PagedColumn(modifier = Modifier.heightIn(max = 420.dp)) {
-            item {
-                TextMMD(
-                    text = stringResource(R.string.about_title, BuildConfig.VERSION_NAME),
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Medium,
-                )
-            }
-            item {
-                TextMMD(
-                    text = stringResource(R.string.about_what),
-                    style = MaterialTheme.typography.labelSmall,
-                    modifier = Modifier.padding(top = 14.dp),
-                )
-            }
-            item { AboutRow(stringResource(R.string.about_row_privacy)) { onOpen(LegalPage.Privacy) } }
-            item { AboutRow(stringResource(R.string.about_row_terms)) { onOpen(LegalPage.Terms) } }
-            item { AboutRow(stringResource(R.string.about_row_licences)) { onOpen(LegalPage.Licences) } }
-            item { Box(Modifier.padding(top = 6.dp)) { Llama() } }
-        }
-
-        Spacer(Modifier.height(18.dp))
-        OutlinedButtonMMD(
-            onClick = onDismiss,
-            modifier = Modifier.fillMaxWidth().height(48.dp),
-        ) { TextMMD(text = stringResource(R.string.about_close), style = MaterialTheme.typography.bodySmall) }
-    }
-}
-
-@Composable
-private fun AboutRow(text: String, onClick: () -> Unit) {
-    TextMMD(
-        text = text,
-        style = MaterialTheme.typography.bodySmall,
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = 48.dp)
-            .clickable(onClick = onClick)
-            .wrapContentHeight(Alignment.CenterVertically),
-    )
-}
-
-/**
- * A llama at the foot of the About, which opens the page a donation goes to. The site's
- * address sits at the start of the same line and opens the site; the llama and its words
- * open the page.
- *
- * Straight to the checkout: the Donate button on the site only leads there anyway. The short
- * square.link form, which is what the site itself links to, so a regenerated checkout follows
- * it. A phone with nothing that opens a web address says so rather than doing nothing.
- */
-@Composable
-private fun Llama() {
+fun AboutDialog(onDismiss: () -> Unit) {
     val context = LocalContext.current
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        TextMMD(
-            text = "wanderthe.dev",
-            style = MaterialTheme.typography.labelSmall,
-            // The site's address opens the site, the way the llama beside it opens its page.
-            modifier = Modifier
-                .clickable {
-                    openLink(context, "https://wanderthe.dev", context.getString(R.string.about_no_browser_address, "wanderthe.dev"))
-                }
-                .heightIn(min = 48.dp)
-                .padding(vertical = 4.dp),
-        )
-        Spacer(Modifier.width(6.dp))
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .clickable {
-                    openLink(context, "https://square.link/u/AGu8oT10", context.getString(R.string.about_no_browser_address, "square.link/u/AGu8oT10"))
-                }
-                .heightIn(min = 48.dp)
-                .padding(vertical = 4.dp),
-        ) {
-            Image(
-                painter = painterResource(R.drawable.llama),
-                contentDescription = null,
-                modifier = Modifier.size(22.dp),
-            )
-            Spacer(Modifier.width(6.dp))
-            TextMMD(text = stringResource(R.string.about_feed_the_llamas), style = MaterialTheme.typography.labelSmall)
-        }
+    val data = AboutData(
+        title = stringResource(R.string.about_title, BuildConfig.VERSION_NAME),
+        sections = listOf(
+            AboutSection(null, stringResource(R.string.about_what)),
+            AboutSection(stringResource(R.string.about_privacy_title), stringResource(R.string.about_privacy)),
+            AboutSection(stringResource(R.string.about_terms_title), stringResource(R.string.about_terms)),
+        ),
+        sourceUrl = SOURCE_URL,
+    )
+    val labels = AboutLabels(
+        close = stringResource(R.string.about_close),
+        licences = stringResource(R.string.licences_title),
+        feedTheLlamas = stringResource(R.string.about_feed_the_llamas),
+        noBrowser = { address -> context.getString(R.string.about_no_browser_address, address) },
+    )
+    HouseAboutDialog(data, labels, R.drawable.llama, onDismiss) { modifier, back ->
+        LicencesScreen(rememberLicencesData(), rememberLicencesLabels(), onBack = back, modifier = modifier)
     }
 }
