@@ -1,6 +1,7 @@
 package com.wanderwildwood.tsuyaku
 
 import android.content.Context
+import androidx.core.content.edit
 import com.wanderwildwood.tsuyaku.engine.ENGLISH
 import com.wanderwildwood.tsuyaku.engine.Way
 import java.io.File
@@ -26,7 +27,10 @@ class Memory(context: Context) {
             return Way(from, to)
         }
         set(value) {
-            prefs.edit().putString("from", value?.from ?: ENGLISH).putString("to", value?.to ?: ENGLISH).apply()
+            prefs.edit {
+                putString("from", value?.from ?: ENGLISH)
+                putString("to", value?.to ?: ENGLISH)
+            }
         }
 
     var draft: String
@@ -43,7 +47,7 @@ class Memory(context: Context) {
     /** True when the draft was read from a picture, until it is edited or replaced. */
     var draftFromPicture: Boolean
         get() = prefs.getBoolean("from_picture", false)
-        set(value) = prefs.edit().putBoolean("from_picture", value).apply()
+        set(value) = prefs.edit { putBoolean("from_picture", value) }
 
     /**
      * A shared picture waiting to be read. It is copied here the moment it arrives, because the
