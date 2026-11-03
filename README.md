@@ -6,7 +6,7 @@ Translation on the phone, without sending the text anywhere: typed, pasted, sele
 another app, or read from a picture. On an E Ink phone, black on white, with nothing moving.
 
 Built for the [Mudita Kompakt](https://mudita.com/products/kompakt/), whose 4.3" panel has
-sixteen greys, a slow redraw, and is read outdoors as often as indoors.
+sixteen grays, a slow redraw, and is read outdoors as often as indoors.
 
 ## Screenshots
 
@@ -68,7 +68,7 @@ their rows say so.
 
 Where the files come from:
 
-| | From | Licence |
+| | From | License |
 |---|---|---|
 | Translation models | Mozilla's own store, the one Firefox translates pages from: `storage.googleapis.com/moz-fx-translations-data--303e-prod-translations-data`, as listed in its `db/models.json` | MPL 2.0 |
 | Files for reading pictures | Tesseract's "fast" set, `github.com/tesseract-ocr/tessdata_fast`, pinned to commit `8741641` | Apache 2.0 |
@@ -114,9 +114,9 @@ key by design.
 A fork of [Offline Translator](https://github.com/DavidVentura/offline-translator) by David
 Ventura, GNU General Public License v3 or later, at its September 2025 state (`b6f7e7d`), with
 its translation library as of `95cf1c8`. That is where the engine and its handling come from:
-the Bergamot wrapper and its build, pivoting through English, recognising the language with
+the Bergamot wrapper and its build, pivoting through English, recognizing the language with
 CLD2, reading pictures with Tesseract and putting the words back in reading order, and the
-romanisation. Forum users on the Kompakt found it already worked well there. The screens are
+romanization. Forum users on the Kompakt found it already worked well there. The screens are
 written fresh in Jetpack Compose against [MMD](https://github.com/mudita/MMD), Mudita's E Ink
 component library, and the language packs follow Mozilla's current store, which replaced the
 one that version downloaded from.
@@ -143,7 +143,7 @@ For updates without doing this by hand, add this repository to
 
     https://github.com/wanderwildwood/tsuyaku
 
-## Licence
+## License
 
 GNU General Public License v3.0 only. See [LICENSE](LICENSE). The files carried over from
 Offline Translator keep their own notice, version 3 or any later version.
