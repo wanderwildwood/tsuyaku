@@ -18,6 +18,7 @@
 package com.wanderwildwood.tsuyaku.engine
 
 import android.content.Context
+import androidx.core.graphics.scale
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
@@ -63,7 +64,7 @@ class ImageProcessor(
     val newWidth = (width * scale).toInt()
     val newHeight = (height * scale).toInt()
     Log.i("ImageProcessor", "Resized to $newWidth x $newHeight")
-    return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
+    return bitmap.scale(newWidth, newHeight)
   }
 
   fun correctImageOrientation(

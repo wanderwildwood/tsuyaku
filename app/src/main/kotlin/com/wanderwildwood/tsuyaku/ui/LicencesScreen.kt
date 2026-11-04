@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Density
@@ -141,12 +142,13 @@ private fun LicenceRowView(row: LicenceRow, height: Dp, titleLines: Int, onClick
 @Composable
 private fun LicencePageScreen(page: LicencePage, labels: LicencesLabels, isApp: Boolean, onBack: () -> Unit, modifier: Modifier) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val go = { url: String -> openLink(context, url, labels.noBrowser(url.removePrefix("https://"))) }
     val loaded by produceState(emptyList<List<String>>(), page.title) {
         value = withContext(Dispatchers.IO) {
             page.texts.map { t ->
                 runCatching {
-                    licenceParagraphs(context.resources.openRawResource(t.rawResId).bufferedReader().use { it.readText() })
+                    licenceParagraphs(resources.openRawResource(t.rawResId).bufferedReader().use { it.readText() })
                 }.getOrDefault(emptyList())
             }
         }
