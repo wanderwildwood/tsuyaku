@@ -27,6 +27,7 @@ import com.wanderwildwood.tsuyaku.ui.AboutDialog
 import com.wanderwildwood.tsuyaku.ui.Desk
 import com.wanderwildwood.tsuyaku.ui.LanguagesScreen
 import com.wanderwildwood.tsuyaku.ui.MainScreen
+import com.wanderwildwood.tsuyaku.ui.houseTypography
 import com.wanderwildwood.tsuyaku.ui.monochrome
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -66,7 +67,7 @@ class MainActivity : ComponentActivity() {
         val notes = notesInstalled()
 
         setContent {
-            ThemeMMD(colorScheme = monochrome) {
+            ThemeMMD(colorScheme = monochrome, typography = houseTypography) {
                 ArmedScope {
                     // A blinking caret redraws the panel twice a second for as long as the field has focus.
                     CompositionLocalProvider(LocalCursorBlinkEnabled provides false) {

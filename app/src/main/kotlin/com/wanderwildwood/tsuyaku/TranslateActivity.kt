@@ -18,6 +18,7 @@ import com.wanderwildwood.tsuyaku.engine.Pairing
 import com.wanderwildwood.tsuyaku.engine.Way
 import com.wanderwildwood.tsuyaku.ui.Desk
 import com.wanderwildwood.tsuyaku.ui.Overlay
+import com.wanderwildwood.tsuyaku.ui.houseTypography
 import com.wanderwildwood.tsuyaku.ui.monochrome
 import com.wanderwildwood.tsuyaku.ui.ArmedScope
 
@@ -48,7 +49,7 @@ class TranslateActivity : ComponentActivity() {
             callingActivity != null
 
         setContent {
-            ThemeMMD(colorScheme = monochrome) {
+            ThemeMMD(colorScheme = monochrome, typography = houseTypography) {
                 ArmedScope {
                     val packs = app.packs
                     var way by remember { mutableStateOf<Way?>(null) }
