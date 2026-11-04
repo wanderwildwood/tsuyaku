@@ -19,6 +19,7 @@ import com.wanderwildwood.tsuyaku.engine.Way
 import com.wanderwildwood.tsuyaku.ui.Desk
 import com.wanderwildwood.tsuyaku.ui.Overlay
 import com.wanderwildwood.tsuyaku.ui.monochrome
+import com.wanderwildwood.tsuyaku.ui.ArmedScope
 
 /**
  * "Translate" in the menu other apps show over selected text, and in Android's own translate
@@ -48,44 +49,46 @@ class TranslateActivity : ComponentActivity() {
 
         setContent {
             ThemeMMD(colorScheme = monochrome) {
-                val packs = app.packs
-                var way by remember { mutableStateOf<Way?>(null) }
-                var outcome by remember { mutableStateOf<Outcome?>(null) }
-                var working by remember { mutableStateOf(true) }
+                ArmedScope {
+                    val packs = app.packs
+                    var way by remember { mutableStateOf<Way?>(null) }
+                    var outcome by remember { mutableStateOf<Outcome?>(null) }
+                    var working by remember { mutableStateOf(true) }
 
-                val states by packs.states.collectAsStateWithLifecycle()
-                LaunchedEffect(Unit) {
-                    val installed = packs.installedNow()
-                    val last = app.memory.way ?: Pairing.first(installed, Desk.phoneLanguage())
-                    val detected = runCatching { app.detector.detectLanguage(text, last.from) }.getOrNull()
-                    way = Pairing.choose(detected, last, installed)
-                }
-                LaunchedEffect(way) {
-                    val w = way ?: return@LaunchedEffect
-                    working = true
-                    outcome = app.translator.translate(w.from, w.to, text)
-                    working = false
-                }
+                    val states by packs.states.collectAsStateWithLifecycle()
+                    LaunchedEffect(Unit) {
+                        val installed = packs.installedNow()
+                        val last = app.memory.way ?: Pairing.first(installed, Desk.phoneLanguage())
+                        val detected = runCatching { app.detector.detectLanguage(text, last.from) }.getOrNull()
+                        way = Pairing.choose(detected, last, installed)
+                    }
+                    LaunchedEffect(way) {
+                        val w = way ?: return@LaunchedEffect
+                        working = true
+                        outcome = app.translator.translate(w.from, w.to, text)
+                        working = false
+                    }
 
-                Overlay(
-                    text = text,
-                    way = way,
-                    outcome = outcome,
-                    working = working,
-                    installed = packs.installed(states),
-                    catalog = packs.catalog,
-                    writable = writable,
-                    onWay = { w ->
-                        way = w
-                        app.memory.way = w
-                    },
-                    onReplace = { replaceWith(it) },
-                    onCopy = { copy(it) },
-                    onShare = { share(it) },
-                    onOpen = { open(text, way) },
-                    onGet = { code -> getLanguage(code) },
-                    onDismiss = ::finish,
-                )
+                    Overlay(
+                        text = text,
+                        way = way,
+                        outcome = outcome,
+                        working = working,
+                        installed = packs.installed(states),
+                        catalog = packs.catalog,
+                        writable = writable,
+                        onWay = { w ->
+                            way = w
+                            app.memory.way = w
+                        },
+                        onReplace = { replaceWith(it) },
+                        onCopy = { copy(it) },
+                        onShare = { share(it) },
+                        onOpen = { open(text, way) },
+                        onGet = { code -> getLanguage(code) },
+                        onDismiss = ::finish,
+                    )
+                }
             }
         }
     }

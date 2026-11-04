@@ -316,18 +316,12 @@ private fun NoneYet(onLanguages: () -> Unit) {
 }
 
 /**
- * A press that asks first, by changing its own words: "Clear — tap again". It disarms itself
- * after six seconds, so a stray tap leaves nothing live behind.
+ * A press that asks first, by changing its own words: "Clear — tap again". It stays armed, with
+ * no timer, until the next other touch, Back or leaving (shared Armed.kt).
  */
 @Composable
 fun ArmedText(label: String, armedLabel: String, onConfirm: () -> Unit) {
-    var armed by remember { mutableStateOf(false) }
-    LaunchedEffect(armed) {
-        if (armed) {
-            delay(6_000)
-            armed = false
-        }
-    }
+    var armed by rememberArmedFlag()
     TextMMD(
         text = if (armed) armedLabel else label,
         style = MaterialTheme.typography.bodySmall,

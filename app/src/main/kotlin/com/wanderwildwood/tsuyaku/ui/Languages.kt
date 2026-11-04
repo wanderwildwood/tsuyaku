@@ -15,9 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -34,7 +32,6 @@ import com.wanderwildwood.tsuyaku.engine.Lang
 import com.wanderwildwood.tsuyaku.engine.PackState
 import com.wanderwildwood.tsuyaku.engine.Why
 import com.wanderwildwood.tsuyaku.engine.languageName
-import kotlinx.coroutines.delay
 import java.util.Locale
 
 /**
@@ -156,13 +153,7 @@ private fun PackRow(
     onDelete: (String) -> Unit,
 ) {
     val name = languageName(lang.code)
-    var armed by remember { mutableStateOf(false) }
-    LaunchedEffect(armed) {
-        if (armed) {
-            delay(6_000)
-            armed = false
-        }
-    }
+    var armed by rememberArmedFlag()
     val line = when (state) {
         is PackState.Here -> stringResource(if (state.onCard) R.string.pack_here_card else R.string.pack_here, megabytes(state.bytes))
         is PackState.Getting -> stringResource(R.string.pack_getting, megabytes(state.done, unit = false), megabytes(state.total))

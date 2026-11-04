@@ -32,6 +32,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import com.wanderwildwood.tsuyaku.ui.ArmedScope
 
 /**
  * The home-screen entry, and where text and pictures shared from other apps arrive.
@@ -66,43 +67,45 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ThemeMMD(colorScheme = monochrome) {
-                // A blinking caret redraws the panel twice a second for as long as the field has focus.
-                CompositionLocalProvider(LocalCursorBlinkEnabled provides false) {
-                val states by app.packs.states.collectAsStateWithLifecycle()
-                val installed = app.packs.installed(states)
-                LaunchedEffect(installed) { desk.settle(installed) }
-                var about by rememberSaveable { mutableStateOf(false) }
+                ArmedScope {
+                    // A blinking caret redraws the panel twice a second for as long as the field has focus.
+                    CompositionLocalProvider(LocalCursorBlinkEnabled provides false) {
+                    val states by app.packs.states.collectAsStateWithLifecycle()
+                    val installed = app.packs.installed(states)
+                    LaunchedEffect(installed) { desk.settle(installed) }
+                    var about by rememberSaveable { mutableStateOf(false) }
 
-                BackHandler(enabled = showLanguages) { showLanguages = false }
-                if (showLanguages) {
-                    LanguagesScreen(
-                        catalog = app.packs.catalog,
-                        states = states,
-                        onDownload = app.packs::download,
-                        onStop = app.packs::stop,
-                        onDelete = app.packs::delete,
-                        onBack = { showLanguages = false },
-                        onAbout = { about = true },
-                    )
-                } else {
-                    MainScreen(
-                        desk = desk,
-                        installed = installed,
-                        notes = notes,
-                        onLanguages = { showLanguages = true },
-                        onGet = { code ->
-                            app.packs.download(code)
-                            showLanguages = true
-                        },
-                        onAbout = { about = true },
-                        onCamera = if (cameraAvailable()) ({ openCamera() }) else null,
-                        onPicture = { runCatching { gallery.launch("image/*") }.onFailure { say(R.string.nothing_to_share) } },
-                        onCopy = ::copy,
-                        onShare = ::share,
-                        onNotes = ::toNotes,
-                    )
-                }
-                if (about) AboutDialog(onDismiss = { about = false })
+                    BackHandler(enabled = showLanguages) { showLanguages = false }
+                    if (showLanguages) {
+                        LanguagesScreen(
+                            catalog = app.packs.catalog,
+                            states = states,
+                            onDownload = app.packs::download,
+                            onStop = app.packs::stop,
+                            onDelete = app.packs::delete,
+                            onBack = { showLanguages = false },
+                            onAbout = { about = true },
+                        )
+                    } else {
+                        MainScreen(
+                            desk = desk,
+                            installed = installed,
+                            notes = notes,
+                            onLanguages = { showLanguages = true },
+                            onGet = { code ->
+                                app.packs.download(code)
+                                showLanguages = true
+                            },
+                            onAbout = { about = true },
+                            onCamera = if (cameraAvailable()) ({ openCamera() }) else null,
+                            onPicture = { runCatching { gallery.launch("image/*") }.onFailure { say(R.string.nothing_to_share) } },
+                            onCopy = ::copy,
+                            onShare = ::share,
+                            onNotes = ::toNotes,
+                        )
+                    }
+                    if (about) AboutDialog(onDismiss = { about = false })
+                    }
                 }
             }
         }
