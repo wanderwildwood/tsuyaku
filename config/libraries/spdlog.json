@@ -1,0 +1,14 @@
+{
+  "uniqueId": "spdlog",
+  "name": "spdlog",
+  "description": "Logging inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Gabi Melman"
+    }
+  ],
+  "website": "https://github.com/gabime/spdlog",
+  "licenses": [
+    "spdlog-mit"
+  ]
+}

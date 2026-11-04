@@ -1,0 +1,14 @@
+{
+  "uniqueId": "cnpy",
+  "name": "cnpy",
+  "description": "Reads NumPy model files, inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Carl Rogers"
+    }
+  ],
+  "website": "https://github.com/rogersce/cnpy",
+  "licenses": [
+    "cnpy-mit"
+  ]
+}

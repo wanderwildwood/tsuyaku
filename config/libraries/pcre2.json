@@ -1,0 +1,15 @@
+{
+  "uniqueId": "pcre2",
+  "name": "PCRE2",
+  "artifactVersion": "10.39",
+  "description": "Regular expressions for ssplit-cpp; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Philip Hazel, University of Cambridge, Zoltan Herczeg"
+    }
+  ],
+  "website": "https://github.com/PCRE2Project/pcre2",
+  "licenses": [
+    "pcre2-bsd"
+  ]
+}

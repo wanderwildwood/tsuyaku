@@ -1,0 +1,14 @@
+{
+  "uniqueId": "half-float",
+  "name": "half_float (umHalf)",
+  "description": "16-bit floating point numbers inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Chris Maiwald, Alexander Gessler"
+    }
+  ],
+  "website": "https://github.com/marian-nmt/marian-dev/tree/master/src/3rd_party/half_float",
+  "licenses": [
+    "half-float-bsd"
+  ]
+}

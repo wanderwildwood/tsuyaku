@@ -1,0 +1,15 @@
+{
+  "uniqueId": "cli11",
+  "name": "CLI11",
+  "artifactVersion": "1.6",
+  "description": "Option parsing inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "University of Cincinnati, Henry Schreiner"
+    }
+  ],
+  "website": "https://github.com/CLIUtils/CLI11",
+  "licenses": [
+    "cli11-bsd"
+  ]
+}

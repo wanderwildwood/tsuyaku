@@ -1,0 +1,14 @@
+{
+  "uniqueId": "phf",
+  "name": "phf",
+  "description": "Perfect hashing inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "William Ahern"
+    }
+  ],
+  "website": "https://github.com/wahern/phf",
+  "licenses": [
+    "phf-mit"
+  ]
+}

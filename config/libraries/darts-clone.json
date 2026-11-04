@@ -1,0 +1,14 @@
+{
+  "uniqueId": "darts-clone",
+  "name": "Darts-clone",
+  "description": "A double-array trie inside SentencePiece; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Susumu Yata"
+    }
+  ],
+  "website": "https://github.com/s-yata/darts-clone",
+  "licenses": [
+    "darts-clone-bsd"
+  ]
+}

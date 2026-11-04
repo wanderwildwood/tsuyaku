@@ -1,0 +1,14 @@
+{
+  "uniqueId": "protobuf-lite",
+  "name": "Protocol Buffers (lite runtime)",
+  "description": "Reads SentencePiece's model files, inside SentencePiece; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Google"
+    }
+  ],
+  "website": "https://github.com/protocolbuffers/protobuf",
+  "licenses": [
+    "protobuf-lite-bsd"
+  ]
+}

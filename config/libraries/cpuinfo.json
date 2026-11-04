@@ -1,0 +1,14 @@
+{
+  "uniqueId": "cpuinfo",
+  "name": "cpuinfo",
+  "description": "Processor feature detection for ruy; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Google, Facebook, Georgia Institute of Technology, Marat Dukhan"
+    }
+  ],
+  "website": "https://github.com/pytorch/cpuinfo",
+  "licenses": [
+    "cpuinfo-bsd"
+  ]
+}

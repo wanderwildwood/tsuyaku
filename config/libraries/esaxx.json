@@ -1,0 +1,14 @@
+{
+  "uniqueId": "esaxx",
+  "name": "esaxx",
+  "description": "Suffix arrays inside SentencePiece; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Daisuke Okanohara"
+    }
+  ],
+  "website": "https://github.com/hillbig/esaxx",
+  "licenses": [
+    "esaxx-mit"
+  ]
+}

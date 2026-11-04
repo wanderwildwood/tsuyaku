@@ -1,0 +1,14 @@
+{
+  "uniqueId": "zstr",
+  "name": "zstr",
+  "description": "Compressed file streams inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Matei David, Ontario Institute for Cancer Research"
+    }
+  ],
+  "website": "https://github.com/mateidavid/zstr",
+  "licenses": [
+    "zstr-mit"
+  ]
+}

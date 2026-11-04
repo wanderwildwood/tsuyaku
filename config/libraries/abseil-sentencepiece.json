@@ -1,0 +1,14 @@
+{
+  "uniqueId": "abseil-sentencepiece",
+  "name": "Abseil (the parts SentencePiece carries)",
+  "description": "Support code inside SentencePiece; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "The Abseil Authors (Google)"
+    }
+  ],
+  "website": "https://github.com/abseil/abseil-cpp",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

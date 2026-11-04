@@ -1,0 +1,14 @@
+{
+  "uniqueId": "faiss",
+  "name": "Faiss (the parts Marian carries)",
+  "description": "Vector search for Marian's shortlists; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Facebook, Inc. and its affiliates"
+    }
+  ],
+  "website": "https://github.com/facebookresearch/faiss",
+  "licenses": [
+    "faiss-mit"
+  ]
+}

@@ -29,7 +29,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Density
@@ -37,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import android.content.Context
 import com.mudita.mmd.components.buttons.OutlinedButtonMMD
 import com.mudita.mmd.components.text.TextMMD
 import kotlinx.coroutines.Dispatchers
@@ -91,6 +91,32 @@ fun LicencesScreen(
     }
 }
 
+/**
+ * The libraries the build listed (res/raw/aboutlibraries.json, written by the AboutLibraries Gradle
+ * plugin), read once per screen. Empty if the file is missing or unreadable; the app's test makes
+ * sure it is neither.
+ */
+@Composable
+fun rememberGeneratedComponents(rawResId: Int): List<LicenceComponent> {
+    val context = LocalContext.current
+    return remember(rawResId) { readGeneratedComponents(context, rawResId) }
+}
+
+/**
+ * The build-time list's resource id looked up by name, for a screen that lives in a library module
+ * (tayori's feature module, Chess+'s ui module), which cannot see the app module's R.raw. 0 if the
+ * app module does not apply the plugin. The name is a string in the code, so R8's resource
+ * shrinker (default, non-strict) keeps the file.
+ */
+fun generatedLicencesResId(context: Context): Int =
+    context.resources.getIdentifier("aboutlibraries", "raw", context.packageName)
+
+/** The same for code without Compose (a Views screen): the build-time list as [LicenceComponent]s. */
+fun readGeneratedComponents(context: Context, rawResId: Int): List<LicenceComponent> =
+    runCatching {
+        licenceComponentsFromJson(context.resources.openRawResource(rawResId).bufferedReader().use { it.readText() })
+    }.getOrDefault(emptyList())
+
 /** One text line's height in px: the style's line height, or 1.3 times its size where it has none. */
 private fun Density.lineHeightPx(style: TextStyle): Int {
     val lh = if (style.lineHeight.isSp) style.lineHeight.toPx() else style.fontSize.toPx() * 1.3f
@@ -142,13 +168,12 @@ private fun LicenceRowView(row: LicenceRow, height: Dp, titleLines: Int, onClick
 @Composable
 private fun LicencePageScreen(page: LicencePage, labels: LicencesLabels, isApp: Boolean, onBack: () -> Unit, modifier: Modifier) {
     val context = LocalContext.current
-    val resources = LocalResources.current
     val go = { url: String -> openLink(context, url, labels.noBrowser(url.removePrefix("https://"))) }
     val loaded by produceState(emptyList<List<String>>(), page.title) {
         value = withContext(Dispatchers.IO) {
             page.texts.map { t ->
                 runCatching {
-                    licenceParagraphs(resources.openRawResource(t.rawResId).bufferedReader().use { it.readText() })
+                    licenceParagraphs(t.content ?: context.resources.openRawResource(t.rawResId).bufferedReader().use { it.readText() })
                 }.getOrDefault(emptyList())
             }
         }

@@ -1,0 +1,14 @@
+{
+  "uniqueId": "ssplit-cpp",
+  "name": "ssplit-cpp (sentence splitting)",
+  "description": "Splits text into sentences before it is translated; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "University of Edinburgh"
+    }
+  ],
+  "website": "https://github.com/browsermt/ssplit-cpp",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

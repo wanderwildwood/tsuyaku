@@ -1,0 +1,14 @@
+{
+  "uniqueId": "sse-mathfun",
+  "name": "sse_mathfun and avx_mathfun",
+  "description": "Vectorized math functions inside Marian; native code inside libbergamot-sys.so, the app's translator (the x86_64 build).",
+  "developers": [
+    {
+      "name": "Julien Pommier, Giovanni Garberoglio"
+    }
+  ],
+  "website": "http://gruntthepeon.free.fr/ssemath/",
+  "licenses": [
+    "sse-mathfun-zlib"
+  ]
+}

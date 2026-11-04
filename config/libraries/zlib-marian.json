@@ -1,0 +1,14 @@
+{
+  "uniqueId": "zlib-marian",
+  "name": "zlib (Marian's copy)",
+  "description": "Compression, built from Marian's own copy; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Jean-loup Gailly, Mark Adler"
+    }
+  ],
+  "website": "https://zlib.net",
+  "licenses": [
+    "zlib-own"
+  ]
+}

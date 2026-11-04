@@ -1,0 +1,14 @@
+{
+  "uniqueId": "mio",
+  "name": "mio",
+  "description": "Memory-mapped files, inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "mandreyel"
+    }
+  ],
+  "website": "https://github.com/mandreyel/mio",
+  "licenses": [
+    "mio-mit"
+  ]
+}

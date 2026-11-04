@@ -1,0 +1,15 @@
+{
+  "uniqueId": "bergamot-translator",
+  "name": "Bergamot translator",
+  "artifactVersion": "0.4.5",
+  "description": "The translation engine, from the Bergamot project, in David Ventura's fork; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "the Bergamot project, David Ventura"
+    }
+  ],
+  "website": "https://github.com/DavidVentura/bergamot-translator",
+  "licenses": [
+    "MPL-2.0"
+  ]
+}

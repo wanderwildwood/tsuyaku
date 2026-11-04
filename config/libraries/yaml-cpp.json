@@ -1,0 +1,14 @@
+{
+  "uniqueId": "yaml-cpp",
+  "name": "yaml-cpp",
+  "description": "Reads the models' configuration, inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Jesse Beder"
+    }
+  ],
+  "website": "https://github.com/jbeder/yaml-cpp",
+  "licenses": [
+    "yaml-cpp-mit"
+  ]
+}

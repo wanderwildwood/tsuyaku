@@ -1,0 +1,14 @@
+{
+  "uniqueId": "ruy",
+  "name": "ruy",
+  "description": "Matrix multiplication for ARM and x86, inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Google"
+    }
+  ],
+  "website": "https://github.com/google/ruy",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

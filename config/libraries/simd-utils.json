@@ -1,0 +1,14 @@
+{
+  "uniqueId": "simd-utils",
+  "name": "simd_utils",
+  "description": "SIMD helpers inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "JishinMaster"
+    }
+  ],
+  "website": "https://github.com/JishinMaster/simd_utils",
+  "licenses": [
+    "simd-utils-bsd"
+  ]
+}

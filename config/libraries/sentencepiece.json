@@ -1,0 +1,14 @@
+{
+  "uniqueId": "sentencepiece",
+  "name": "SentencePiece",
+  "description": "Splits text into the pieces the translation models work with, inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Google"
+    }
+  ],
+  "website": "https://github.com/google/sentencepiece",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

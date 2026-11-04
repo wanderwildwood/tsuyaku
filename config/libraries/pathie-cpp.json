@@ -1,0 +1,14 @@
+{
+  "uniqueId": "pathie-cpp",
+  "name": "pathie-cpp",
+  "description": "File paths inside Marian; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Marvin Gülker"
+    }
+  ],
+  "website": "https://github.com/Quintus/pathie-cpp",
+  "licenses": [
+    "pathie-cpp-bsd"
+  ]
+}

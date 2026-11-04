@@ -1,0 +1,14 @@
+{
+  "uniqueId": "llvm-runtimes",
+  "name": "LLVM C++ and OpenMP runtimes",
+  "description": "The C++ standard library (libc++) and the OpenMP runtime from the Android NDK's LLVM toolchain, linked into the app's native code (Bergamot and Tesseract).",
+  "developers": [
+    {
+      "name": "The LLVM Project"
+    }
+  ],
+  "website": "https://llvm.org",
+  "licenses": [
+    "llvm-apache-exception"
+  ]
+}

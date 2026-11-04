@@ -1,0 +1,8 @@
+{
+  "uniqueId": "cz.adaptech.tesseract4android:tesseract4android-openmp",
+  "name": "Tesseract OCR, via Tesseract4Android",
+  "description": "Reads the words in a picture: Tesseract 5.5.1, built as native code by Tesseract4Android 4.9.0 (the OpenMP build), which also carries Leptonica, libjpeg and libpng (listed on their own).",
+  "developers": [{ "name": "Google and the Tesseract authors, adaptech.cz" }],
+  "website": "https://github.com/adaptech-cz/Tesseract4Android",
+  "licenses": ["Apache-2.0"]
+}

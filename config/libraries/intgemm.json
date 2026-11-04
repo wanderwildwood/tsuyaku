@@ -1,0 +1,14 @@
+{
+  "uniqueId": "intgemm",
+  "name": "intgemm",
+  "description": "Fast 8- and 16-bit matrix multiplication for x86 processors, inside Marian; native code inside libbergamot-sys.so, the app's translator (the x86_64 build).",
+  "developers": [
+    {
+      "name": "University of Edinburgh, Nikolay Bogoychev, Mateusz Chudyk, Kenneth Heafield, Microsoft Corporation"
+    }
+  ],
+  "website": "https://github.com/kpu/intgemm",
+  "licenses": [
+    "intgemm-mit"
+  ]
+}

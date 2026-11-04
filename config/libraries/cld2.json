@@ -1,0 +1,14 @@
+{
+  "uniqueId": "cld2",
+  "name": "CLD2 (language guessing)",
+  "description": "Guesses which language a text is in; native code inside libbergamot-sys.so, the app's translator.",
+  "developers": [
+    {
+      "name": "Google, CLD2Owners"
+    }
+  ],
+  "website": "https://github.com/CLD2Owners/cld2",
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

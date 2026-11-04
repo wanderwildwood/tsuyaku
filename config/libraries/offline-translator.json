@@ -1,0 +1,14 @@
+{
+  "uniqueId": "offline-translator",
+  "name": "Offline Translator (the app this began as)",
+  "description": "Translate began as a fork of Offline Translator; its code is still in the app.",
+  "developers": [
+    {
+      "name": "David Ventura"
+    }
+  ],
+  "website": "https://github.com/DavidVentura/offline-translator",
+  "licenses": [
+    "GPL-3.0-or-later"
+  ]
+}
