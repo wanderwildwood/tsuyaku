@@ -22,8 +22,8 @@ android {
         // The Kompakt runs Android 12 (API 31); nothing here needs anything newer.
         minSdk = 31
         targetSdk = 31
-        versionCode = 46
-        versionName = "0.9.15"
+        versionCode = 47
+        versionName = "0.9.16"
         ndk { abiFilters += abis }
     }
 
