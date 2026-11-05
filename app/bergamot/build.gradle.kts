@@ -20,7 +20,9 @@ android {
             cmake {
                 cppFlags("-std=c++17")
                 // Translation is far too slow unoptimised to be any use, debug build or not.
-                arguments += listOf("-DCMAKE_BUILD_TYPE=Release")
+                arguments += listOf("-DCMAKE_BUILD_TYPE=Release", "-DGIT_SUBMODULE=OFF")
+                // The sources are checked out already; build hosts get a copy without .git, where
+                // bergamot's own "git submodule update" step can only fail.
             }
         }
     }
