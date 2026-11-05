@@ -78,7 +78,7 @@ same phone as a new note.
 <!-- shared-about privacy section -->
 ## Who we are
 
-Translate is made by wander wildwood, an independent developer: one person, not a company. wander wildwood is the data controller for anything the app itself handles, and that is very little. Translate keeps what you put in it on your phone and sends nothing to the developer, so the developer holds no data about you.
+Translate is made by wander wildwood, an independent developer: one person, not a company. wander wildwood is the data controller for anything the app itself handles, and that is very little. What you put in Translate stays on your phone. The only things that go out are the language downloads described above: each is a request to Mozilla's store or to GitHub for one language file, and it carries the name of that file and nothing you have written. Nothing is sent to the developer, so the developer holds no data about you.
 
 ## How to contact us
 
