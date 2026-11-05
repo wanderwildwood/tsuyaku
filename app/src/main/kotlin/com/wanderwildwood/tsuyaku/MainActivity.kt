@@ -64,7 +64,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         desk = Desk(app, lifecycleScope)
         if (savedInstanceState == null) take(intent)
-        val notes = notesInstalled()
 
         setContent {
             ThemeMMD(colorScheme = monochrome, typography = houseTypography) {
@@ -91,7 +90,6 @@ class MainActivity : ComponentActivity() {
                         MainScreen(
                             desk = desk,
                             installed = installed,
-                            notes = notes,
                             onLanguages = { showLanguages = true },
                             onGet = { code ->
                                 app.packs.download(code)
@@ -102,7 +100,6 @@ class MainActivity : ComponentActivity() {
                             onPicture = { runCatching { gallery.launch("image/*") }.onFailure { say(R.string.nothing_to_share) } },
                             onCopy = ::copy,
                             onShare = ::share,
-                            onNotes = ::toNotes,
                         )
                     }
                     if (about) AboutDialog(onDismiss = { about = false })
@@ -197,22 +194,9 @@ class MainActivity : ComponentActivity() {
         runCatching { startActivity(Intent.createChooser(send, null)) }.onFailure { say(R.string.nothing_to_share) }
     }
 
-    /** Straight into Notes as a new note, by the same share it accepts from any app. */
-    private fun toNotes(text: String) {
-        val send = Intent(Intent.ACTION_SEND).setType("text/plain").setPackage(NOTES).putExtra(Intent.EXTRA_TEXT, text)
-        runCatching { startActivity(send) }.onFailure { share(text) }
-    }
-
-    private fun notesInstalled(): Boolean {
-        val send = Intent(Intent.ACTION_SEND).setType("text/plain").setPackage(NOTES)
-        @Suppress("DEPRECATION")
-        return packageManager.queryIntentActivities(send, 0).isNotEmpty()
-    }
-
     private fun say(text: Int) = Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 
     companion object {
-        const val NOTES = "com.wanderwildwood.oboegaki"
         const val ACTION_GET_LANGUAGE = "com.wanderwildwood.tsuyaku.GET_LANGUAGE"
         const val ACTION_OPEN_TEXT = "com.wanderwildwood.tsuyaku.OPEN_TEXT"
         const val EXTRA_LANGUAGE = "language"

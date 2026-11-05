@@ -25,7 +25,7 @@ sixteen grays, a slow redraw, and is read outdoors as often as indoors.
   into English into German, done in one go; the English in between is never shown.
 - **Scripts you may not read** get their sound in Latin letters under the translation: Greek,
   Cyrillic, Arabic, Hebrew, Japanese, Chinese, Korean, Thai and the scripts of India.
-- **Copy, Share, To Memo** under the translation. "To Memo" is there when Memo is installed.
+- **Copy and Share** under the translation. Share reaches Memo too, as a new note.
 - **What is typed is kept** as it is typed, so a paragraph survives Android closing the app
   while you look something up elsewhere, and a restart of the phone.
 

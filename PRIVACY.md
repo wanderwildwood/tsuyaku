@@ -69,11 +69,10 @@ When another app hands over selected text, it hands only that text. "Replace wit
 gives the translation back to that app, which puts it in place of the selection; nothing else
 is written anywhere.
 
-## Copy, Share and To Memo
+## Copy and Share
 
-These do what they say and only when pressed: Copy puts the translation on the clipboard,
-Share opens Android's share sheet, and To Memo hands the translation to the Memo app on the
-same phone as a new note.
+These do what they say and only when pressed: Copy puts the translation on the clipboard, and
+Share opens Android's share sheet.
 
 <!-- shared-about privacy section -->
 ## Who we are

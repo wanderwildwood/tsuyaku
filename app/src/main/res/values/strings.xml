@@ -35,7 +35,6 @@
     <string name="copied">Copied</string>
     <string name="share">Share</string>
     <!-- Sends the translation to the Notes app, when it is installed -->
-    <string name="to_notes">To Memo</string>
     <string name="nothing_to_share">There is nothing to share with on this phone.</string>
 
     <!-- When no language has been downloaded yet -->

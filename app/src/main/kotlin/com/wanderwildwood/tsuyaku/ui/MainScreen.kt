@@ -63,7 +63,6 @@ fun Bar(title: String, onBack: (() -> Unit)?, actions: @Composable () -> Unit) {
 fun MainScreen(
     desk: Desk,
     installed: Set<String>,
-    notes: Boolean,
     onLanguages: () -> Unit,
     onGet: (String) -> Unit,
     onAbout: () -> Unit,
@@ -71,7 +70,6 @@ fun MainScreen(
     onPicture: () -> Unit,
     onCopy: (String) -> Unit,
     onShare: (String) -> Unit,
-    onNotes: (String) -> Unit,
 ) {
     var picking by remember { mutableStateOf<Picking?>(null) }
     // The window shrinks to what the keyboard leaves, about half the Kompakt's screen. Then the
@@ -135,7 +133,7 @@ fun MainScreen(
                 }
                 val done = desk.outcome as? Outcome.Done
                 if (!typing && done != null && done.text.isNotBlank() && desk.input.text.isNotBlank()) {
-                    Actions(done.text, notes, onCopy, onShare, onNotes)
+                    Actions(done.text, onCopy, onShare)
                 }
             }
         }
@@ -275,7 +273,7 @@ private fun Blocked(message: String, button: String?, onClick: (() -> Unit)?) {
 }
 
 @Composable
-private fun Actions(text: String, notes: Boolean, onCopy: (String) -> Unit, onShare: (String) -> Unit, onNotes: (String) -> Unit) {
+private fun Actions(text: String, onCopy: (String) -> Unit, onShare: (String) -> Unit) {
     var copied by remember(text) { mutableStateOf(false) }
     LaunchedEffect(copied) {
         if (copied) {
@@ -292,7 +290,6 @@ private fun Actions(text: String, notes: Boolean, onCopy: (String) -> Unit, onSh
             copied = true
         }
         Small(stringResource(R.string.share), Modifier.weight(1f)) { onShare(text) }
-        if (notes) Small(stringResource(R.string.to_notes), Modifier.weight(1f)) { onNotes(text) }
     }
 }
 

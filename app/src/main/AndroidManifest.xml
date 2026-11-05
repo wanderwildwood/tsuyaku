@@ -16,8 +16,6 @@
             <action android:name="android.intent.action.PROCESS_TEXT" />
             <data android:mimeType="text/plain" />
         </intent>
-        <!-- "To Notes" is offered only when Notes is on the phone. -->
-        <package android:name="com.wanderwildwood.oboegaki" />
         <!-- Browsers, so a web address from About opens in a real one. -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
