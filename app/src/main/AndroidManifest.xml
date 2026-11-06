@@ -26,6 +26,8 @@
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
+        <!-- Files, so a picture is chosen on its e-ink screens rather than the stock picker. -->
+        <package android:name="com.wanderwildwood.tana" />
     </queries>
 
     <application

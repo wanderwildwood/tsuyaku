@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private val gallery = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+    private val gallery = registerForActivityResult(FilesGetContent()) { uri ->
         if (uri != null) takePicture(uri)
     }
 
