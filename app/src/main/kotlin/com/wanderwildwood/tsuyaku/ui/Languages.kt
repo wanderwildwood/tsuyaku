@@ -73,7 +73,7 @@ fun LanguagePicker(
             val most = minOf(360.dp, LocalConfiguration.current.screenHeightDp.dp * 0.5f)
             val state = rememberLazyListState()
             Box(Modifier.height(most)) {
-                PagedColumn(modifier = Modifier.fillMaxSize(), state = state) {
+                PagedColumn(modifier = Modifier.fillMaxSize(), state = state, showCutRow = true) {
                     for (code in sorted) item(key = code) { row(code) }
                 }
             }
@@ -113,7 +113,7 @@ fun LanguagesScreen(
     ) { padding ->
         val state = rememberLazyListState()
         Box(Modifier.padding(padding)) {
-            PagedColumn(modifier = Modifier.fillMaxSize(), state = state) {
+            PagedColumn(modifier = Modifier.fillMaxSize(), state = state, showCutRow = true) {
                 item(key = "note") {
                     TextMMD(
                         text = stringResource(R.string.languages_note),

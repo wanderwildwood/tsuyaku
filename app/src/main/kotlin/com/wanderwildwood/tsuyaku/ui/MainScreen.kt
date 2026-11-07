@@ -221,7 +221,7 @@ private fun Output(desk: Desk, onGet: (String) -> Unit) {
         }
         when (val o = desk.outcome) {
             is Outcome.Done -> SelectionContainer(Modifier.fillMaxSize().textActions()) {
-                PagedColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp)) {
+                PagedColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp), showCutRow = true) {
                     Pieces.of(o.text).forEachIndexed { i, piece ->
                         item(key = "p$i") {
                             TextMMD(
