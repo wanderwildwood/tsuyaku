@@ -123,11 +123,11 @@ fun LanguagesScreen(
                 }
                 if (here.isNotEmpty()) {
                     item(key = "here") { Heading(stringResource(R.string.section_here)) }
-                    for (lang in here) item(key = "h:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
+                    for (lang in here) item(key = "h:${lang.code}") { Column { PackRow(lang, states[lang.code], onDownload, onStop, onDelete); DottedRule(start = 20.dp, end = 20.dp) } }
                 }
                 if (rest.isNotEmpty()) {
                     item(key = "get") { Heading(stringResource(R.string.section_get)) }
-                    for (lang in rest) item(key = "g:${lang.code}") { PackRow(lang, states[lang.code], onDownload, onStop, onDelete) }
+                    for (lang in rest) item(key = "g:${lang.code}") { Column { PackRow(lang, states[lang.code], onDownload, onStop, onDelete); DottedRule(start = 20.dp, end = 20.dp) } }
                 }
             }
         }
