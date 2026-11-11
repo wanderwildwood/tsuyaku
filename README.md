@@ -1,6 +1,4 @@
-# Translate
-
-通訳 *tsūyaku*
+# 通訳 tsūyaku — Translate
 
 Translation on the phone, without sending the text anywhere: typed, pasted, selected in
 another app, or read from a picture. On an E Ink phone, black on white, with nothing moving.
