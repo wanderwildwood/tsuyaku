@@ -8,9 +8,12 @@ plugins {
     alias(libs.plugins.aboutlibraries.android)
 }
 
-// The phone is arm64. x86_64 rides along so the same APK runs on the emulator the screenshots
-// and tests are made on; `-Pabis=arm64-v8a` builds the phone's alone.
-val abis = (findProperty("abis") as String? ?: "arm64-v8a,x86_64").split(',')
+// The phone is arm64, and a release carries arm64 alone (x86_64 doubled the APK). Every other
+// build adds x86_64 so it runs on the emulator the screenshots and tests are made on.
+// `-Pabis=arm64-v8a,x86_64` overrides either.
+val releaseBuild = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) }
+val abis = (findProperty("abis") as String?
+    ?: if (releaseBuild) "arm64-v8a" else "arm64-v8a,x86_64").split(',')
 
 android {
     namespace = "com.wanderwildwood.tsuyaku"

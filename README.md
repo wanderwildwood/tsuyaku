@@ -100,8 +100,8 @@ the git submodules:
 git submodule update --init --recursive
 ```
 
-The APK carries both arm64 (the phone) and x86_64 (the emulator); `-Pabis=arm64-v8a` builds
-the phone's alone.
+A release APK carries arm64 alone (the phone). Other builds add x86_64 for the emulator;
+`-Pabis=arm64-v8a,x86_64` sets the list for any build.
 
 A release is signed by a keystore in `signing/`, which is not in this repository. Without
 it the release APK builds **unsigned** and will not install anywhere: there is no fallback
