@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,7 +36,6 @@ import com.wanderwildwood.tsuyaku.engine.Outcome
 import com.wanderwildwood.tsuyaku.engine.Pieces
 import com.wanderwildwood.tsuyaku.engine.Way
 import com.wanderwildwood.tsuyaku.engine.languageName
-import kotlinx.coroutines.delay
 
 /**
  * The translation of text selected in another app, in a panel over it: the way at the top,
@@ -99,20 +97,21 @@ fun Overlay(
                 Wide(stringResource(R.string.replace)) { onReplace(done.text) }
                 Spacer(Modifier.height(8.dp))
             }
+            // "Copied" stays until the next press here or a new translation, not on a timer.
             var copied by remember(done) { mutableStateOf(false) }
-            LaunchedEffect(copied) {
-                if (copied) {
-                    delay(2_000)
-                    copied = false
-                }
-            }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
                 Small(stringResource(if (copied) R.string.copied else R.string.copy), Modifier.weight(1f)) {
                     onCopy(done.text)
                     copied = true
                 }
-                Small(stringResource(R.string.share), Modifier.weight(1f)) { onShare(done.text) }
-                Small(stringResource(R.string.open), Modifier.weight(1f), onOpen)
+                Small(stringResource(R.string.share), Modifier.weight(1f)) {
+                    copied = false
+                    onShare(done.text)
+                }
+                Small(stringResource(R.string.open), Modifier.weight(1f)) {
+                    copied = false
+                    onOpen()
+                }
             }
         }
     }

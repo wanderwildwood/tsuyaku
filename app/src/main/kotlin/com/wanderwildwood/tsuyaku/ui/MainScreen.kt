@@ -20,7 +20,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,7 +41,6 @@ import com.wanderwildwood.tsuyaku.engine.ENGLISH
 import com.wanderwildwood.tsuyaku.engine.Outcome
 import com.wanderwildwood.tsuyaku.engine.Pieces
 import com.wanderwildwood.tsuyaku.engine.languageName
-import kotlinx.coroutines.delay
 
 /** The bar every screen has: a title, Back where there is somewhere to go back to, and its own actions. */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -274,13 +272,9 @@ private fun Blocked(message: String, button: String?, onClick: (() -> Unit)?) {
 
 @Composable
 private fun Actions(text: String, onCopy: (String) -> Unit, onShare: (String) -> Unit) {
+    // "Copied" stays until the next press here or new text: on this panel a word on a timer
+    // could be gone before it had been read.
     var copied by remember(text) { mutableStateOf(false) }
-    LaunchedEffect(copied) {
-        if (copied) {
-            delay(2_000)
-            copied = false
-        }
-    }
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
@@ -289,7 +283,10 @@ private fun Actions(text: String, onCopy: (String) -> Unit, onShare: (String) ->
             onCopy(text)
             copied = true
         }
-        Small(stringResource(R.string.share), Modifier.weight(1f)) { onShare(text) }
+        Small(stringResource(R.string.share), Modifier.weight(1f)) {
+            copied = false
+            onShare(text)
+        }
     }
 }
 

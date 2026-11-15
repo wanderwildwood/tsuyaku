@@ -46,9 +46,14 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
     var looksLike by mutableStateOf<String?>(null)
         private set
 
-    /** A sentence about the last picture, when it gave no text. */
+    /** A sentence about the last picture when it gave no text, or about a step that could not be taken. */
     var notice by mutableStateOf<Int?>(null)
         private set
+
+    /** Says [what] under the text until the text changes, not on a timer. */
+    fun tell(what: Int) {
+        notice = what
+    }
 
     // Once the language translated from is picked by hand, the detector stops second-guessing it
     // until the text is replaced.

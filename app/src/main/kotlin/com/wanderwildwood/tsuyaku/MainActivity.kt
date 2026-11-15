@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.provider.MediaStore
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
@@ -194,7 +193,9 @@ class MainActivity : ComponentActivity() {
         runCatching { startActivity(Intent.createChooser(send, null)) }.onFailure { say(R.string.nothing_to_share) }
     }
 
-    private fun say(text: Int) = Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+    // Said under the text, where it stays until the text changes: a toast is gone in a few
+    // seconds, before it can be read on this panel.
+    private fun say(text: Int) = desk.tell(text)
 
     companion object {
         const val ACTION_GET_LANGUAGE = "com.wanderwildwood.tsuyaku.GET_LANGUAGE"
