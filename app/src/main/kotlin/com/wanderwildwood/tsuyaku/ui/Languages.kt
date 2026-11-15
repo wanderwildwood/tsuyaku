@@ -33,6 +33,10 @@ import com.wanderwildwood.tsuyaku.engine.PackState
 import com.wanderwildwood.tsuyaku.engine.Why
 import com.wanderwildwood.tsuyaku.engine.languageName
 import java.util.Locale
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 
 /**
  * Choosing a language to translate from or into, among those on the phone. The one in use is
@@ -62,6 +66,7 @@ fun LanguagePicker(
                     .padding(vertical = 2.dp)
                     .heightIn(min = 48.dp)
                     .then(if (chosen) Modifier.border(BorderStroke(2.dp, MaterialTheme.colorScheme.onSurface), RoundedCornerShape(8.dp)) else Modifier)
+                    .semantics { role = Role.RadioButton; selected = chosen }
                     .clickable { onPick(code) }
                     .padding(horizontal = 12.dp, vertical = 10.dp),
             )
