@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    No cleartext anywhere. Translating, reading and naming the language all happen on the phone;
+    the network is used only to download a language pack, over https, from the two hosts
+    catalog.json names (engine/Fetch.kt refuses any other). Only the system's certificates are
+    trusted.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
