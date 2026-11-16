@@ -1,5 +1,6 @@
 package com.wanderwildwood.tsuyaku
 
+import com.wanderwildwood.tsuyaku.ui.DarkSelection
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
@@ -65,7 +66,7 @@ class MainActivity : ComponentActivity() {
         if (savedInstanceState == null) take(intent)
 
         setContent {
-            ThemeMMD(colorScheme = monochrome, typography = houseTypography) {
+            ThemeMMD(colorScheme = monochrome, typography = houseTypography) { DarkSelection {
                 ArmedScope {
                     // A blinking caret redraws the panel twice a second for as long as the field has focus.
                     CompositionLocalProvider(LocalCursorBlinkEnabled provides false) {
@@ -104,7 +105,7 @@ class MainActivity : ComponentActivity() {
                     if (about) AboutDialog(onDismiss = { about = false })
                     }
                 }
-            }
+            } }
         }
     }
 

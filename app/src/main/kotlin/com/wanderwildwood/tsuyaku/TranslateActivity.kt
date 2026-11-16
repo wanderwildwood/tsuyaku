@@ -1,5 +1,6 @@
 package com.wanderwildwood.tsuyaku
 
+import com.wanderwildwood.tsuyaku.ui.DarkSelection
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
@@ -49,7 +50,7 @@ class TranslateActivity : ComponentActivity() {
             callingActivity != null
 
         setContent {
-            ThemeMMD(colorScheme = monochrome, typography = houseTypography) {
+            ThemeMMD(colorScheme = monochrome, typography = houseTypography) { DarkSelection {
                 ArmedScope {
                     val packs = app.packs
                     var way by remember { mutableStateOf<Way?>(null) }
@@ -90,7 +91,7 @@ class TranslateActivity : ComponentActivity() {
                         onDismiss = ::finish,
                     )
                 }
-            }
+            } }
         }
     }
 

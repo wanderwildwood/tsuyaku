@@ -50,9 +50,9 @@ import androidx.compose.ui.text.input.TextFieldValue
  * The answer goes over the range that was selected, and only if that range still holds what was
  * sent; otherwise nothing is written, rather than the wrong thing.
  *
- * The Typewriter's file (TextActions.kt there, commit 0aab491) as Notes carries it, for a field
- * that holds a TextFieldValue rather than a TextFieldState: the answer arrives as a new value
- * through [onValue]. The host needs `<queries>` for PROCESS_TEXT in its manifest.
+ * The Typewriter's file (TextActions.kt there, commit 0aab491), for a field that holds a
+ * TextFieldValue rather than a TextFieldState: the answer arrives as a new value through
+ * [onValue]. The host needs `<queries>` for PROCESS_TEXT in its manifest.
  */
 @Composable
 fun Modifier.textActions(value: TextFieldValue? = null, onValue: ((TextFieldValue) -> Unit)? = null): Modifier {
@@ -61,6 +61,7 @@ fun Modifier.textActions(value: TextFieldValue? = null, onValue: ((TextFieldValu
     val update by rememberUpdatedState(onValue)
     val writable = value != null && onValue != null
     val view = LocalView.current
+    // This app never offers itself.
     val notShown = NOT_SHOWN + context.packageName
     val apps = remember {
         val query = Intent(Intent.ACTION_PROCESS_TEXT).setType("text/plain")
@@ -186,17 +187,17 @@ private fun showRest(view: View, items: List<TextContextMenuItem>, session: Text
         else (pressY - 88 * dp - list.measuredHeight).toInt().coerceAtLeast(0)
     val x = ((root.width - list.measuredWidth) / 2).coerceAtLeast(0)
     popup.showAtLocation(root, Gravity.TOP or Gravity.START, x, y)
+    DarkMode.window(list)
 }
 
 /** How many of Compose's items stay on the bar before the ⋮; Mudita's bar fits three buttons. */
 private const val KEEP = 2
 
 /**
- * Text apps left out of the menu. EinkBro's entry is an online dictionary that duplicates
- * Define, and EinkBro has no setting to withdraw it (decided 2026-10-05). This app's own
- * Translate is left out of its own fields, where it would only open the screen it is on.
+ * Text apps left out of the menu by his choice (2026-10-05): EinkBro's entry is an online
+ * dictionary that duplicates Define, and EinkBro has no setting to withdraw it.
  */
-private val NOT_SHOWN = setOf("info.plateaukao.einkbro", "com.wanderwildwood.tsuyaku")
+private val NOT_SHOWN = setOf("info.plateaukao.einkbro")
 
 /** Menu entries of this file's own, so the filter above does not take them out again. */
 private data class Action(val index: Int)
