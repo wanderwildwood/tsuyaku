@@ -36,9 +36,17 @@ class FetchFailed(val why: Why, message: String) : IOException(message)
 object Fetch {
     private const val TIMEOUT_MS = 30_000
 
+    /**
+     * The only hosts a pack is fetched from: Mozilla's translation models and Tesseract's
+     * reading data, as catalog.json names them. Anything else is refused before a connection.
+     */
+    private val HOSTS = setOf("storage.googleapis.com", "raw.githubusercontent.com")
+
     suspend fun download(url: String, dest: File, size: Long, sha256: String?, gzipped: Boolean, onBytes: (Long) -> Unit) {
+        val parsed = try { URL(url) } catch (e: IOException) { throw FetchFailed(Why.Server, e.toString()) }
+        if (parsed.protocol != "https" || parsed.host !in HOSTS) throw FetchFailed(Why.Server, "not a pack address: $url")
         val conn = try {
-            (URL(url).openConnection() as HttpURLConnection).apply {
+            (parsed.openConnection() as HttpURLConnection).apply {
                 connectTimeout = TIMEOUT_MS
                 readTimeout = TIMEOUT_MS
                 instanceFollowRedirects = true
