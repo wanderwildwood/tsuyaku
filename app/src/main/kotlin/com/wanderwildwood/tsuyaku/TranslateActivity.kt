@@ -125,6 +125,7 @@ class TranslateActivity : ComponentActivity() {
         val intent = Intent(this, MainActivity::class.java)
             .setAction(MainActivity.ACTION_GET_LANGUAGE)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            .putExtra(MainActivity.EXTRA_TOKEN, MainActivity.TOKEN)
         if (code != null) intent.putExtra(MainActivity.EXTRA_LANGUAGE, code)
         startActivity(intent)
         finish()

@@ -3,6 +3,7 @@ package com.wanderwildwood.tsuyaku
 import com.wanderwildwood.tsuyaku.ui.DarkSelection
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.provider.MediaStore
@@ -142,7 +143,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
             ACTION_GET_LANGUAGE -> {
-                intent.getStringExtra(EXTRA_LANGUAGE)?.let { app.packs.download(it) }
+                // Only the overlay, in this same process, may start a download this way; any
+                // other app sending the action just opens the languages screen.
+                val ours = intent.getStringExtra(EXTRA_TOKEN) == TOKEN
+                if (ours) intent.getStringExtra(EXTRA_LANGUAGE)?.let { app.packs.download(it) }
                 showLanguages = true
             }
             ACTION_OPEN_TEXT -> {
@@ -202,10 +206,19 @@ class MainActivity : ComponentActivity() {
         const val ACTION_GET_LANGUAGE = "com.wanderwildwood.tsuyaku.GET_LANGUAGE"
         const val ACTION_OPEN_TEXT = "com.wanderwildwood.tsuyaku.OPEN_TEXT"
         const val EXTRA_LANGUAGE = "language"
+        const val EXTRA_TOKEN = "token"
+
+        /** Made fresh each time the app starts, and known only inside it. */
+        val TOKEN: String = java.util.UUID.randomUUID().toString()
         const val EXTRA_FROM = "from"
         const val EXTRA_TO = "to"
     }
 }
 
+/**
+ * The shared picture, when it is handed over as content: a file:// address from another app
+ * could name a file of this app's own, which it would then read as if it had been shared.
+ */
 @Suppress("DEPRECATION")
-private fun Intent.streamUri(): Uri? = getParcelableExtra(Intent.EXTRA_STREAM) as? Uri
+private fun Intent.streamUri(): Uri? =
+    (getParcelableExtra(Intent.EXTRA_STREAM) as? Uri)?.takeIf { it.scheme == ContentResolver.SCHEME_CONTENT }
