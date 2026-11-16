@@ -69,15 +69,32 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
         return Layout.whereComplete(storage.roots(), code, files)?.let { Layout.dir(it, code) }
     }
 
-    /** Tesseract names of the languages whose picture data is whole on the phone. */
+    /**
+     * Tesseract names of the languages whose picture data is whole on the phone and matches its
+     * SHA-256 in the catalog. Called just before a picture is read, so nothing unchecked is used.
+     * A file is hashed once: a match is noted beside it ([Fetch] notes one it downloaded itself),
+     * and a file that does not match is deleted, so its pack shows as needing a download again.
+     */
     fun tessReady(): Set<String> {
-        val names = catalog.languages.mapNotNull { l -> l.tess?.let { it to l.tessSize } } + ("eng" to catalog.englishTessSize)
-        return names.filter { (name, size) -> tessFile(name).length() == size }.map { it.first }.toSet()
+        val names = catalog.languages.mapNotNull { l -> l.tess?.let { Triple(it, l.tessSize, l.tessSha256) } } +
+            Triple("eng", catalog.englishTessSize, catalog.englishTessSha256)
+        return names.distinctBy { it.first }
+            .filter { (name, size, sha) -> tessFile(name).length() == size && Fetch.checked(tessFile(name), sha) }
+            .map { it.first }.toSet()
     }
 
     fun tessRoot(): File = storage.tessRoot
 
     private fun tessFile(name: String) = File(storage.tessData, "$name.traineddata")
+
+    /** A picture-reading file and the note of its checked hash beside it. */
+    private fun deleteTess(name: String) {
+        tessFile(name).delete()
+        File(tessFile(name).path + ".sha256").delete()
+    }
+
+    private fun tessSha(name: String): String? =
+        if (name == "eng") catalog.englishTessSha256 else catalog.languages.firstOrNull { it.tess == name }?.tessSha256
 
     private fun scan(lang: Lang): PackState {
         val files = lang.directions.flatMap { it.files }
@@ -135,7 +152,7 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
                     before += f.gz
                 }
                 for ((name, size) in tess) {
-                    Fetch.download("${catalog.tessBase}/$name.traineddata", tessFile(name), size, null, gzipped = false, onBytes = progress)
+                    Fetch.download("${catalog.tessBase}/$name.traineddata", tessFile(name), size, tessSha(name), gzipped = false, onBytes = progress)
                     before += size
                 }
                 set(code, scan(lang))
@@ -173,8 +190,8 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
             jobs[code]?.let { it.cancel(); it.join() }
             for (root in storage.roots()) Layout.dir(root, code).deleteRecursively()
             val others = catalog.languages.filter { it.code != code && scan(it) is PackState.Here }
-            if (lang.tess != null && others.none { it.tess == lang.tess }) tessFile(lang.tess).delete()
-            if (others.isEmpty()) tessFile("eng").delete()
+            if (lang.tess != null && others.none { it.tess == lang.tess }) deleteTess(lang.tess)
+            if (others.isEmpty()) deleteTess("eng")
             refresh()
         }
     }

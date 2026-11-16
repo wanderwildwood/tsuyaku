@@ -67,6 +67,40 @@ object Fetch {
         }
     }
 
+    /** Where the hash a file was checked against is noted, beside the file. */
+    private fun mark(file: File) = File(file.path + ".sha256")
+
+    /**
+     * Whether [file] matches [sha256]: at once if it was checked against that hash before, else by
+     * hashing it now and noting the match. A file that does not match is deleted, with its note.
+     * No hash to check against means nothing to check.
+     */
+    fun checked(file: File, sha256: String?): Boolean {
+        if (sha256 == null) return file.exists()
+        val want = sha256.lowercase()
+        val note = mark(file)
+        if (runCatching { note.readText() }.getOrNull() == want) return true
+        val got = runCatching {
+            val digest = MessageDigest.getInstance("SHA-256")
+            file.inputStream().use { input ->
+                val buffer = ByteArray(64 * 1024)
+                while (true) {
+                    val n = input.read(buffer)
+                    if (n < 0) break
+                    digest.update(buffer, 0, n)
+                }
+            }
+            digest.digest().joinToString("") { "%02x".format(it) }
+        }.getOrNull()
+        if (got == want) {
+            runCatching { note.writeText(want) }
+            return true
+        }
+        file.delete()
+        note.delete()
+        return false
+    }
+
     /** The checking half of [download], on any stream; [onBytes] counts bytes as they came. */
     suspend fun save(raw: InputStream, dest: File, size: Long, sha256: String?, gzipped: Boolean, onBytes: (Long) -> Unit) {
         dest.parentFile?.mkdirs()
@@ -110,6 +144,7 @@ object Fetch {
                 if (!got.equals(sha256, ignoreCase = true)) throw FetchFailed(Why.Damaged, "${dest.name}: SHA-256 $got, expected $sha256")
             }
             if (!part.renameTo(dest)) throw FetchFailed(Why.Space, "could not move ${part.name} into place")
+            if (sha256 != null) runCatching { mark(dest).writeText(sha256.lowercase()) }
             done = true
         } finally {
             if (!done) part.delete()

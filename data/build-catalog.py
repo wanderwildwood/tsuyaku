@@ -12,7 +12,12 @@ Offline Translator picks them: a released model over a trial one, then the archi
 fits a phone best. Each file's download size and unpacked size are read from the server
 (the last four bytes of a gzip file are its unpacked length), so the app can say how much a
 pack costs before anyone presses anything, and check what arrived.
+
+Mozilla lists a SHA-256 for its model files; Tesseract publishes none, so each picture-reading
+file is downloaded once here, from the pinned commit, and hashed (about 160 MB in all). The app
+checks every file against its hash and throws away one that does not match.
 """
+import hashlib
 import json
 import struct
 import sys
@@ -52,6 +57,31 @@ def fetch(url, headers=None):
     req = urllib.request.Request(url, headers=headers or {"User-Agent": "tsuyaku-catalog"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.status, dict(r.headers), r.read()
+
+
+def sha256_of(url):
+    """(size, SHA-256) of the whole file at [url], read once and kept nowhere."""
+    req = urllib.request.Request(url, headers={"User-Agent": "tsuyaku-catalog"})
+    h = hashlib.sha256()
+    n = 0
+    with urllib.request.urlopen(req, timeout=120) as r:
+        while chunk := r.read(1 << 20):
+            h.update(chunk)
+            n += len(chunk)
+    return n, h.hexdigest()
+
+
+def tess_hashes(names, sizes, base):
+    """SHA-256 of each named .traineddata file, its size checked against the tree's."""
+    names = sorted(set(names))
+    with ThreadPoolExecutor(8) as pool:
+        got = list(pool.map(lambda n: sha256_of(f"{base}/{n}.traineddata"), names))
+    out = {}
+    for name, (size, digest) in zip(names, got):
+        if size != sizes[f"{name}.traineddata"]:
+            raise SystemExit(f"{name}.traineddata: tree says {sizes[name + '.traineddata']} bytes, got {size}")
+        out[name] = digest
+    return out
 
 
 def gzip_sizes(url):
@@ -112,6 +142,10 @@ def main(out):
             item["sha256"] = f["uncompressedHash"]
         d["files"].append(item)
 
+    tess_base = f"https://raw.githubusercontent.com/{TESSDATA_REPO}/{TESSDATA_COMMIT}"
+    wanted = [t for c, t in TESS.items() if c in packs and f"{t}.traineddata" in tess_sizes] + ["eng"]
+    tess_sha = tess_hashes(wanted, tess_sizes, tess_base)
+
     order = {"model": 0, "vocab": 1, "srcVocab": 1, "trgVocab": 2, "lex": 3}
     languages = []
     for code in sorted(packs):
@@ -123,6 +157,7 @@ def main(out):
         if tess and f"{tess}.traineddata" in tess_sizes:
             lang["tess"] = tess
             lang["tessSize"] = tess_sizes[f"{tess}.traineddata"]
+            lang["tessSha256"] = tess_sha[tess]
         else:
             print(f"{code}: no picture reading", file=sys.stderr)
         languages.append(lang)
@@ -130,8 +165,8 @@ def main(out):
     catalog = {
         "generated": manifest["generated"],
         "modelBase": base,
-        "tessBase": f"https://raw.githubusercontent.com/{TESSDATA_REPO}/{TESSDATA_COMMIT}",
-        "english": {"tess": "eng", "tessSize": tess_sizes["eng.traineddata"]},
+        "tessBase": tess_base,
+        "english": {"tess": "eng", "tessSize": tess_sizes["eng.traineddata"], "tessSha256": tess_sha["eng"]},
         "languages": languages,
     }
     with open(out, "w") as f:

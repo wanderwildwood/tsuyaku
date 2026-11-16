@@ -4,7 +4,8 @@
  "tessBase": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd",
  "english": {
   "tess": "eng",
-  "tessSize": 4113088
+  "tessSize": 4113088,
+  "tessSha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
  },
  "languages": [
   {
@@ -60,7 +61,8 @@
     ]
    },
    "tess": "afr",
-   "tessSize": 2652786
+   "tessSize": 2652786,
+   "tessSha256": "126d480bfae95be2a911ed4916465e27bde75fea2da631e21b96762e5f239646"
   },
   {
    "code": "ar",
@@ -115,7 +117,8 @@
     ]
    },
    "tess": "ara",
-   "tessSize": 1432056
+   "tessSize": 1432056,
+   "tessSha256": "e3206d3dc87fd50c24a0fb9f01838615911d25168f4e64415244b67d2bb3e729"
   },
   {
    "code": "az",
@@ -170,7 +173,8 @@
     ]
    },
    "tess": "aze",
-   "tessSize": 3524799
+   "tessSize": 3524799,
+   "tessSha256": "a365310848aecb739f19369cb3831d4660fcd9345d798e91a3042455f9ccc9f0"
   },
   {
    "code": "be",
@@ -225,7 +229,8 @@
     ]
    },
    "tess": "bel",
-   "tessSize": 3692098
+   "tessSize": 3692098,
+   "tessSha256": "9c6668a0b202f3dcfe074b64620d108e1902ca7498a40b5a11b4a3da6112d58f"
   },
   {
    "code": "bg",
@@ -280,7 +285,8 @@
     ]
    },
    "tess": "bul",
-   "tessSize": 1675212
+   "tessSize": 1675212,
+   "tessSha256": "aebc9b0fcc8cfaf8a9f38a02bb7b85052bd850744696a2c11cf0081820e5b21e"
   },
   {
    "code": "bn",
@@ -335,7 +341,8 @@
     ]
    },
    "tess": "ben",
-   "tessSize": 855841
+   "tessSize": 855841,
+   "tessSha256": "31163084c279aaebd376216f0c3d5c17ad4b5fee8db49dae79c20000b5de5964"
   },
   {
    "code": "bs",
@@ -390,7 +397,8 @@
     ]
    },
    "tess": "bos",
-   "tessSize": 2498242
+   "tessSize": 2498242,
+   "tessSha256": "6cc8cc87cf1afbfa6a41febb725dbadb14bed96a46685906440a6eb8a7892f04"
   },
   {
    "code": "ca",
@@ -445,7 +453,8 @@
     ]
    },
    "tess": "cat",
-   "tessSize": 1146012
+   "tessSize": 1146012,
+   "tessSha256": "250db73cd5b380d2798581295dc12f20d0828cdb335a65d833d12dfdbf57117d"
   },
   {
    "code": "cs",
@@ -500,7 +509,8 @@
     ]
    },
    "tess": "ces",
-   "tessSize": 3795684
+   "tessSize": 3795684,
+   "tessSha256": "934bcaf97ef3348413263331131c9fa7f55f30db333c711929c124fb635f7e1b"
   },
   {
    "code": "da",
@@ -555,7 +565,8 @@
     ]
    },
    "tess": "dan",
-   "tessSize": 2580059
+   "tessSize": 2580059,
+   "tessSha256": "acb1fd074487a31d1294fcdfd7d7c673467ffd8aeacb2ccd61ebcbf04eb4e2fa"
   },
   {
    "code": "de",
@@ -610,7 +621,8 @@
     ]
    },
    "tess": "deu",
-   "tessSize": 1525436
+   "tessSize": 1525436,
+   "tessSha256": "19d219bbb6672c869d20a9636c6816a81eb9a71796cb93ebe0cb1530e2cdb22d"
   },
   {
    "code": "el",
@@ -665,7 +677,8 @@
     ]
    },
    "tess": "ell",
-   "tessSize": 1419514
+   "tessSize": 1419514,
+   "tessSha256": "4fba8a0b461038d51f1c20d043d4f2ac38c4e778f1b90830847f7bd8fa3ba726"
   },
   {
    "code": "es",
@@ -720,7 +733,8 @@
     ]
    },
    "tess": "spa",
-   "tessSize": 2294433
+   "tessSize": 2294433,
+   "tessSha256": "6f2e04d02774a18f01bed44b1111f2cd7f3ba7ac9dc4373cd3f898a40ea6b464"
   },
   {
    "code": "et",
@@ -775,7 +789,8 @@
     ]
    },
    "tess": "est",
-   "tessSize": 4458101
+   "tessSize": 4458101,
+   "tessSha256": "515d4a773682b286369511e83fe412bcff16a92a886f99c761c1d760a7e30456"
   },
   {
    "code": "eu",
@@ -830,7 +845,8 @@
     ]
    },
    "tess": "eus",
-   "tessSize": 5175921
+   "tessSize": 5175921,
+   "tessSha256": "40e7418296c355d9fd9ca843d115c51e740089e576e887443e61704823cd6624"
   },
   {
    "code": "fa",
@@ -885,7 +901,8 @@
     ]
    },
    "tess": "fas",
-   "tessSize": 431500
+   "tessSize": 431500,
+   "tessSha256": "db1c0a91208aff00d3cf1ed2c1d23f76419afd5f024688b4f71adc3f2ce4a505"
   },
   {
    "code": "fi",
@@ -940,7 +957,8 @@
     ]
    },
    "tess": "fin",
-   "tessSize": 7865732
+   "tessSize": 7865732,
+   "tessSha256": "61a04cd62b507c3d9ae0e1cda399e6715ebf49dea9df47897c8acdcd3bd3e13c"
   },
   {
    "code": "fr",
@@ -995,7 +1013,8 @@
     ]
    },
    "tess": "fra",
-   "tessSize": 1130365
+   "tessSize": 1130365,
+   "tessSha256": "ced037562e8c80c13122dece28dd477d399af80911a28791a66a63ac1e3445ca"
   },
   {
    "code": "gl",
@@ -1050,7 +1069,8 @@
     ]
    },
    "tess": "glg",
-   "tessSize": 2554555
+   "tessSize": 2554555,
+   "tessSha256": "7947619c5544d86849f563bd737ad90dbea9f5319fbd838c4747a7a1cd40b260"
   },
   {
    "code": "gu",
@@ -1105,7 +1125,8 @@
     ]
    },
    "tess": "guj",
-   "tessSize": 1418394
+   "tessSize": 1418394,
+   "tessSha256": "fa69658614b4946a9afae8853d67e0689838803dfa3d12c2e35ec53ee6f8df34"
   },
   {
    "code": "he",
@@ -1160,7 +1181,8 @@
     ]
    },
    "tess": "heb",
-   "tessSize": 961404
+   "tessSize": 961404,
+   "tessSha256": "11f9e43ab227f786352a50f75c94c2e9906f1baba86d93276da19da7ce0904db"
   },
   {
    "code": "hi",
@@ -1215,7 +1237,8 @@
     ]
    },
    "tess": "hin",
-   "tessSize": 1122751
+   "tessSize": 1122751,
+   "tessSha256": "4c73ffc59d497c186b19d1e90f5d721d678ea6b2e277b719bee4e2af12271825"
   },
   {
    "code": "hr",
@@ -1270,7 +1293,8 @@
     ]
    },
    "tess": "hrv",
-   "tessSize": 4103348
+   "tessSize": 4103348,
+   "tessSha256": "9e515d9832ce259dbab550b1cc6b998f8b929faf2edacaaca981b05adb130571"
   },
   {
    "code": "hu",
@@ -1325,7 +1349,8 @@
     ]
    },
    "tess": "hun",
-   "tessSize": 5296273
+   "tessSize": 5296273,
+   "tessSha256": "35067e7cfe102dcdc953f9a758fdfaa6296b17a1ee6d874ee780fa306430b9fb"
   },
   {
    "code": "id",
@@ -1380,7 +1405,8 @@
     ]
    },
    "tess": "ind",
-   "tessSize": 1122661
+   "tessSize": 1122661,
+   "tessSha256": "69786901da87ab8766c1ea7fbb10b28f2110c14da3f6c8f2735df131fba95d88"
   },
   {
    "code": "is",
@@ -1435,7 +1461,8 @@
     ]
    },
    "tess": "isl",
-   "tessSize": 2278973
+   "tessSize": 2278973,
+   "tessSha256": "5ec828c363f3f0062c3caf08216677cf5f3c0c981b05fab445123a16b98f10a9"
   },
   {
    "code": "it",
@@ -1490,7 +1517,8 @@
     ]
    },
    "tess": "ita",
-   "tessSize": 2701314
+   "tessSize": 2701314,
+   "tessSha256": "b8f89e1e785118dac4d51ae042c029a64edb5c3ee42ef73027a6d412748d8827"
   },
   {
    "code": "ja",
@@ -1551,7 +1579,8 @@
     ]
    },
    "tess": "jpn",
-   "tessSize": 2471260
+   "tessSize": 2471260,
+   "tessSha256": "1f5de9236d2e85f5fdf4b3c500f2d4926f8d9449f28f5394472d9e8d83b91b4d"
   },
   {
    "code": "kn",
@@ -1606,7 +1635,8 @@
     ]
    },
    "tess": "kan",
-   "tessSize": 3608331
+   "tessSize": 3608331,
+   "tessSha256": "bd31e6b6ae93271e3bcf5383d306d8eefbb91542937cd6d735a5930c970e61d8"
   },
   {
    "code": "ko",
@@ -1667,7 +1697,8 @@
     ]
    },
    "tess": "kor",
-   "tessSize": 1677415
+   "tessSize": 1677415,
+   "tessSha256": "6b85e11d9bbf07863b97b3523b1b112844c43e713df8b66418a081fd1060b3b2"
   },
   {
    "code": "lt",
@@ -1722,7 +1753,8 @@
     ]
    },
    "tess": "lit",
-   "tessSize": 3154896
+   "tessSize": 3154896,
+   "tessSha256": "1e383df5b055583bc01cb5764ecdf74c540753f2cb3f8205e7105361da4bc989"
   },
   {
    "code": "lv",
@@ -1777,7 +1809,8 @@
     ]
    },
    "tess": "lav",
-   "tessSize": 2717247
+   "tessSize": 2717247,
+   "tessSha256": "7d9eaf22254b381f18b806cd6cb647862a397a7221adbce3e22cc421793a8847"
   },
   {
    "code": "ml",
@@ -1832,7 +1865,8 @@
     ]
    },
    "tess": "mal",
-   "tessSize": 5275996
+   "tessSize": 5275996,
+   "tessSha256": "bd05cbf1b197e7810d2903419aedb06f9ef77bfedf50b358673c1d18d707cdb4"
   },
   {
    "code": "mr",
@@ -1887,7 +1921,8 @@
     ]
    },
    "tess": "mar",
-   "tessSize": 2118233
+   "tessSize": 2118233,
+   "tessSha256": "0ba3f2d116972e72fe9e176bc84c38e81dfb6670f4ed1f7f6c8e16a27da7cb61"
   },
   {
    "code": "ms",
@@ -1942,7 +1977,8 @@
     ]
    },
    "tess": "msa",
-   "tessSize": 1747801
+   "tessSize": 1747801,
+   "tessSha256": "e41a3e5febfec50c90371eb1cbb17a48b10cad387900e3420b1f134c1b766cba"
   },
   {
    "code": "nb",
@@ -1997,7 +2033,8 @@
     ]
    },
    "tess": "nor",
-   "tessSize": 3610079
+   "tessSize": 3610079,
+   "tessSha256": "0451eb4f8049ae78196806bf878a389a2f40f1386fe038568cf4441226ba6ef2"
   },
   {
    "code": "nl",
@@ -2052,7 +2089,8 @@
     ]
    },
    "tess": "nld",
-   "tessSize": 6050296
+   "tessSize": 6050296,
+   "tessSha256": "ced0e5e046a84c908a6aa7accbef9a232c4a5d9a8276691b81c6ee64d02963f6"
   },
   {
    "code": "nn",
@@ -2082,7 +2120,8 @@
     ]
    },
    "tess": "nor",
-   "tessSize": 3610079
+   "tessSize": 3610079,
+   "tessSha256": "0451eb4f8049ae78196806bf878a389a2f40f1386fe038568cf4441226ba6ef2"
   },
   {
    "code": "no",
@@ -2137,7 +2176,8 @@
     ]
    },
    "tess": "nor",
-   "tessSize": 3610079
+   "tessSize": 3610079,
+   "tessSha256": "0451eb4f8049ae78196806bf878a389a2f40f1386fe038568cf4441226ba6ef2"
   },
   {
    "code": "pl",
@@ -2192,7 +2232,8 @@
     ]
    },
    "tess": "pol",
-   "tessSize": 4765518
+   "tessSize": 4765518,
+   "tessSha256": "c4476cdbc0e33d898d32345122b7be1cbf85ace15f920f06c7714756e1ef79b2"
   },
   {
    "code": "pt",
@@ -2247,7 +2288,8 @@
     ]
    },
    "tess": "por",
-   "tessSize": 1982756
+   "tessSize": 1982756,
+   "tessSha256": "c4932b937207a9514b7514d518b931a99938c02a28a5a5a553f8599ed58b7deb"
   },
   {
    "code": "ro",
@@ -2302,7 +2344,8 @@
     ]
    },
    "tess": "ron",
-   "tessSize": 2376323
+   "tessSize": 2376323,
+   "tessSha256": "9adfde6b51ba4b97efd10ea37c3070fd3fc2bad7815e81f5c3c198cd96216cc9"
   },
   {
    "code": "ru",
@@ -2357,7 +2400,8 @@
     ]
    },
    "tess": "rus",
-   "tessSize": 3861738
+   "tessSize": 3861738,
+   "tessSha256": "e16e5e036cce1d9ec2b00063cf8b54472625b9e14d893a169e2b0dedeb4df225"
   },
   {
    "code": "sk",
@@ -2412,7 +2456,8 @@
     ]
    },
    "tess": "slk",
-   "tessSize": 4427661
+   "tessSize": 4427661,
+   "tessSha256": "fbcc400a9c74c6a13d922fcb1211b655d1b165387b675ed75cd2dbd756b974a5"
   },
   {
    "code": "sl",
@@ -2467,7 +2512,8 @@
     ]
    },
    "tess": "slv",
-   "tessSize": 3003829
+   "tessSize": 3003829,
+   "tessSha256": "b937632c17ce5fdf20535d25feec044da10a0c4c8234f4302d5606fd671cf60d"
   },
   {
    "code": "sq",
@@ -2522,7 +2568,8 @@
     ]
    },
    "tess": "sqi",
-   "tessSize": 1874705
+   "tessSize": 1874705,
+   "tessSha256": "1d89621d9afe8ddf35b403ecf8951edea52c3a960d241f287b1a7b2c5ba8daac"
   },
   {
    "code": "sr",
@@ -2577,7 +2624,8 @@
     ]
    },
    "tess": "srp",
-   "tessSize": 2149931
+   "tessSize": 2149931,
+   "tessSha256": "aa41ae3d9cc705e60d398ab38a5c3cc8b772c0d420c7d4f0859beb13d0e321b6"
   },
   {
    "code": "sv",
@@ -2632,7 +2680,8 @@
     ]
    },
    "tess": "swe",
-   "tessSize": 4167034
+   "tessSize": 4167034,
+   "tessSha256": "f7304988d41f833efebcc2d529df54b1903ecebbc3da1faabd19a0fddd4fe586"
   },
   {
    "code": "ta",
@@ -2687,7 +2736,8 @@
     ]
    },
    "tess": "tam",
-   "tessSize": 3237963
+   "tessSize": 3237963,
+   "tessSha256": "d02fbec24be4b07e32e80d0ccfc3b6b67a3c5d61c9d0a7c8532677990912c6ec"
   },
   {
    "code": "te",
@@ -2742,7 +2792,8 @@
     ]
    },
    "tess": "tel",
-   "tessSize": 2769654
+   "tessSize": 2769654,
+   "tessSha256": "d10691fddd5b67802e1c12800ebb321d3b8bcd8d24a2ac3ff206f93188c04ab5"
   },
   {
    "code": "th",
@@ -2797,7 +2848,8 @@
     ]
    },
    "tess": "tha",
-   "tessSize": 1072600
+   "tessSize": 1072600,
+   "tessSha256": "294227cc2d1292b0acb28d61d4115c88252b96d466ca90b417cf4cf0c67bf07c"
   },
   {
    "code": "tl",
@@ -2905,7 +2957,8 @@
     ]
    },
    "tess": "tur",
-   "tessSize": 4550554
+   "tessSize": 4550554,
+   "tessSha256": "7393381111e1152420fc4092cb44eef4237580d21b92bf30d7d221aad192c6b7"
   },
   {
    "code": "ug",
@@ -2960,7 +3013,8 @@
     ]
    },
    "tess": "uig",
-   "tessSize": 2794272
+   "tessSize": 2794272,
+   "tessSha256": "163b360268c39fc69e0c0dc9299c06dfe7a6c51ef8f33766da75022217b69b22"
   },
   {
    "code": "uk",
@@ -3015,7 +3069,8 @@
     ]
    },
    "tess": "ukr",
-   "tessSize": 3825102
+   "tessSize": 3825102,
+   "tessSha256": "d59e53e2bded32f4445f124b4b00240fcac7e8044c003ab822ccb94f0b3db59b"
   },
   {
    "code": "ur",
@@ -3070,7 +3125,8 @@
     ]
    },
    "tess": "urd",
-   "tessSize": 1398718
+   "tessSize": 1398718,
+   "tessSha256": "62e8250ce2a994106e313a82e26a516a39e2cf159d0ce3c5b5008387fd0d555f"
   },
   {
    "code": "vi",
@@ -3125,7 +3181,8 @@
     ]
    },
    "tess": "vie",
-   "tessSize": 531275
+   "tessSize": 531275,
+   "tessSha256": "79df64caf7bcfb2a27df5042ecb6121e196eada34da774956995747636d5bfa1"
   },
   {
    "code": "zh",
@@ -3186,7 +3243,8 @@
     ]
    },
    "tess": "chi_sim",
-   "tessSize": 2469156
+   "tessSize": 2469156,
+   "tessSha256": "a5fcb6f0db1e1d6d8522f39db4e848f05984669172e584e8d76b6b3141e1f730"
   },
   {
    "code": "zh_hant",
@@ -3253,7 +3311,8 @@
     ]
    },
    "tess": "chi_tra",
-   "tessSize": 2366642
+   "tessSize": 2366642,
+   "tessSha256": "529c5b5797d64b126065cd55f2bb4c7fd7b15790798091b1ff259941a829330b"
   }
  ]
 }

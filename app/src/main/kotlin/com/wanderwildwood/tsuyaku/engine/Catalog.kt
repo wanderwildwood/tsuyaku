@@ -41,6 +41,7 @@ data class Lang(
     val fromEnglish: Direction?,
     val tess: String?,
     val tessSize: Long,
+    val tessSha256: String? = null,
 ) {
     val directions: List<Direction> get() = listOfNotNull(toEnglish, fromEnglish)
 
@@ -54,6 +55,7 @@ class Catalog(
     val tessBase: String,
     val englishTessSize: Long,
     val languages: List<Lang>,
+    val englishTessSha256: String? = null,
 ) {
     private val byCode = languages.associateBy { it.code }
 
@@ -70,6 +72,7 @@ class Catalog(
                 modelBase = root.getString("modelBase"),
                 tessBase = root.getString("tessBase"),
                 englishTessSize = root.getJSONObject("english").getLong("tessSize"),
+                englishTessSha256 = root.getJSONObject("english").optString("tessSha256").ifEmpty { null },
                 languages = (0 until langs.length()).map { i ->
                     val l = langs.getJSONObject(i)
                     Lang(
@@ -78,6 +81,7 @@ class Catalog(
                         fromEnglish = direction(l.optJSONObject("fromEnglish")),
                         tess = if (l.has("tess")) l.getString("tess") else null,
                         tessSize = l.optLong("tessSize", 0),
+                        tessSha256 = l.optString("tessSha256").ifEmpty { null },
                     )
                 },
             )

@@ -36,6 +36,13 @@ class CatalogTest {
         assertTrue(es.tessSize > 0)
     }
 
+    @Test fun everyPictureFileHasItsHash() {
+        assertNotNull("eng hash", catalog.englishTessSha256)
+        for (l in catalog.languages.filter { it.tess != null }) {
+            assertTrue("${l.code} picture hash", l.tessSha256?.matches(Regex("[0-9a-f]{64}")) == true)
+        }
+    }
+
     @Test fun englishIsNotAPack() = assertNull(catalog.lang(ENGLISH))
 
     @Test fun addressesArePinned() {
