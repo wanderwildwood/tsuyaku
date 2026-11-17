@@ -198,10 +198,6 @@ class MainActivity : ComponentActivity() {
 
     private fun cameraFile() = File(cacheDir, "camera/shot.jpg")
 
-    private companion object {
-        const val MAX_PICTURE_BYTES = 50L * 1024 * 1024
-    }
-
     // Android 11+ shows only what <queries> names; the manifest lists IMAGE_CAPTURE. The button
     // is offered only when a camera app really answers it.
     private fun cameraAvailable(): Boolean = runCatching {
@@ -233,6 +229,7 @@ class MainActivity : ComponentActivity() {
         const val ACTION_OPEN_TEXT = "com.wanderwildwood.tsuyaku.OPEN_TEXT"
         const val EXTRA_LANGUAGE = "language"
         const val EXTRA_TOKEN = "token"
+        private const val MAX_PICTURE_BYTES = 50L * 1024 * 1024
 
         /** Made fresh each time the app starts, and known only inside it. */
         val TOKEN: String = java.util.UUID.randomUUID().toString()
