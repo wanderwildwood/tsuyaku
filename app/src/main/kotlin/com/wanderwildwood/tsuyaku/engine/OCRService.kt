@@ -115,11 +115,12 @@ fun getSentences(
         pendingFirstInLine = true
       }
       // if we are skipping the last word; add the 'last' marker to the previous (kept) word
-      if (wordInfo.isLastInLine && i > 0) {
-        allWords[i - 1].isLastInLine = true
+      // (onto the copy already kept, which is what the lines are built from)
+      if (wordInfo.isLastInLine) {
+        filteredWords.lastOrNull()?.isLastInLine = true
       }
-      if (wordInfo.isLastInPara && i > 0) {
-        allWords[i - 1].isLastInPara = true
+      if (wordInfo.isLastInPara) {
+        filteredWords.lastOrNull()?.isLastInPara = true
       }
     }
   }
@@ -149,7 +150,6 @@ fun getSentences(
 
       // In the same line but too far apart, make a new block
       if (deltaInChars >= 3f) { // TODO: how to figure out the delta better
-        Log.d("OCRService", "Forcing new block with word $word")
         if (line.text.trim() != "") {
           lines.add(line)
         }
