@@ -13,6 +13,7 @@ import com.wanderwildwood.tsuyaku.engine.Way
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -134,8 +135,12 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
 
     /** Reads the picture waiting in [com.wanderwildwood.tsuyaku.Memory.picture], if there is one. */
     fun readPendingPicture() {
-        val file = memory.picture
-        if (!file.exists() || reading) return
+        val waiting = memory.picture
+        if (!waiting.exists() || reading) return
+        // Moved aside before it is read: a picture that arrives meanwhile takes the free name
+        // and is read next, instead of being deleted unread with this one.
+        val file = java.io.File(waiting.path + ".reading")
+        if (!waiting.renameTo(file)) return
         reading = true
         notice = null
         scope.launch {
@@ -143,8 +148,8 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
                 app.readPicture(file, way.from, way.to)
             } finally {
                 // Read or not, the picture is done with: one that cannot be read must not be
-                // tried again on every start.
-                withContext(Dispatchers.IO) { file.delete() }
+                // tried again on every start. Even when the screen is closed mid-read.
+                withContext(NonCancellable + Dispatchers.IO) { file.delete() }
                 reading = false
             }
             when {
@@ -152,6 +157,7 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
                 text.isBlank() -> notice = R.string.no_words
                 else -> replace(text, picture = true)
             }
+            readPendingPicture()
         }
     }
 

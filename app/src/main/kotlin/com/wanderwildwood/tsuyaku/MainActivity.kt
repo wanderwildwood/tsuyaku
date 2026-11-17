@@ -64,7 +64,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         desk = Desk(app, lifecycleScope)
-        if (savedInstanceState == null) take(intent)
+        if (savedInstanceState == null) {
+            // Left by an earlier run cut short: a copy half made, a picture whose read never
+            // finished, a camera shot whose answer never came back.
+            File(app.memory.picture.path + ".part").delete()
+            File(app.memory.picture.path + ".reading").delete()
+            cameraFile().delete()
+            take(intent)
+        }
 
         setContent {
             ThemeMMD(colorScheme = monochrome, typography = houseTypography) { DarkSelection {
@@ -162,19 +169,38 @@ class MainActivity : ComponentActivity() {
     private fun takePicture(uri: Uri) {
         lifecycleScope.launch {
             val copied = withContext(Dispatchers.IO) {
-                runCatching {
-                    contentResolver.openInputStream(uri)?.use { input ->
-                        val part = File(app.memory.picture.path + ".part")
-                        part.outputStream().use { input.copyTo(it) }
-                        part.renameTo(app.memory.picture)
-                    } ?: false
-                }.getOrDefault(false)
+                val part = File(app.memory.picture.path + ".part")
+                try {
+                    runCatching {
+                        contentResolver.openInputStream(uri)?.use { input ->
+                            part.outputStream().use { out ->
+                                // No photo comes near this; stop rather than fill the phone.
+                                val buffer = ByteArray(64 * 1024)
+                                var total = 0L
+                                while (true) {
+                                    val n = input.read(buffer)
+                                    if (n < 0) break
+                                    total += n
+                                    check(total <= MAX_PICTURE_BYTES) { "too big" }
+                                    out.write(buffer, 0, n)
+                                }
+                            }
+                            part.renameTo(app.memory.picture)
+                        } ?: false
+                    }.getOrDefault(false)
+                } finally {
+                    part.delete()
+                }
             }
             if (copied) desk.readPendingPicture() else say(R.string.picture_unreadable)
         }
     }
 
     private fun cameraFile() = File(cacheDir, "camera/shot.jpg")
+
+    private companion object {
+        const val MAX_PICTURE_BYTES = 50L * 1024 * 1024
+    }
 
     // Android 11+ shows only what <queries> names; the manifest lists IMAGE_CAPTURE. The button
     // is offered only when a camera app really answers it.
