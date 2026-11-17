@@ -7,5 +7,4 @@ local.properties
 .kotlin/
 .externalNativeBuild/
 
-signing/signing.properties
-signing/signing.keystore
+signing/

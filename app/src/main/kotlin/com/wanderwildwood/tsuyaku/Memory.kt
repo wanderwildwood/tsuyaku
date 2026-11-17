@@ -37,10 +37,13 @@ class Memory(context: Context) {
         get() = runCatching { draftFile.readText() }.getOrDefault("")
         set(value) {
             // Written beside and moved over, so a kill mid-write leaves the last whole draft.
-            val tmp = File(draftFile.path + ".tmp")
-            runCatching {
-                tmp.writeText(value)
-                tmp.renameTo(draftFile)
+            // One writer at a time: a save from the main thread and one in the background share it.
+            synchronized(this) {
+                val tmp = File(draftFile.path + ".tmp")
+                runCatching {
+                    tmp.writeText(value)
+                    tmp.renameTo(draftFile)
+                }
             }
         }
 

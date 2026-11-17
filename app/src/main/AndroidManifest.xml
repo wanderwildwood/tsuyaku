@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Only to download a language when one is asked for. Translating, reading pictures and
-         recognising a language all happen on the phone. -->
+         recognizing a language all happen on the phone. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
