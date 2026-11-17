@@ -50,6 +50,8 @@ object Fetch {
                 connectTimeout = TIMEOUT_MS
                 readTimeout = TIMEOUT_MS
                 instanceFollowRedirects = true
+                // A plain name, not Android's default, which carries the phone's model and build.
+                setRequestProperty("User-Agent", "Translate")
             }
         } catch (e: IOException) {
             throw FetchFailed(Why.Offline, e.toString())

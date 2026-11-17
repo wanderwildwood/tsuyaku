@@ -13,6 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -45,6 +47,8 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
     val states: StateFlow<Map<String, PackState>> = _states.asStateFlow()
 
     private val jobs = ConcurrentHashMap<String, Job>()
+    /** One download at a time for each picture-data file: two packs can both want English's. */
+    private val tessLocks = ConcurrentHashMap<String, Mutex>()
 
     /** Look at the disk again; the card may have come or gone. Downloads under way keep their state. */
     fun refresh() {
@@ -130,11 +134,18 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
                 if (tessFile("eng").length() != catalog.englishTessSize) add("eng" to catalog.englishTessSize)
             }
             val total = missing.sumOf { it.gz } + tess.sumOf { it.second }
-            val room = missing.sumOf { it.size } + ROOM_TO_SPARE
+            val tessRoom = tess.sumOf { it.second }
+            // The picture data always goes to the phone's own storage: counted with the models
+            // when they go there too, on its own when the models go to the card.
+            val onCard = storage.isOnCard(root)
+            val room = missing.sumOf { it.size } + ROOM_TO_SPARE + (if (onCard) 0 else tessRoom)
             try {
                 Layout.dir(root, code).mkdirs()
                 storage.tessData.mkdirs()
                 if (StatFs(Layout.dir(root, code).path).availableBytes < room) throw FetchFailed(Why.Space, "needs $room bytes")
+                if (onCard && tessRoom > 0 && StatFs(storage.tessData.path).availableBytes < tessRoom + ROOM_TO_SPARE) {
+                    throw FetchFailed(Why.Space, "needs $tessRoom bytes for picture data")
+                }
                 var before = 0L
                 var shown = 0L
                 set(code, PackState.Getting(0, total))
@@ -152,7 +163,12 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
                     before += f.gz
                 }
                 for ((name, size) in tess) {
-                    Fetch.download("${catalog.tessBase}/$name.traineddata", tessFile(name), size, tessSha(name), gzipped = false, onBytes = progress)
+                    tessLocks.getOrPut(name) { Mutex() }.withLock {
+                        // Another pack may have fetched it while this one waited.
+                        if (tessFile(name).length() != size) {
+                            Fetch.download("${catalog.tessBase}/$name.traineddata", tessFile(name), size, tessSha(name), gzipped = false, onBytes = progress)
+                        }
+                    }
                     before += size
                 }
                 set(code, scan(lang))
@@ -189,7 +205,8 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
         scope.launch(Dispatchers.IO) {
             jobs[code]?.let { it.cancel(); it.join() }
             for (root in storage.roots()) Layout.dir(root, code).deleteRecursively()
-            val others = catalog.languages.filter { it.code != code && scan(it) is PackState.Here }
+            // A pack still downloading counts as here: it decided at its start what it needs.
+            val others = catalog.languages.filter { it.code != code && (scan(it) is PackState.Here || jobs.containsKey(it.code)) }
             if (lang.tess != null && others.none { it.tess == lang.tess }) deleteTess(lang.tess)
             if (others.isEmpty()) deleteTess("eng")
             refresh()
