@@ -72,7 +72,10 @@ class MainActivity : ComponentActivity() {
             cameraFile().delete()
         }
         desk = Desk(app, lifecycleScope)
-        if (savedInstanceState == null) take(intent)
+        // Reopened from Recents, Android hands back the intent the task first started with: text
+        // or a picture shared long ago would take the place of the draft written since.
+        val fromRecents = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
+        if (savedInstanceState == null && !fromRecents) take(intent)
 
         setContent {
             ThemeMMD(colorScheme = monochrome, typography = houseTypography) { DarkSelection {
