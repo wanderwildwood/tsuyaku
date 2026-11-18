@@ -63,15 +63,16 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        desk = Desk(app, lifecycleScope)
         if (savedInstanceState == null) {
             // Left by an earlier run cut short: a copy half made, a picture whose read never
-            // finished, a camera shot whose answer never came back.
+            // finished, a camera shot whose answer never came back. Cleared before the desk is
+            // made, because the desk at once moves a waiting picture to the ".reading" name.
             File(app.memory.picture.path + ".part").delete()
             File(app.memory.picture.path + ".reading").delete()
             cameraFile().delete()
-            take(intent)
         }
+        desk = Desk(app, lifecycleScope)
+        if (savedInstanceState == null) take(intent)
 
         setContent {
             ThemeMMD(colorScheme = monochrome, typography = houseTypography) { DarkSelection {
