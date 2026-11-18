@@ -115,6 +115,7 @@ class TranslateActivity : ComponentActivity() {
             .setAction(MainActivity.ACTION_OPEN_TEXT)
             .putExtra(Intent.EXTRA_TEXT, text)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            .putExtra(MainActivity.EXTRA_TOKEN, MainActivity.TOKEN)
         if (way != null) intent.putExtra(MainActivity.EXTRA_FROM, way.from).putExtra(MainActivity.EXTRA_TO, way.to)
         startActivity(intent)
         finish()

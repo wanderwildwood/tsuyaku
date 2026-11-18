@@ -161,10 +161,14 @@ class MainActivity : ComponentActivity() {
                 showLanguages = true
             }
             ACTION_OPEN_TEXT -> {
-                intent.getStringExtra(Intent.EXTRA_TEXT)?.let { desk.replace(it) }
-                val from = intent.getStringExtra(EXTRA_FROM)
-                val to = intent.getStringExtra(EXTRA_TO)
-                if (from != null && to != null) desk.choose(from, to)
+                // Only the overlay may put its text in place of the draft and set the way; any
+                // other app sending the action just opens the main screen.
+                if (intent.getStringExtra(EXTRA_TOKEN) == TOKEN) {
+                    intent.getStringExtra(Intent.EXTRA_TEXT)?.let { desk.replace(it) }
+                    val from = intent.getStringExtra(EXTRA_FROM)
+                    val to = intent.getStringExtra(EXTRA_TO)
+                    if (from != null && to != null) desk.choose(from, to)
+                }
                 showLanguages = false
             }
         }
