@@ -38,7 +38,8 @@ object Fetch {
 
     /**
      * The only hosts a pack is fetched from: Mozilla's translation models and Tesseract's
-     * reading data, as catalog.json names them. Anything else is refused before a connection.
+     * reading data, as catalog.json names them. Anything else is refused before a connection,
+     * and a redirect anywhere else is refused before the file is read.
      */
     private val HOSTS = setOf("storage.googleapis.com", "raw.githubusercontent.com")
 
@@ -62,6 +63,10 @@ object Fetch {
             } catch (e: IOException) {
                 throw FetchFailed(Why.Offline, e.toString())
             }
+            // Redirects are followed, but only to the same hosts over https: the check above is
+            // made again on wherever the file really came from.
+            val landed = conn.url
+            if (landed.protocol != "https" || landed.host !in HOSTS) throw FetchFailed(Why.Server, "sent on to another address for $url")
             if (code != HttpURLConnection.HTTP_OK) throw FetchFailed(Why.Server, "HTTP $code for $url")
             conn.inputStream.use { save(it, dest, size, sha256, gzipped, onBytes) }
         } finally {
