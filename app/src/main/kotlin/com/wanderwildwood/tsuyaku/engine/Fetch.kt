@@ -74,6 +74,24 @@ object Fetch {
         }
     }
 
+    /** Under this much room left, a write that fails is put down to the room. */
+    private const val LOW_ROOM = 1024L * 1024
+
+    /**
+     * Whether a failed write ran out of room: the room was checked before the download began,
+     * but another app may fill the storage meanwhile. Android says ENOSPC in the message; the
+     * room left in [dir] is the fallback.
+     */
+    internal fun outOfRoom(e: IOException, dir: File?): Boolean {
+        var cause: Throwable? = e
+        while (cause != null) {
+            val message = cause.message.orEmpty()
+            if ("ENOSPC" in message || "No space left" in message) return true
+            cause = cause.cause
+        }
+        return dir != null && dir.exists() && dir.usableSpace < LOW_ROOM
+    }
+
     /** Where the hash a file was checked against is noted, beside the file. */
     private fun mark(file: File) = File(file.path + ".sha256")
 
@@ -132,7 +150,11 @@ object Fetch {
                         currentCoroutineContext().ensureActive()
                         val n = input.read(buffer)
                         if (n < 0) break
-                        out.write(buffer, 0, n)
+                        try {
+                            out.write(buffer, 0, n)
+                        } catch (e: IOException) {
+                            throw FetchFailed(if (outOfRoom(e, part.parentFile)) Why.Space else Why.Offline, e.toString())
+                        }
                         digest.update(buffer, 0, n)
                         written += n
                         if (written > size) throw FetchFailed(Why.Damaged, "${dest.name} is longer than $size bytes")
@@ -141,8 +163,8 @@ object Fetch {
             } catch (e: FetchFailed) {
                 throw e
             } catch (e: IOException) {
-                // Out of room shows up here as an IOException too; the caller checked the room
-                // before starting, so a write failing now is far more likely a dropped connection.
+                // A write that runs out of room is told apart above; what is left is the
+                // connection dropping or the data arriving broken.
                 throw FetchFailed(Why.Offline, e.toString())
             }
             if (written != size) throw FetchFailed(Why.Damaged, "${dest.name}: $written bytes, expected $size")

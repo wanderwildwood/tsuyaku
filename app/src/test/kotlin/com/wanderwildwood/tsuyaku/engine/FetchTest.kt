@@ -4,6 +4,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Rule
 import org.junit.Test
@@ -54,6 +55,14 @@ class FetchTest {
         expect(Why.Offline) { Fetch.save(ByteArrayInputStream(cut), dest, body.size.toLong(), sha, gzipped = true) {} }
         assertFalse(dest.exists())
         assertFalse(tmp.root.resolve("model.bin.part").exists())
+    }
+
+    @Test fun aFullCardIsToldFromADroppedConnection() {
+        val full = java.io.IOException("write failed: ENOSPC (No space left on device)")
+        assertTrue(Fetch.outOfRoom(full, null))
+        assertTrue(Fetch.outOfRoom(java.io.IOException("write failed", full), null))
+        assertFalse(Fetch.outOfRoom(java.io.IOException("Connection reset"), tmp.root))
+        assertFalse(Fetch.outOfRoom(java.io.IOException("Connection reset"), null))
     }
 
     private suspend fun expect(why: Why, block: suspend () -> Unit) {
