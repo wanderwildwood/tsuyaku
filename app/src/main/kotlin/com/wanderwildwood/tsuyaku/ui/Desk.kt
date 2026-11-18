@@ -73,6 +73,11 @@ class Desk(val app: TsuyakuApp, private val scope: CoroutineScope) {
         input = value
         if (changed) {
             notice = null
+            // Rewritten by hand, the text is no longer what the picture said.
+            if (fromPicture) {
+                fromPicture = false
+                memory.draftFromPicture = false
+            }
             saveSoon()
             translateSoon(PAUSE_MS)
         }
