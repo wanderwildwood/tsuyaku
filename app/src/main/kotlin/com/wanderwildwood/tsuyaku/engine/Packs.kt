@@ -18,6 +18,7 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicLong
 
 /** Where a language pack stands. */
 sealed interface PackState {
@@ -49,12 +50,24 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
     private val jobs = ConcurrentHashMap<String, Job>()
     /** One download at a time for each picture-data file: two packs can both want English's. */
     private val tessLocks = ConcurrentHashMap<String, Mutex>()
+    /** When each language's state was last set by a download, so a slower look at the disk does not undo it. */
+    private val stamps = ConcurrentHashMap<String, Long>()
+    private val clock = AtomicLong()
 
-    /** Look at the disk again; the card may have come or gone. Downloads under way keep their state. */
+    /**
+     * Look at the disk again; the card may have come or gone. Downloads under way keep their
+     * state, and so does one that ended while this look was being taken: what it found before
+     * the end is out of date.
+     */
     fun refresh() {
         scope.launch(Dispatchers.IO) {
+            val before = HashMap(stamps)
             val found = catalog.languages.associate { it.code to scan(it) }
-            _states.update { now -> found.mapValues { (code, s) -> if (jobs.containsKey(code)) now[code] ?: s else s } }
+            _states.update { now ->
+                found.mapValues { (code, s) ->
+                    if (jobs.containsKey(code) || stamps[code] != before[code]) now[code] ?: s else s
+                }
+            }
         }
     }
 
@@ -214,6 +227,7 @@ class Packs(val catalog: Catalog, private val storage: Storage, private val scop
     }
 
     private fun set(code: String, state: PackState) {
+        stamps[code] = clock.incrementAndGet()
         _states.update { it + (code to state) }
     }
 
