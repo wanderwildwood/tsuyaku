@@ -6,6 +6,12 @@ another app, or read from a picture. On an E Ink phone, black on white, with not
 Built for the [Mudita Kompakt](https://mudita.com/products/kompakt/), whose 4.3" panel has
 sixteen grays, a slow redraw, and is read outdoors as often as indoors.
 
+## Screenshots
+
+| | | | |
+|---|---|---|---|
+| ![Translating](screenshots/1-translate.png) | ![Over another app](screenshots/2-selection.png) | ![Languages](screenshots/3-languages.png) | ![From a picture](screenshots/4-picture.png) |
+
 ## What it does
 
 - **Type or paste** in the upper half; the translation appears in the lower half when typing
