@@ -60,8 +60,10 @@ their rows say so.
 - **With an SD card in the phone, the models go on the card.** The small files for reading
   pictures stay on the phone.
 - **A download stopped part way** keeps the files that came whole, and the next try fetches
-  only the rest. Every file is checked on arrival, by length and, for the model itself, by
-  the checksum Mozilla publishes; a file that fails is thrown away, not kept.
+  only the rest. Every file is checked on arrival, by length and by checksum: for a translation
+  model the one Mozilla publishes, for the picture-reading files one kept in the app's catalog.
+  Picture-reading files already on the phone are checked once more before they are used. A file
+  that fails is thrown away, not kept.
 - **Pressing a language on the phone asks** ("Delete Spanish — tap again") and then deletes it.
 
 Where the files come from:
