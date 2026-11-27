@@ -74,7 +74,8 @@ Where the files come from:
 | Files for reading pictures | Tesseract's "fast" set, `github.com/tesseract-ocr/tessdata_fast`, pinned to commit `8741641` | Apache 2.0 |
 
 The list of what there is, with every address and size, is `app/src/main/assets/catalog.json`,
-written by `data/build-catalog.py` from Mozilla's list.
+written by `data/build-catalog.py` from Mozilla's list. Nothing else is fetched: downloads go
+over https to these two hosts only, and a redirect anywhere else is refused.
 
 ## Memory
 
